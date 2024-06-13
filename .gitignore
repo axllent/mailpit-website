@@ -1,0 +1,6 @@
+/node_modules/
+/resources/
+/public/
+*.bak
+*.old
+*.lock

@@ -1,0 +1,23 @@
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width">
+<title>{{ if .IsHome }}{{ .Title }}{{ else }}{{ printf "%s | %s" .Title site.Title }}{{ end }}</title>
+{{- if .Params.description }}
+<meta name="description" content="{{ .Params.description }}">
+{{ end -}}
+{{- partialCached "css.html" . }}
+{{- $iconsPath := "favicons/" }}
+<link rel="apple-touch-icon" sizes="180x180" href='{{ absURL (printf "%sapple-touch-icon.png" $iconsPath) }}'>
+<link rel="icon" type="image/png" sizes="32x32" href='{{ absURL (printf "%sfavicon-32x32.png" $iconsPath) }}'>
+<link rel="icon" type="image/png" sizes="16x16" href='{{ absURL (printf "%sfavicon-16x16.png" $iconsPath) }}'>
+<link rel="manifest" href='{{ absURL (printf "%ssite.webmanifest" $iconsPath) }}'>
+<link rel="mask-icon" href='{{ absURL (printf "%ssafari-pinned-tab.svg" $iconsPath) }}' color="#004750">
+<link rel="shortcut icon" href='{{ absURL (printf "%sfavicon.ico" $iconsPath) }}'>
+<meta name="msapplication-config" content='{{ absURL (printf "%sbrowserconfig.xml" $iconsPath) }}'>
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-VTWJTQ3RBG"></script>
+<script>
+	window.dataLayer = window.dataLayer || [];
+	function gtag() { dataLayer.push(arguments); }
+	gtag('js', new Date());
+	gtag('config', 'G-VTWJTQ3RBG');
+</script>

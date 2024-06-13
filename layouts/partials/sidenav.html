@@ -1,0 +1,42 @@
+<aside class="side-nav">
+	<div class="offcanvas-header d-md-none px-0">
+		<h5 class="offcanvas-title mt-0" id="offcanvasResponsiveLabel">
+			Documentation
+		</h5>
+		<button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#SideNav"
+			aria-label="Close"></button>
+	</div>
+
+	<ul class="navbar-nav">
+		{{- template "tree" (dict "page" . "section" .FirstSection) }}
+		{{- define "tree" }}
+		{{- $section := .section }}
+		{{- $page := .page }}
+		{{- $permalink := $page.RelPermalink }}
+		{{- $current := . }}
+		<li class="nav-item my-1">
+			<a href="{{ $section.Permalink }}"
+				class="nav-link p-0{{ if eq $section.RelPermalink $permalink }} active{{ end }}">{{ $section.Title }}</a>
+			{{- $pages := $section.Pages }}
+			{{- with $pages }}
+			{{- $sectionActive := in $permalink $section.RelPermalink }}
+			{{- if $sectionActive}}
+			<ul class="list-unstyled">
+				{{- range . }}
+				{{- if .IsPage }}
+				<li class="nav-item my-1">
+					<a class="nav-link p-0{{ if eq .RelPermalink $permalink }} active{{ end }}" href="{{ .Permalink }}">
+						{{ .Title }}
+					</a>
+				</li>
+				{{- else }}
+				{{- template "tree" (dict "page" $page "section" .) }}
+				{{- end }}
+				{{- end }}
+			</ul>
+			{{ end }}
+			{{- end }}
+		</li>
+		{{- end }}
+	</ul>
+</aside>

@@ -1,0 +1,92 @@
+baseURL: 'https://mailpit.axllent.org/'
+languageCode: 'en'
+title: 'Mailpit'
+outputs:
+  home:
+    - HTML
+    - JSON
+
+module:
+  mounts:
+    - source: assets
+      target: assets
+    - source: static
+      target: static
+    - source: node_modules/bootstrap-icons/font/fonts
+      target: static/css/fonts
+
+menus:
+  main:
+    # - name: Home
+    #   pageRef: /
+    #   weight: 1
+    - name: Documentation
+      pageRef: /docs
+      weight: 2
+
+# use custom styling
+markup:
+  highlight:
+    noClasses: false
+  goldmark:
+    renderer:
+      unsafe: true
+
+# shields.io
+params:
+  badges:
+    - image: https://img.shields.io/github/stars/axllent/mailpit.svg
+      label: Github stars
+      link: https://github.com/axllent/mailpit
+      logo: github
+    - image: https://img.shields.io/github/v/release/axllent/mailpit.svg
+      label: Latest release
+      link: https://github.com/axllent/mailpit/releases/latest
+      logo: github
+    - image: https://img.shields.io/docker/pulls/axllent/mailpit.svg
+      label: Docker pulls
+      link: https://hub.docker.com/r/axllent/mailpit
+      logo: docker
+    - image: https://img.shields.io/github/sponsors/axllent.svg
+      label: Sponsors
+      link: https://github.com/sponsors/axllent
+      logo: githubsponsors
+
+
+  features:
+    - title: Single binary, no dependencies
+      link: /docs/install/
+      description: Runs on a single static binary or multi-arch Docker image with no additional dependencies
+    - title: New message notifications
+      link: /docs/usage/notifications/
+      description: Live web UI updates, favicon unread counter & browser notifications when new messages are received
+    - title: HTML compatibility checker
+      link: /docs/usage/html-check/
+      description: Test HTML & CSS compatibility with common email clients
+    - title: Integrated link checker
+      link: /docs/usage/link-check/
+      description: Link check to test message links (HTML & text) & linked images
+    - title: Spam testing
+      link: /docs/usage/spamassassin/
+      description: Test a message's "spamminess" using SpamAssassin
+    - title: Screenshot generator
+      link: /docs/usage/html-screenshots/
+      description: Generate screenshots directly from within the web UI
+    - title: Advanced mail search
+      link: /docs/usage/search-filters/
+      description: Search & filter messages using advanced filtering
+    - title: REST API
+      link: /docs/api-v1/
+      description: Integration testing using the REST API to view, read and process messages
+    - title: POP3 server
+      link: /docs/configuration/pop3/
+      description: POP3 server to download messages directly into your email client
+    - title: Message tagging
+      link: /docs/usage/tagging/
+      description: Tag messages (manually and/or automatically) to allow easy filtering & grouping
+    - title: Message relaying
+      link: /docs/configuration/smtp-relay/
+      description: Manually or automatically relay received messages via an external SMTP server
+    - title: Webhook
+      link: /docs/integration/webhook/
+      description: Optionally trigger external processes when messages are received via a webhook

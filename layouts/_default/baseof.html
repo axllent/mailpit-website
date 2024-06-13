@@ -1,0 +1,106 @@
+<!doctype html>
+<html lang="en" class="h-100" data-bs-theme="auto">
+
+<head>
+	{{ partial "head.html" . }}
+</head>
+
+<body class="d-flex flex-column h-100">
+	<div id="App">
+		<nav class="navbar navbar-expand navbar-dark bg-secondary fixed-top">
+			<div class="container-fluid">
+				<a class="navbar-brand" href="/">
+					<img src="/images/mailpit.svg" width="40" alt="Mailpit" class="me-1" />
+					<span class="d-none d-md-inline">
+						{{ site.Title }}
+					</span>
+				</a>
+				<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse"
+					aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+					<span class="navbar-toggler-icon"></span>
+				</button>
+				<div class="collapse navbar-collapse" id="navbarCollapse">
+					<ul class="navbar-nav me-auto">
+						{{ $url := .RelPermalink | relLangURL }}
+						{{ range .Site.Menus.main }}
+						<li class="nav-item">
+							{{ if eq (hasPrefix .URL "mailto:") true }}
+							<a class="nav-link" href="{{ .URL }}">{{ .Name }}</a>
+							{{ else }}
+							{{ $menuUrl := .URL | relLangURL }}
+							{{ if eq $menuUrl "/" }}
+							<a class="nav-link {{ if eq $url $menuUrl }}active{{end}}" href="{{ $menuUrl }}">{{ .Name }}</a>
+							{{ else }}
+							<a class="nav-link {{ if hasPrefix $url $menuUrl }}active{{end}}" href="{{ $menuUrl }}">{{ .Name }}</a>
+							{{ end }}
+							{{ end }}
+						</li>
+						{{ end }}
+					</ul>
+					<div class="d-flex">
+						<div v-cloak>
+							<button class="btn btn-dark pe-0 pe-md-5" @click="openSearch()">
+								<i class="bi bi-search me-3"></i>
+								<span class="d-none d-md-inline">Search docs...</span>
+							</button>
+						</div>
+					</div>
+				</div>
+				<a href="https://github.com/axllent/mailpit" class="btn text-light" target="_blank">
+					<i class="bi bi-github"></i>
+					<span class="d-none d-md-inline">
+						GitHub
+					</span>
+				</a>
+				<a href="https://hub.docker.com/r/axllent/mailpit" class="btn text-light" target="_blank">
+					<img src="/images/docker.svg" style="width: 19px;margin-bottom: 3px;">
+					<span class="d-none d-md-inline">
+						Docker
+					</span>
+				</a>
+				<div v-cloak>
+					<button class="btn text-light" v-if="theme == 'light'" @click="theme='dark'">
+						<i class="bi bi-moon-stars-fill"></i>
+					</button>
+					<button class="btn" v-if="theme == 'dark'" @click="theme = 'light'">
+						<i class="bi bi-brightness-high-fill"></i>
+					</button>
+				</div>
+			</div>
+		</nav>
+
+		<div class="flex-shrink-0">
+			<main class="container-fluid">
+				{{ block "main" . }}{{ end }}
+			</main>
+		</div>
+
+		<div class="modal modal-lg" id="searchModal" tabindex="-1" aria-hidden="true">
+			<div class="modal-dialog modal-dialog-scrollable">
+				<div class="modal-content">
+					<div class="modal-header" :class="!search ? 'border-0': ''">
+						<input type="text" class="form-control" :placeholder="loaded ? 'Search the documentation...' : 'loading...'"
+							:disabled="!loaded" aria-label="Search" id="Search" v-model.trim="search" @keyup.up="selectPrev()"
+							@keyup.down="selectNext()" @keyup.enter="gotoSelected()">
+						<button type="button" class="btn-close d-sm-none" data-bs-dismiss="modal" aria-label="Close"></button>
+					</div>
+					<div class="modal-body" v-if="search">
+						<div class="list-group" v-if="searchResults.length">
+							<a class="list-group-item list-group-item-action" v-for="(r, i) in searchResults" :href="r.item.link">
+								<h5 class="my-1">[[ r.item.title ]]</h5>
+								<p class="mb-1 small">[[ r.item.description ]]</p>
+							</a>
+						</div>
+						<div v-else-if="!searchResults.length && search">
+							No results....
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	{{ partial "footer.html" . }}
+</body>
+
+</html>

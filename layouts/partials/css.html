@@ -1,0 +1,11 @@
+{{/* Load Bootstrap SCSS. */}}
+{{ $options := dict "enableSourceMap" true }}
+{{- if hugo.IsProduction}}
+{{ $options := dict "enableSourceMap" false "outputStyle" "compressed" }}
+{{ end }}
+{{ $styles := resources.Get "css/main.scss" }}
+{{ $styles = $styles | resources.ToCSS $options }}
+{{- if hugo.IsProduction }}
+{{ $styles = $styles | fingerprint }}
+{{ end -}}
+<link href="{{ $styles.RelPermalink }}" rel="stylesheet" />

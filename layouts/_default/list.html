@@ -1,0 +1,23 @@
+{{- define "main" }}
+{{ $hasTOC := ne (print .TableOfContents) "<nav id=\"TableOfContents\"></nav>" }}
+<div class="row">
+	<div class="col-xl-2 col-md-3 offcanvas-md offcanvas-start" id="SideNav">
+		{{- partial "sidenav" . }}
+	</div>
+	<div class="{{ if $hasTOC }}col-xl-8{{ else }}col-xl-10{{ end }} col-md-9 pb-5">
+		<button class="btn d-md-none mb-3 ps-0" type="button" data-bs-toggle="offcanvas" data-bs-target="#SideNav"
+			aria-controls="offcanvasResponsive">
+			<i class="bi bi-list me-2"></i>
+			Documentation navigation
+		</button>
+		<h1>{{ .Title }}</h1>
+		{{ .Content }}
+	</div>
+	{{- if $hasTOC }}
+	<div class="col-xl-2 d-none d-xl-block on-this-page small">
+		<b class="d-block mb-2">On this page</b>
+		{{- .TableOfContents }}
+	</div>
+	{{- end }}
+</div>
+{{ end }}

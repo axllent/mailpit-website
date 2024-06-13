@@ -1,0 +1,19 @@
+{{ $group := .Get 0 }}
+{{ $data := $.Site.Pages }}
+
+<section class="row">
+{{- range where $data ".Params.section" "=" $group }}
+<div class="col-lg-6 mb-3">
+	<div class="card h-100">
+		<div class="card-body">
+			<h5 class="card-title">
+				<a href="{{ .Permalink }}" class="stretched-link">
+					{{ .Title }}
+				</a>
+			</h5>
+			<p class="card-text">{{- .Description | markdownify -}}</p>
+		</div>
+	</div>
+</div>
+{{ end }}
+</section>

@@ -1,0 +1,14 @@
+<footer class="footer mt-auto py-3 bg-body-tertiary">
+	<div class="text-center">
+		{{ range .Site.Params.badges }}
+		<a href="{{ .link }}" title="{{ .label }}" class="mx-sm-2 my-1 d-inline-block"><span class="visually-hidden">{{
+				.label
+				}}</span><img src="{{ .image -}}
+				?style=flat-square&amp;color=%2301956e&amp;logoColor=%23fff&amp;labelColor=%23343a40
+				{{- if .label }}&amp;label={{ .label }}{{ end -}}
+				{{- if .logo -}}&amp;logo={{ .logo }}{{end}}" alt="{{ .label }}"></a>
+		{{ end }}
+	</div>
+</footer>
+
+{{ partialCached "js.html" . }}

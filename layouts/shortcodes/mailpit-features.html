@@ -1,0 +1,27 @@
+- Runs entirely from a single [static binary](/docs/install/) or multi-architecture [Docker
+images](/docs/install/docker/)
+- Modern web UI with advanced [mail search](/docs/usage/search-filters/) to view emails (formatted HTML, highlighted
+HTML source, text, headers, raw source, and MIME attachments
+including image thumbnails), including optional [HTTPS](/docs/configuration/http/) &
+[authentication](/docs/configuration/http/)
+- [SMTP server](/docs/configuration/smtp/) with optional STARTTLS or SSL/TLS, authentication (including an "accept any"
+mode)
+- A [REST API](/docs/api-v1/) for integration testing
+- Real-time web UI updates using web sockets for new mail & optional [browser notifications](/docs/usage/notifications/)
+when new mail is received
+- Optional [POP3 server](/docs/configuration/pop3/) to download captured message directly into your email client
+- [HTML check](/docs/usage/html-check/) to test & score mail client compatibility with HTML emails
+- [Link check](/docs/usage/link-check/) to test message links (HTML & text) & linked images
+- [Spam check](/docs/usage/spamassassin/) to test message "spamminess" using a running SpamAssassin server
+- [Create screenshots](/docs/usage/html-screenshots/) of HTML messages via web UI
+- Mobile and tablet HTML preview toggle in desktop mode
+- [Message tagging](/docs/usage/tagging/) including manual tagging or automated tagging using filtering and "plus
+addressing"
+- [SMTP relaying](/docs/configuration/smtp-relay/) (message release) - relay messages via a different SMTP server
+including an optional allowlist of accepted recipients
+- Fast message [storing & processing](/docs/configuration/email-storage/) - ingesting 100-200 emails per second over
+SMTP depending on CPU, network speed & email size,
+easily handling tens of thousands of emails, with automatic email pruning (by default keeping the most recent 500
+emails)
+- `List-Unsubscribe` syntax validation
+- Optional [webhook](/docs/integration/webhook/) for received messages
