@@ -3,7 +3,7 @@
 {{- range site.Pages -}}
   {{ $params := .Params }}
   {{- if and (ne .Type "search") (eq .Section "docs") -}}
-    {{- $searchEntry := dict "title" .Title "body" .Plain "link" .Permalink "section" .Section "description" .Params.description "tags" .Params.tags }}
+    {{- $searchEntry := dict "title" .Title "body" .Plain "link" .Permalink "section" .Section "description" .Params.description "keywords" .Params.keywords }}
     {{- range $index, $value := $searchableExtras }}
       {{- $extraFieldValue := index $params $value }}
       {{- $extraFieldValues := dict }}

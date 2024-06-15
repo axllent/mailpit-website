@@ -124,7 +124,7 @@ createApp({
 						includeScore: true,
 						distance: 10000,
 						threshold: 0.5,
-						keys: ['title', 'tags', 'description', 'body'],
+						keys: ['title', 'keywords', 'description', 'body'],
 					}
 
 					self.fuse = new Fuse(response.data, options)

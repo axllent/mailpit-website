@@ -35,7 +35,7 @@ Messages can be automatically tagged using any combination of three methods: set
 Mailpit will apply comma-separated `X-Tags` message header, for example:
 
 ```text
-X-Tags: Tag 1, Tag 2, hostname
+X-keywords: Tag 1, Tag 2, hostname
 ```
 
 New tags will be automatically [TitleCased](#enforcing-titlecase) if the option is set.
@@ -82,11 +82,11 @@ The structure of the yaml file should be as follows:
 ```yaml
 filters:
   - match: this is a match
-    tags: Tag 1
+    keywords: Tag 1
   - match: addressed:test@example.com
-    tags: Tag 2
+    keywords: Tag 2
   - match: from:from@example.com
-    tags: Tag 1, Tag 2
+    keywords: Tag 1, Tag 2
 ```
 
 Tags are split by a comma, so multiple tags can be assigned for a match.
