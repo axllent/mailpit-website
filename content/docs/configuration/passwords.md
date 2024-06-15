@@ -23,12 +23,12 @@ Mailpit supports multiple users & passwords in a single password file (plain tex
 - Crypt with SHA-256 and SHA-512
 
 A plain text password file would look like:
-```
+```text
 user1:password1
 user2:password2
 ```
 or encrypted like:
-```
+```text
 user1:$apr1$rja5hy8u$0DN2pENpLk1d4BqgPEho61
 user2:$apr1$asfohhn3$WXNtWWEnCMRFkI75J3exy1
 ```

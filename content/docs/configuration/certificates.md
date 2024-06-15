@@ -15,11 +15,16 @@ It is also important that you set the "Common Name" (when asked) to the same hos
 The following command will generate a self-signed certificate and key (both needed for Mailpit) which is valid for 10 years:
 
 ```shell
-openssl req -x509 -newkey rsa:4096 -nodes -keyout key.pem -out cert.pem -sha256 -days 3650
+openssl req -x509 -newkey rsa:4096 \
+-nodes -keyout key.pem -out cert.pem \
+-sha256 -days 3650
 ```
 
 In addition, some SMTP clients may also require the SAN (Subject Alt Name) to also match the hostname you are using to access Mailpit with in your client, in which case you should append `-addext "subjectAltName = DNS:<hostname>"` to the argument above, eg:
 
 ```shell
-openssl req -x509 -newkey rsa:4096 -nodes -keyout key.pem -out cert.pem -sha256 -days 3650 -addext "subjectAltName = DNS:localhost"
+openssl req -x509 -newkey rsa:4096 \
+-nodes -keyout key.pem -out cert.pem \
+-sha256 -days 3650 \
+-addext "subjectAltName = DNS:localhost"
 ```

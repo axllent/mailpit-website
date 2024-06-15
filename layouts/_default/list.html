@@ -13,7 +13,7 @@
 		<h1>{{ .Title }}</h1>
 		{{ .Content }}
 
-		{{ if .IsPage }}
+		{{ if .IsSection }}
 		<p class="mt-5 text-end small">
 			<i class="bi bi-pen-fill me-2"></i>
 			<a href="https://github.com/axllent/mailpit-website/edit/develop/content/{{ .Page.File.Path }}">Edit this page</a>

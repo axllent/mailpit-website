@@ -42,7 +42,10 @@ You can optionally export the `MP_POP3_AUTH` environment variable with a space-s
 By default the POP3 server runs unencrypted on port `1110`. If you wish to enable SSL/TLS encryption, then you must provide both the TLS certificate and key:
 
 ```shell
-mailpit --pop3-auth-file /path/to/password-file --pop3-tls-cert /path/to/cert.pem --pop3-tls-key /path/to/key.pem 
+mailpit \
+--pop3-auth-file /path/to/password-file \
+--pop3-tls-cert /path/to/cert.pem \
+--pop3-tls-key /path/to/key.pem 
 ```
 
 Certificates can be either [self-signed/generated](../certificates/) or official certificates (if you have a valid domain name) obtained via sources like [Let's Encrypt](https://letsencrypt.org/).
