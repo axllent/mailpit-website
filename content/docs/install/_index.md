@@ -2,9 +2,6 @@
 title: Installation
 weight: 1
 description: Mailpit installation instructions via different methods including Brew and Docker
-tags:
-  - blaah
-  - bleep
 ---
 {{< tip >}}
 Mailpit listens by default on port `8025` for the web UI, and port `1025` for SMTP.

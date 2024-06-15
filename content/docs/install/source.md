@@ -2,7 +2,7 @@
 title: Building from source
 description: How to install Mailpit from source, including steps to build the frontend and sendmail binary
 weight: 4
-tags: [npm, node, compile, install]
+keywords: [npm, node, compile, install]
 ---
 
 Mailpit's source code can be downloaded from https://github.com/axllent/mailpit.

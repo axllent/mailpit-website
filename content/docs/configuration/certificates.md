@@ -3,7 +3,7 @@ title: TLS certificates
 description: Creating a self-signed HTTPS/TLS certificate for HTTP/API, SMTP and POP3
 section: configuration
 weight: 7
-tags: [tls, ssl, security, https]
+keywords: [tls, ssl, security, https]
 ---
 
 Whilst services such as [Let's Encrypt](https://letsencrypt.org/) allow you to generate authenticated TLS (HTTPS) certificates for publicly accessible domain names you manage, it is sometimes necessary to generate self-signed certificates for testing purposes.

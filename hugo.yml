@@ -5,6 +5,9 @@ outputs:
   home:
     - HTML
     - JSON
+disableKinds:
+  - taxonomy
+  - term
 
 module:
   mounts:
