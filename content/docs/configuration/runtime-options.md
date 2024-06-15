@@ -3,7 +3,7 @@ title: Runtime options
 description: Mailpit runtime flags & environment variables
 weight: 1
 section: configuration
-keywords: [flags, options, bleep]
+keywords: [flags, options]
 ---
 
 ## General
