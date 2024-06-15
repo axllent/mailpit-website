@@ -6,6 +6,6 @@
 {{ $styles := resources.Get "css/main.scss" }}
 {{ $styles = $styles | resources.ToCSS $options }}
 {{- if hugo.IsProduction }}
-{{ $styles = $styles | fingerprint }}
+{{ $styles = $styles | resources.Minify | fingerprint }}
 {{ end -}}
 <link href="{{ $styles.RelPermalink }}" rel="stylesheet" />
