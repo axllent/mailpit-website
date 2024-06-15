@@ -76,7 +76,8 @@ img {
   margin-top: $alert-margin-bottom;
 }
 
-p > code {
+p > code,
+div > code {
   white-space: nowrap;
 }
 

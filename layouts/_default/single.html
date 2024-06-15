@@ -4,7 +4,7 @@
 	<div class="col-xl-2 col-md-3 offcanvas-md offcanvas-start" id="SideNav">
 		{{- partial "sidenav" . }}
 	</div>
-	<div class="{{ if $hasTOC }}col-xl-8{{ else }}col-xl-10{{ end }} col-md-9 pb-5">
+	<div class="{{ if $hasTOC }}col-xl-8{{ else }}col-xl-10{{ end }} col-md-9">
 		<button class="btn d-md-none mb-3 ps-0" type="button" data-bs-toggle="offcanvas" data-bs-target="#SideNav"
 			aria-controls="offcanvasResponsive">
 			<i class="bi bi-list me-2"></i>
@@ -12,6 +12,11 @@
 		</button>
 		<h1>{{ .Title }}</h1>
 		{{ .Content }}
+
+		<p class="mt-5 text-end small">
+			<i class="bi bi-pen-fill me-2"></i>
+			<a href="https://github.com/axllent/mailpit-website/edit/develop/content/{{ .Page.File.Path }}">Edit this page</a>
+		</p>
 	</div>
 	{{- if $hasTOC }}
 	<div class="col-xl-2 d-none d-xl-block on-this-page small">

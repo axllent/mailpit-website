@@ -79,9 +79,9 @@
 			<div class="modal-dialog modal-dialog-scrollable">
 				<div class="modal-content">
 					<div class="modal-header" :class="!search ? 'border-0': ''">
-						<input type="text" class="form-control" :placeholder="loaded ? 'Search the documentation...' : 'loading...'"
-							:disabled="!loaded" aria-label="Search" id="Search" v-model.trim="search" @keyup.up="selectPrev()"
-							@keyup.down="selectNext()" @keyup.enter="gotoSelected()">
+						<input type="text" class="form-control" :placeholder="loaded ? '' : 'loading...'" :disabled="!loaded"
+							aria-label="Search" id="Search" v-model.trim="search" @keyup.up="selectPrev()" @keyup.down="selectNext()"
+							@keyup.enter="gotoSelected()">
 						<button type="button" class="btn-close d-sm-none" data-bs-dismiss="modal" aria-label="Close"></button>
 					</div>
 					<div class="modal-body" v-if="search">
@@ -94,6 +94,9 @@
 						<div v-else-if="!searchResults.length && search">
 							No results....
 						</div>
+					</div>
+					<div v-else-if="loaded" class="form-text ps-4 pb-3">
+						Type to start searching
 					</div>
 				</div>
 			</div>
