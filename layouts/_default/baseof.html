@@ -9,7 +9,7 @@
 	<div id="App">
 		<nav class="navbar navbar-expand navbar-dark bg-secondary fixed-top">
 			<div class="container-fluid">
-				<a class="navbar-brand" href="/">
+				<a class="navbar-brand me-0 me-md-2" href="/">
 					<img src="/images/mailpit.svg" width="40" alt="Mailpit" class="me-1" />
 					<span class="d-none d-md-inline">
 						{{ site.Title }}
@@ -44,30 +44,64 @@
 								<span class="d-none d-md-inline">Search docs...</span>
 							</button>
 						</div>
+
+						<div class="d-none d-lg-inline">
+							<a href="https://github.com/axllent/mailpit" class="btn text-light" target="_blank">
+								<i class="bi bi-github"></i>
+								GitHub
+							</a>
+							<a href="https://hub.docker.com/r/axllent/mailpit" class="btn text-light" target="_blank">
+								<img src="/images/docker.svg" style="width: 19px;margin-bottom: 3px;" alt="Docker logo">
+								Docker
+							</a>
+							<span v-cloak>
+								<button class="btn text-light" aria-label="Switch theme to dark mode" v-if="theme == 'light'"
+									@click="theme='dark'">
+									<i class="bi bi-moon-stars-fill"></i>
+								</button>
+								<button class="btn" aria-label="Switch theme to light mode" v-if="theme == 'dark'"
+									@click="theme = 'light'">
+									<i class="bi bi-brightness-high-fill"></i>
+								</button>
+							</span>
+						</div>
+
+						<div class="dropdown d-lg-none">
+							<button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown"
+								aria-expanded="false">
+								<i class="bi bi-list"></i>
+							</button>
+							<ul class="dropdown-menu dropdown-menu-end">
+								<li>
+									<a href="https://github.com/axllent/mailpit" class="dropdown-item" target="_blank">
+										<i class="bi bi-github me-2"></i>
+										GitHub
+									</a>
+								</li>
+								<li>
+									<a href="https://hub.docker.com/r/axllent/mailpit" class="dropdown-item" target="_blank">
+										<img src="/images/docker.svg" style="width: 19px;margin-bottom: 3px;" class="me-2"
+											alt="Docker logo">
+										Docker
+									</a>
+								</li>
+								<li v-cloak>
+									<button class="dropdown-item" aria-label="Switch theme to dark mode" v-if="theme == 'light'"
+										@click="theme='dark'">
+										<i class="bi bi-moon-stars-fill me-2"></i>
+										Dark mode
+									</button>
+									<button class="dropdown-item" aria-label="Switch theme to light mode" v-if="theme == 'dark'"
+										@click="theme = 'light'">
+										<i class="bi bi-brightness-high-fill me-2"></i>
+										Light mode
+									</button>
+								</li>
+							</ul>
+						</div>
 					</div>
+
 				</div>
-				<a href="https://github.com/axllent/mailpit" class="btn text-light" target="_blank">
-					<i class="bi bi-github"></i>
-					<span class="d-none d-md-inline ms-1">
-						GitHub
-					</span>
-				</a>
-				<a href="https://hub.docker.com/r/axllent/mailpit" class="btn text-light" target="_blank">
-					<img src="/images/docker.svg" style="width: 19px;margin-bottom: 3px;" alt="Docker logo">
-					<span class="d-none d-md-inline ms-1">
-						Docker
-					</span>
-				</a>
-				<div v-cloak>
-					<button class="btn text-light" aria-label="Switch theme to dark mode" v-if="theme == 'light'"
-						@click="theme='dark'">
-						<i class="bi bi-moon-stars-fill"></i>
-					</button>
-					<button class="btn" aria-label="Switch theme to light mode" v-if="theme == 'dark'" @click="theme = 'light'">
-						<i class="bi bi-brightness-high-fill"></i>
-					</button>
-				</div>
-			</div>
 		</nav>
 
 		<div class="flex-shrink-0">
