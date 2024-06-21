@@ -13,6 +13,10 @@ Specify the local database filename to store persistent data. The default is a l
 You can optionally use a remote rqlite database by specifying a "http address". ([See docs](../email-storage/)).
 {{< /option >}}
 
+{{< option label MP_LABEL >}}
+Set an optional label to identify this Mailpit instance. This adds the label to the web UI, SMTP and POP3 servers.
+{{< /option >}}
+
 {{< option tenant-id MP_TENANT_ID >}}
 Set a tenant ID (table prefix). This is used to isolate the data from other Mailpit instances sharing the same data file ([see docs](../email-storage/)).
 {{< /option >}}
