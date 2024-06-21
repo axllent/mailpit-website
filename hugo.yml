@@ -23,6 +23,9 @@ menus:
     # - name: Home
     #   pageRef: /
     #   weight: 1
+    - name: About
+      pageRef: /about
+      weight: 2
     - name: Documentation
       pageRef: /docs
       weight: 2

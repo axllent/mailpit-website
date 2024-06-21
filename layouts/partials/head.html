@@ -1,6 +1,9 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width">
-<title>{{ if .IsHome }}{{ .Title }}{{ else }}{{ printf "%s | %s" .Title site.Title }}{{ end }}</title>
+{{- $containsMailpit := strings.Contains .Title "Mailpit" }}
+<title>
+	{{ if or .IsHome $containsMailpit }}{{ .Title }}{{ else }}{{ printf "%s | %s" .Title site.Title }}{{ end }}
+</title>
 {{- if .Params.description }}
 <meta name="description" content="{{ .Params.description }}">
 {{ end -}}

@@ -1,0 +1,53 @@
+{{ define "main" }}
+<div id="stats" class="pb-5">
+	<div class="row">
+		<div class="col-xl-6 col-lg-6 mb-3">
+			<h1>About Mailpit</h1>
+
+			{{ .Content }}
+		</div>
+		<div class="col-xl-6 col-lg-6">
+			<h2 class="mt-2">Docker statistics</h2>
+			<p>The following Docker pull statistics are updated daily at around midnight (UAT).</p>
+			<template v-if="dockerStats">
+				<div class="table-responsive">
+					<table class="table table-hover">
+						<thead>
+							<tr>
+								<th>Image</th>
+								<th class="text-end">Yesterday&#8595;</th>
+								<th class="text-end">Total</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr v-for="s in dockerStats">
+								<td>
+									<a :href="'https://hub.docker.com/r/'+s.Image" target="_blank">[[ s.Image ]]</a>
+								</td>
+								<td class="text-end">
+									[[ number_format(s.LastDay) ]]
+								</td>
+								<td class="text-end">
+									[[ number_format(s.Total) ]]
+								</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+			</template>
+			<template v-else-if="error">
+				<div class="alert alert-warning">
+					Error loading data.
+				</div>
+			</template>
+			<template v-else>
+				<div class="bd-example m-0 border-0 text-center">
+					<div role="status" class="spinner-border m-5 text-center mllx-auto">
+						<span class="visually-hidden">Loading...</span>
+					</div>
+				</div>
+			</template>
+		</div>
+	</div>
+</div>
+{{ end }}

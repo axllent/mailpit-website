@@ -2,17 +2,6 @@
 {{- $env := .Get 1 -}}
 {{- $def := .Get 2 -}}
 
-<!-- <div class="card">
-	<div class="card-body">
-		<h5 class="card-title">
-			{{- with $cli }}<span class="badge badge-cli" title="CLI option">--{{ . }}</span>{{ end }}
-			{{- with $env }}<span class="badge badge-env" title="Environment variable">{{ . }}</span>{{ end }}
-			{{- with $def }}<span class="badge badge-default" title="Default value">{{ . }}</span>{{ end }}
-		</h5>
-		<p class="card-text">{{- .Inner | markdownify -}}</p>
-	</div>
-</div> -->
-
 <div class="option my-3 ms-md-4">
 	<div class="option-body">
 		<p class="option-title mb-0">
