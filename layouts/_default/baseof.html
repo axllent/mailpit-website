@@ -10,7 +10,7 @@
 		<nav class="navbar navbar-expand navbar-dark bg-secondary fixed-top">
 			<div class="container-fluid">
 				<a class="navbar-brand me-0 me-md-2" href="/">
-					<img src="/images/mailpit.svg" width="40" alt="Mailpit" class="me-1" />
+					<img src="/images/mailpit.svg" width="40" alt="Mailpit" class="me-2" />
 					<span class="d-none d-md-inline">
 						{{ site.Title }}
 					</span>
@@ -38,12 +38,10 @@
 						{{ end }}
 					</ul>
 					<div class="d-flex">
-						<div v-cloak>
-							<button class="btn btn-dark pe-0 pe-md-5" aria-label="Open search" @click="openSearch()">
-								<i class="bi bi-search me-3"></i>
-								<span class="d-none d-md-inline">Search docs...</span>
-							</button>
-						</div>
+						<button v-cloak class="btn btn-dark pe-0 pe-md-5" aria-label="Open search" @click="openSearch()">
+							<i class="bi bi-search me-3"></i>
+							<span class="d-none d-md-inline">Search docs...</span>
+						</button>
 
 						<div class="d-none d-lg-inline">
 							<a href="https://github.com/axllent/mailpit" class="btn text-light" target="_blank">
@@ -54,16 +52,14 @@
 								<img src="/images/docker.svg" style="width: 19px;margin-bottom: 3px;" alt="Docker logo">
 								Docker
 							</a>
-							<span v-cloak>
-								<button class="btn text-light" aria-label="Switch theme to dark mode" v-if="theme == 'light'"
-									@click="theme='dark'">
-									<i class="bi bi-moon-stars-fill"></i>
-								</button>
-								<button class="btn" aria-label="Switch theme to light mode" v-if="theme == 'dark'"
-									@click="theme = 'light'">
-									<i class="bi bi-brightness-high-fill"></i>
-								</button>
-							</span>
+							<button v-cloak class="btn text-light" aria-label="Switch theme to dark mode" v-if="theme == 'light'"
+								@click="theme='dark'">
+								<i class="bi bi-moon-stars-fill"></i>
+							</button>
+							<button v-cloak class="btn" aria-label="Switch theme to light mode" v-if="theme == 'dark'"
+								@click="theme = 'light'">
+								<i class="bi bi-brightness-high-fill"></i>
+							</button>
 						</div>
 
 						<div class="dropdown d-lg-none">
