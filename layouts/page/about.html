@@ -9,6 +9,11 @@
 		<div class="col-xl-6 col-lg-6">
 			<h2 class="mt-2">Docker statistics</h2>
 			<p>The following Docker pull statistics are updated daily at around midnight (UAT).</p>
+			<noscript>
+				<div class="alert alert-warning">
+					Please enable JavaScript to view statistics.
+				</div>
+			</noscript>
 			<template v-if="dockerStats">
 				<div class="table-responsive">
 					<table class="table table-hover">
