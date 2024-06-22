@@ -3,7 +3,7 @@ title: Runtime options
 description: Mailpit runtime flags & environment variables
 weight: 1
 section: configuration
-keywords: [flags, options, bleep]
+keywords: [flags, options]
 ---
 
 ## General
@@ -11,6 +11,10 @@ keywords: [flags, options, bleep]
 {{< option database MP_DATABASE >}}
 Specify the local database filename to store persistent data. The default is a local temporary file which is auto-deleted when Mailpit exists.
 You can optionally use a remote rqlite database by specifying a "http address". ([See docs](../email-storage/)).
+{{< /option >}}
+
+{{< option label MP_LABEL >}}
+Set an optional label to identify this Mailpit instance. This adds the label to the web UI, SMTP and POP3 servers.
 {{< /option >}}
 
 {{< option tenant-id MP_TENANT_ID >}}
