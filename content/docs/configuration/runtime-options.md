@@ -98,7 +98,7 @@ Specify a password file for SMTP authentication ([see docs](../smtp/)).
 {{< /option >}}
 
 
-{{< option smtp-auth-accept-any MP_SMTP_AUTH_ACCEPT_ANY "false"Y >}}
+{{< option smtp-auth-accept-any MP_SMTP_AUTH_ACCEPT_ANY "false" >}}
 Accept any SMTP username and password, including none. Use this to basically allow anything.
 {{< /option >}}
 
