@@ -28,23 +28,22 @@ export default {
 	},
 
 	methods: {
-		loadDockerStats: function () {
+		loadDockerStats() {
 			const uri = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vSC8ygTe_E-ojlOEnSL-ufH7AuRiY1uhGqfxTtNXYXVHpxUbVhwA4l8YEQlnG1Lzt1SbxS0lfKDhWq4/pub?gid=1860532678&single=true&output=csv'
-			let self = this
 
 			axios.get(uri, {})
-				.then(function (response) {
-					self.docker = self.csvToArray(response.data)
+				.then((response) => {
+					this.docker = this.csvToArray(response.data)
 				})
-				.catch(function (err) {
-					self.error = err
+				.catch((err) => {
+					this.error = err
 				})
 				.then(function () {
 					// always executed
 				})
 		},
 
-		csvToArray: function (csv) {
+		csvToArray(csv) {
 			const rows = csv.split('\r\n')
 			const headers = rows[0].split(',')
 			const arrayOfObjects = rows.slice(1).map(row => {
@@ -59,7 +58,7 @@ export default {
 			return arrayOfObjects
 		},
 
-		number_format: function (i) {
+		number_format(i) {
 			return parseInt(i).toLocaleString(
 				undefined, // leave undefined to use the visitor's browser
 				// locale or a string like 'en-US' to override it.

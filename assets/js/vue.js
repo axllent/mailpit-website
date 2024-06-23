@@ -20,7 +20,7 @@ createApp({
 	},
 
 	watch: {
-		theme: function (v) {
+		theme(v) {
 			if ((this.theme == 'dark' && window.matchMedia('(prefers-color-scheme: dark)').matches) ||
 				(this.theme == 'light' && window.matchMedia('(prefers-color-scheme: light)').matches)) {
 				localStorage.removeItem('theme')
@@ -36,7 +36,7 @@ createApp({
 	},
 
 	computed: {
-		searchResults: function () {
+		searchResults() {
 			if (this.search == '') {
 				return []
 			}
@@ -44,11 +44,10 @@ createApp({
 			document.querySelectorAll('#searchModal .list-group-item').
 				forEach(e => e.classList.remove('active'))
 
-			let r = this.fuse.search(this.search)
-			let self = this
+			const r = this.fuse.search(this.search)
 
 			this.$nextTick(() => {
-				self.selectNext()
+				this.selectNext()
 			})
 
 			if (r.length > 5) {
@@ -60,7 +59,7 @@ createApp({
 	},
 
 	methods: {
-		setTheme: function () {
+		setTheme() {
 			if (this.theme === 'auto') {
 				if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
 					this.theme = 'dark'
@@ -70,7 +69,6 @@ createApp({
 			}
 			document.documentElement.setAttribute('data-bs-theme', this.theme)
 
-			let self = this
 			const pictures = document.querySelectorAll('picture')
 
 			pictures.forEach((picture) => {
@@ -89,7 +87,7 @@ createApp({
 					// If the source element `media` target is the `preference`,
 					// override it to 'all' to show
 					// or set it to 'none' to hide
-					if (source?.dataset.media.includes(self.theme)) {
+					if (source?.dataset.media.includes(this.theme)) {
 						source.media = 'all'
 					} else if (source) {
 						source.media = 'none'
@@ -98,9 +96,9 @@ createApp({
 			})
 		},
 
-		openSearch: function () {
-			let e = document.getElementById('searchModal')
-			let m = Modal.getOrCreateInstance(e)
+		openSearch() {
+			const e = document.getElementById('searchModal')
+			const m = Modal.getOrCreateInstance(e)
 			if (typeof onCloseCallback == 'function') {
 				e.addEventListener('hidden.bs.modal', onCloseCallback, { once: true })
 			}
@@ -108,7 +106,7 @@ createApp({
 			m.show()
 		},
 
-		initSearch: function () {
+		initSearch() {
 			this.search = ''
 
 			if (this.loaded) {
@@ -118,11 +116,9 @@ createApp({
 				return
 			}
 
-			let self = this
-
 			axios.get('/index.json', {})
-				.then(function (response) {
-					self.loaded = true
+				.then((response) => {
+					this.loaded = true
 					const options = {
 						includeScore: true,
 						distance: 10000,
@@ -130,12 +126,12 @@ createApp({
 						keys: ['title', 'keywords', 'description', 'body'],
 					}
 
-					self.fuse = new Fuse(response.data, options)
+					this.fuse = new Fuse(response.data, options)
 					window.setTimeout(() => {
 						document.getElementById('Search').focus()
 					}, 100)
 				})
-				.catch(function (err) {
+				.catch((err) => {
 					alert(err)
 				})
 				.then(function () {
@@ -143,8 +139,8 @@ createApp({
 				})
 		},
 
-		gotoSelected: function () {
-			let results = document.querySelectorAll('#searchModal .list-group-item')
+		gotoSelected() {
+			const results = document.querySelectorAll('#searchModal .list-group-item')
 			if (results.length == 0) {
 				return
 			}
@@ -155,8 +151,8 @@ createApp({
 			})
 		},
 
-		selectPrev: function () {
-			let results = document.querySelectorAll('#searchModal .list-group-item')
+		selectPrev() {
+			const results = document.querySelectorAll('#searchModal .list-group-item')
 			let nr = results.length
 			if (nr == 0) {
 				return
@@ -177,9 +173,9 @@ createApp({
 			results[hIndex].classList.add('active')
 		},
 
-		selectNext: function () {
-			let results = document.querySelectorAll('#searchModal .list-group-item')
-			let nr = results.length
+		selectNext() {
+			const results = document.querySelectorAll('#searchModal .list-group-item')
+			const nr = results.length
 			if (nr == 0) {
 				return
 			}
