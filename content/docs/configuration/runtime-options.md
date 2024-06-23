@@ -174,7 +174,7 @@ POP3 server bind interface and port.
 {{< option pop3-auth-file MP_POP3_AUTH_FILE >}}
 Specify a password file for POP3 authentication ([see docs](../pop3/)). 
 
-**Note**: this option is required to enable the POP3 server, or alteratively credentials can be specified via an [environment variable](../pop3/).
+**Note**: this option is required to enable the POP3 server, or alternatively credentials can be specified via an [environment variable](../pop3/).
 {{< /option >}}
 
 {{< option pop3-tls-cert MP_POP3_TLS_CERT >}}
