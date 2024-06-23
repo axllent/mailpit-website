@@ -5,7 +5,7 @@ import Fuse from 'fuse.js'
 import Stats from './stats'
 
 createApp({
-	// use different delimeters so not to conflict with hugo
+	// use different delimiters so not to conflict with hugo
 	delimiters: ['[[', ']]'],
 
 	mixins: [Stats],
