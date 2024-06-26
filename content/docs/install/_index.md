@@ -43,4 +43,4 @@ To build Mailpit from source see [building from source](./source/).
 
 ## Running Mailpit automatically on your system
 
-Please refer to the [systemd integration](./systemd-integration/) page for more information.
+Please refer to the [systemd integration](./systemd/) page for more information.
