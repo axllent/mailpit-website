@@ -1,6 +1,6 @@
 ---
 title: Supervisor integration
-description: Configure your Mailpit service to start automatically
+description: Configure your Mailpit service to start automatically using supervisor
 weight: 15
 ---
 

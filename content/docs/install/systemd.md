@@ -1,6 +1,6 @@
 ---
 title: Systemd integration
-description: Configure your Mailpit service to start automatically
+description: Configure your Mailpit service to start automatically using systemd
 aliases:
 - /docs/install/systemd-integration/
 weight: 15
