@@ -26,7 +26,7 @@ startretries=10
 process_name=%(program_name)s_%(process_num)02d
 
 #define you environments
-# environment=MP_SMTP_RELAY_HOST="/path/tp/your/smtp.relay.com",MP_SMTP_RELAY_PORT="587"
+# environment=MP_SMTP_RELAY_HOST="/path/tp/your/smtp-relay.conf",MP_SMTP_RELAY_PORT="587"
 
 ```
 
