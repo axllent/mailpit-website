@@ -52,18 +52,18 @@
 								<img src="/images/docker.svg" style="width: 19px;margin-bottom: 3px;" alt="Docker logo">
 								Docker
 							</a>
-							<button v-cloak class="btn text-light" aria-label="Switch theme to dark mode" v-if="theme == 'light'"
-								@click="theme='dark'">
+							<button v-cloak class="btn text-light" aria-label="Switch to the dark theme" v-if="theme == 'light'"
+								title="Switch to the dark theme" @click="theme='dark'">
 								<i class="bi bi-moon-stars-fill"></i>
 							</button>
-							<button v-cloak class="btn" aria-label="Switch theme to light mode" v-if="theme == 'dark'"
-								@click="theme = 'light'">
+							<button v-cloak class="btn" aria-label="Switch to the light theme" v-if="theme == 'dark'"
+								title="Switch to the light theme" @click="theme = 'light'">
 								<i class="bi bi-brightness-high-fill"></i>
 							</button>
 						</div>
 
 						<div class="dropdown d-lg-none">
-							<button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown"
+							<button class="btn btn-secondary dropdown-toggle ms-1" type="button" data-bs-toggle="dropdown"
 								aria-expanded="false">
 								<i class="bi bi-list"></i>
 							</button>
@@ -82,15 +82,15 @@
 									</a>
 								</li>
 								<li v-cloak>
-									<button class="dropdown-item" aria-label="Switch theme to dark mode" v-if="theme == 'light'"
+									<button class="dropdown-item" aria-label="Switch to the dark theme" v-if="theme == 'light'"
 										@click="theme='dark'">
 										<i class="bi bi-moon-stars-fill me-2"></i>
-										Dark mode
+										Dark theme
 									</button>
-									<button class="dropdown-item" aria-label="Switch theme to light mode" v-if="theme == 'dark'"
+									<button class="dropdown-item" aria-label="Switch to the light theme" v-if="theme == 'dark'"
 										@click="theme = 'light'">
 										<i class="bi bi-brightness-high-fill me-2"></i>
-										Light mode
+										Light theme
 									</button>
 								</li>
 							</ul>

@@ -79,6 +79,10 @@ img {
 p > code,
 div > code {
   white-space: nowrap;
+  overflow: auto;
+  max-width: 100%;
+  display: inline-block;
+  vertical-align: bottom;
 }
 
 .btn-primary {
