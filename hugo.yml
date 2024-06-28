@@ -37,6 +37,8 @@ markup:
   goldmark:
     renderer:
       unsafe: true
+  tableOfContents:
+    endLevel: 4
 
 # shields.io
 params:
