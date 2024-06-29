@@ -8,7 +8,7 @@ RewriteEngine On
 AddCharset UTF-8 .html .css .js
 
 ### CACHING ###
-<FilesMatch "(?i)\.(ico|pdf|jpg|jpeg|png|gif|swf|js|css|eot|otf|svg|ttf|woff|woff2)$">
+<FilesMatch "(?i)\.(ico|pdf|jpg|jpeg|png|gif|swf|js|css|eot|otf|svg|ttf|woff|woff2|webmanifest)$">
     Header set Cache-Control "max-age=31536000, public, immutable"
 </FilesMatch>
 

@@ -79,6 +79,10 @@ img {
 p > code,
 div > code {
   white-space: nowrap;
+  overflow: auto;
+  max-width: 100%;
+  display: inline-block;
+  vertical-align: bottom;
 }
 
 .btn-primary {
@@ -206,6 +210,31 @@ h5 {
     &:before {
       content: "default";
     }
+  }
+}
+
+code.badge-type {
+  display: inline-block;
+  margin-bottom: 0.5rem;
+  position: relative;
+  overflow: unset;
+
+  &:before {
+    @extend .badge;
+    font-family: "Monaco", monospace;
+    display: inline-block;
+    padding: 0.15em 0.45em;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: baseline;
+    background: #303032;
+    color: #fff;
+    font-size: 10px;
+    border-radius: 0.2rem;
+    position: absolute;
+    left: 0;
+    top: -16px;
+    content: "type";
   }
 }
 

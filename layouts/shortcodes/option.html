@@ -1,6 +1,8 @@
-{{- $cli := .Get 0 -}}
-{{- $env := .Get 1 -}}
-{{- $def := .Get 2 -}}
+{{- $cli := .Get "flag" -}}
+{{- $env := .Get "env" -}}
+{{- $def := .Get "default" -}}
+{{- $type := .Get "type" -}}
+{{- $example := .Get "example" -}}
 
 <div class="option my-3 ms-md-4">
 	<div class="option-body">
@@ -8,7 +10,11 @@
 			{{- with $cli }}<span class="badge badge-cli" title="CLI option">--{{ . }}</span>{{ end }}
 			{{- with $env }}<span class="badge badge-env" title="Environment variable">{{ . }}</span>{{ end }}
 			{{- with $def }}<span class="badge badge-default" title="Default value">{{ . }}</span>{{ end }}
+			{{- with $type }}<code class="badge-type" title="Value type">{{ . }}</code>{{ end }}
 		</p>
-		<p class="option-text">{{- .Inner | markdownify -}}</p>
+		<p class="option-text">
+			{{- .Inner | markdownify -}}
+			{{- if $example }}<br><code>{{ $example }}</code>{{ end }}
+		</p>
 	</div>
 </div>

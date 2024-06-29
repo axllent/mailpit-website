@@ -1,6 +1,8 @@
 ---
 title: Systemd integration
-description: Configure your Mailpit service to start automatically
+description: Configure your Mailpit service to start automatically using systemd
+aliases:
+- /docs/install/systemd-integration/
 weight: 15
 ---
 
@@ -19,7 +21,7 @@ Description=Mailpit server
 [Service]
 ExecStart=/usr/local/bin/mailpit -d /var/lib/mailpit/mailpit.db
 Restart=always
-# Restart service after 10 seconds if node service crashes
+# Restart service after 10 seconds service crashes
 RestartSec=10
 SyslogIdentifier=mailpit
 User=mailpit
