@@ -6,14 +6,16 @@ section: configuration
 keywords: [flags, options]
 ---
 
+Mailpit's runtime options are listed below. Please note that these are always current with the latest release and may differ from older releases. 
+
 ## General
 
-{{< option flag="database" env="MP_DATABASE" >}}
+{{< option flag="database" env="MP_DATABASE" added="v1.16.0" >}}
 Specify the local database filename to store persistent data. The default is a local temporary file which is auto-deleted when Mailpit exists.
 You can optionally use a remote rqlite database by specifying a "http address". ([See docs](../email-storage/)).
 {{< /option >}}
 
-{{< option flag="label" env="MP_LABEL" >}}
+{{< option flag="label" env="MP_LABEL" added=" v1.18.7" >}}
 Set an optional label to identify this Mailpit instance. This adds the label to the web UI, SMTP and POP3 servers.
 {{< /option >}}
 
@@ -34,7 +36,7 @@ Use message header date as the Mailpit received date & time instead of the SMTP-
 Ignore duplicate messages based on Message-Ids.
 {{< /option >}}
 
-{{< option flag="log-file" env="MP_LOG_FILE" >}}
+{{< option flag="log-file" env="MP_LOG_FILE" added="v1.13.2" >}}
 Log Mailpit output to file instead of stdout. eg: `--log-file /path/to/logfile.log`
 {{< /option >}}
 
@@ -78,7 +80,7 @@ Block all browser access to remote CSS and fonts imported via message stylesheet
 Mailpit uses the HTTP Content Security Policy (CSP) method to block these. This does not block remote images or clicking on external link.
 {{< /option >}}
 
-{{< option flag="enable-spamassassin" env="MP_ENABLE_SPAMASSASSIN" >}}
+{{< option flag="enable-spamassassin" env="MP_ENABLE_SPAMASSASSIN" added="v1.13.0" >}}
 Enable SpamAssassin integration for message spamminess score ([see docs](../spamassassin/)).
 {{< /option >}}
 
@@ -110,12 +112,12 @@ TLS certificate for SMTP STARTTLS. This option requires the `--smtp-tls-key` arg
 TLS key for SMTP STARTTLS. This option requires the `--smtp-tls-cert` argument or `MP_SMTP_TLS_CERT` environment variable to be set.
 {{< /option >}}
 
-{{< option flag="smtp-require-starttls" env="MP_SMTP_REQUIRE_STARTTLS" default="false" >}}
+{{< option flag="smtp-require-starttls" env="MP_SMTP_REQUIRE_STARTTLS" default="false" added="v1.13.1" >}}
 Require all SMTP clients to use STARTTLS encryption. If set to true, the only allowed commands are 
 NOOP, EHLO, STARTTLS and QUIT (as specified in RFC 4954) until the connection is upgraded to STARTTLS.
 {{< /option >}}
 
-{{< option flag="smtp-require-tls" env="MP_SMTP_REQUIRE_TLS" default="false" >}}
+{{< option flag="smtp-require-tls" env="MP_SMTP_REQUIRE_TLS" default="false" added="v1.15.0" >}}
 Require all SMTP clients to use SSL/TLS encryption. If set to true, all connections to the SMTP server must be
 handled over TLS. This is different to STARTTLS which requires the initial connection to be unencrypted. 
 Note that this option disables STARTTLS and may reduce client compatibility.
@@ -167,21 +169,21 @@ An example would be `--smtp-relay-matching '(user1@host1\.com|user2@host2\.com|@
 
 ## POP3 server
 
-{{< option flag="pop3" env="MP_POP3_BIND_ADDR" default="0.0.0.0:1110" >}}
+{{< option flag="pop3" env="MP_POP3_BIND_ADDR" default="0.0.0.0:1110" added="v1.14.0" >}}
 POP3 server bind interface and port.
 {{< /option >}}
 
-{{< option flag="pop3-auth-file" env="MP_POP3_AUTH_FILE" >}}
+{{< option flag="pop3-auth-file" env="MP_POP3_AUTH_FILE" added="v1.14.0" >}}
 Specify a password file for POP3 authentication ([see docs](../pop3/)). 
 
 **Note**: this option is required to enable the POP3 server, or alternatively credentials can be specified via an [environment variable](../pop3/).
 {{< /option >}}
 
-{{< option flag="pop3-tls-cert" env="MP_POP3_TLS_CERT" >}}
+{{< option flag="pop3-tls-cert" env="MP_POP3_TLS_CERT" added="v1.14.0" >}}
 TLS certificate for POP3 SSL/TLS. This option requires the `--pop3-tls-key` argument or `MP_POP3_TLS_KEY` environment variable to be set.
 {{< /option >}}
 
-{{< option flag="pop3-tls-key" env="MP_POP3_TLS_KEY" >}}
+{{< option flag="pop3-tls-key" env="MP_POP3_TLS_KEY" added="v1.14.0" >}}
 TLS key for POP3 SSL/TLS. This option requires the `--pop3-tls-cert` argument or `MP_POP3_TLS_CERT` environment variable to be set.
 {{< /option >}}
 
@@ -196,11 +198,11 @@ Auto-tag new messages matching filters ([see docs](../../usage/tagging/#set-filt
 Load tags filters from yaml configuration file ([see docs](../../usage/tagging/#set-filters-using-a-config)).
 {{< /option >}}
 
-{{< option flag="tags-title-case" env="MP_TAGS_TITLE_CASE" default="false" >}}
+{{< option flag="tags-title-case" env="MP_TAGS_TITLE_CASE" default="false" added="v1.14.1" >}}
 Enforces TitleCasing for all newly-created tags ([see docs](../../usage/tagging/#enforcing-titlecase)).
 {{< /option >}}
 
-{{< option flag="tags-disable" env="MP_TAGS_DISABLE" >}}
+{{< option flag="tags-disable" env="MP_TAGS_DISABLE" added="v1.19.0" >}}
 Disable specific auto-tagging. This option takes a comma-separated list of options ([see docs](../../usage/tagging/#disable-auto-tagging)).
 {{< /option >}}
 

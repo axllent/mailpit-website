@@ -27,8 +27,12 @@ Mailpit will by default create a temporary database to store its data. When the 
 
 #### Persistent storage
 
-Mailpit allows you to provide a path to a file for persistent database storage (eg: `--database /path/to/database.db`). 
+Mailpit allows you to provide a path to a file for persistent database storage, for example `--database /path/to/database.db` (@env `MP_DATABASE=/path/to/database.db`). 
 This file will not get deleted when the application terminates, and restarting Mailpit with the same `--database` will reload previous stored messages.
+
+{{< tip "warning" >}}
+In Mailpit versions older than to v.16.0, the database flag & environment variable was to be `--db-file` & env `MP_DATA_FILE`. These got renamed to be more consistent with their purpose.
+{{< /tip >}}
 
 
 ### Automated message pruning

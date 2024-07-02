@@ -30,3 +30,8 @@ You can optionally apply a [search filter](../usage/search-filters/) to return t
 3. If no message is found then a 404 is returned.
 4. If requesting the HTML part for an existing message without an HTML part, then a 404 is returned.
 {{< /tip >}}
+
+
+## Cypress Mailpit Package
+
+For those using Cypress for integration testing, there is a convenient [Cypress Mailpit package](https://www.npmjs.com/package/cypress-mailpit) available. This package allows you to easily interact with Mailpit within your Cypress tests, providing seamless integration and simplifying your testing workflows.
