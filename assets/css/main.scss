@@ -167,7 +167,8 @@ h5 {
 
   &.badge-cli,
   &.badge-env,
-  &.badge-default {
+  &.badge-default,
+  &.badge-added {
     position: relative;
 
     &:before {
@@ -195,6 +196,7 @@ h5 {
       content: "cli flag";
     }
   }
+
   &.badge-env {
     background-color: #6ab825;
     color: #15141a;
@@ -209,6 +211,13 @@ h5 {
     color: #15141a;
     &:before {
       content: "default";
+    }
+  }
+
+  &.badge-added {
+    color: var(--bs-body-color);
+    &:before {
+      content: "added in";
     }
   }
 }

@@ -3,6 +3,7 @@
 {{- $def := .Get "default" -}}
 {{- $type := .Get "type" -}}
 {{- $example := .Get "example" -}}
+{{- $added := .Get "added" -}}
 
 <div class="option my-3 ms-md-4">
 	<div class="option-body">
@@ -11,6 +12,9 @@
 			{{- with $env }}<span class="badge badge-env" title="Environment variable">{{ . }}</span>{{ end }}
 			{{- with $def }}<span class="badge badge-default" title="Default value">{{ . }}</span>{{ end }}
 			{{- with $type }}<code class="badge-type" title="Value type">{{ . }}</code>{{ end }}
+			{{- with $added }}
+			<span class="badge badge-added" title="This flag was added in version {{ . }}">{{ . }}</span>
+			{{end }}
 		</p>
 		<p class="option-text">
 			{{- .Inner | markdownify -}}
