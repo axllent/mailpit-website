@@ -1,57 +1,76 @@
 {{ define "main" }}
 <div id="stats" class="pb-5">
 	<div class="row">
-		<div class="col-xl-6 col-lg-6 mb-3">
+		<div class="col-xl-9 col-lg-8 mb-3">
 			<h1>About Mailpit</h1>
 
 			{{ .Content }}
+
+			<p class="text-center mt-md-5">
+				<a href="/docs/" class="btn btn-primary btn-lg mx-1 d-block d-sm-inline my-3">Read the documentation</a>
+				<a href="/docs/install/" class="btn btn-secondary btn-lg mx-1 d-block d-sm-inline my-3">Download</a>
+				<a href="https://github.com/sponsors/axllent" class="btn btn-warning btn-lg mx-1 d-block d-sm-inline my-3">
+					Sponsor
+				</a>
+			</p>
 		</div>
-		<div class="col-xl-6 col-lg-6">
-			<h2 class="mt-2">Docker statistics</h2>
-			<p>The following Docker pull statistics are updated daily at around midnight (UAT).</p>
-			<noscript>
-				<div class="alert alert-warning">
-					Please enable JavaScript to view statistics.
-				</div>
-			</noscript>
-			<template v-if="dockerStats">
-				<div class="table-responsive">
-					<table class="table table-hover">
-						<thead>
-							<tr>
-								<th>Image</th>
-								<th class="text-end">Yesterday&#8595;</th>
-								<th class="text-end">Total</th>
-							</tr>
-						</thead>
-						<tbody>
-							<tr v-for="s in dockerStats">
-								<td>
-									<a :href="'https://hub.docker.com/r/'+s.Image" target="_blank">[[ s.Image ]]</a>
-								</td>
-								<td class="text-end">
-									[[ number_format(s.LastDay) ]]
-								</td>
-								<td class="text-end">
-									[[ number_format(s.Total) ]]
-								</td>
-							</tr>
-						</tbody>
-					</table>
-				</div>
-			</template>
-			<template v-else-if="error">
-				<div class="alert alert-warning">
-					Error loading data.
-				</div>
-			</template>
-			<template v-else>
-				<div class="bd-example m-0 border-0 text-center">
-					<div role="status" class="spinner-border m-5 text-center mllx-auto">
-						<span class="visually-hidden">Loading...</span>
-					</div>
-				</div>
-			</template>
+		<div class="col-xl-3 col-lg-4">
+			<h2 class="mt-2 h3">Mailpit statistics</h2>
+
+			<p>
+				<img
+					src="https://img.shields.io/docker/pulls/axllent/mailpit.svg?style=for-the-badge&amp;color=%2301956e&amp;logoColor=%23fff&amp;labelColor=%23343a40&amp;label=Docker%20pulls&amp;logo=docker"
+					alt="Docker pulls">
+			</p>
+
+			<p>
+				<img
+					src="https://img.shields.io/docker/image-size/axllent/mailpit/latest?arch=amd64&amp;style=for-the-badge&amp;color=%2301956e&amp;logoColor=%23fff&amp;labelColor=%23343a40&amp;label=Docker%20size&amp;logo=docker"
+					alt="Docker image size">
+			</p>
+
+			<p>
+				<img
+					src="https://img.shields.io/github/stars/axllent/mailpit.svg?style=for-the-badge&amp;color=%2301956e&amp;logoColor=%23fff&amp;labelColor=%23343a40&amp;label=Github%20stars&amp;logo=github"
+					alt="Github stars">
+			</p>
+
+			<p>
+				<img
+					src="https://img.shields.io/github/v/release/axllent/mailpit.svg?style=for-the-badge&amp;color=%2301956e&amp;logoColor=%23fff&amp;labelColor=%23343a40&amp;label=Latest%20release&amp;logo=github"
+					alt="Latest release">
+			</p>
+
+			<p>
+				<img
+					src="https://img.shields.io/github/release-date/axllent/mailpit.svg?style=for-the-badge&amp;color=%2301956e&amp;logoColor=%23fff&amp;labelColor=%23343a40&amp;label=Release%20date&amp;logo=github"
+					alt="Last release">
+			</p>
+
+			<p>
+				<img
+					src="https://img.shields.io/github/issues/axllent/mailpit.svg?style=for-the-badge&amp;color=%2301956e&amp;logoColor=%23fff&amp;labelColor=%23343a40&amp;label=Open%20issues&amp;logo=github"
+					alt="Open issues">
+			</p>
+
+			<p>
+				<img
+					src="https://img.shields.io/github/downloads/axllent/mailpit/total.svg?style=for-the-badge&amp;color=%2301956e&amp;logoColor=%23fff&amp;labelColor=%23343a40&amp;label=Github%20downloads&amp;logo=github"
+					alt="Github downloads">
+			</p>
+
+			<p>
+				<img
+					src="https://img.shields.io/github/created-at/axllent/mailpit.svg?style=for-the-badge&amp;color=%2301956e&amp;logoColor=%23fff&amp;labelColor=%23343a40&amp;label=Created&amp;logo=github"
+					alt="Created">
+			</p>
+
+			<p>
+				<img
+					src="https://img.shields.io/github/sponsors/axllent.svg?style=for-the-badge&amp;color=%2301956e&amp;logoColor=%23fff&amp;labelColor=%23343a40&amp;label=Sponsors&amp;logo=githubsponsors"
+					alt="Sponsors">
+			</p>
+
 		</div>
 	</div>
 </div>

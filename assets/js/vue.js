@@ -2,13 +2,10 @@ import { createApp } from 'vue/dist/vue.esm-bundler.js'
 import { Modal } from 'bootstrap'
 import axios from "axios"
 import Fuse from 'fuse.js'
-import Stats from './stats'
 
 createApp({
 	// use different delimiters so not to conflict with hugo
 	delimiters: ['[[', ']]'],
-
-	mixins: [Stats],
 
 	data() {
 		return {

@@ -80,12 +80,12 @@ The structure of the yaml file should be as follows:
 
 ```yaml
 filters:
-  - match: this is a match
-    keywords: Tag 1
-  - match: addressed:test@example.com
-    keywords: Tag 2
-  - match: from:from@example.com
-    keywords: Tag 1, Tag 2
+  - match: "this is a match"
+    tags: Tag 1
+  - match: "addressed:test@example.com"
+    tags: Tag 2
+  - match: "from:from@example.com"
+    tags: Tag 1, Tag 2
 ```
 
 Tags are comma-separated, so multiple tags can optionally be assigned per match.
