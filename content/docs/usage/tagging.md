@@ -80,11 +80,11 @@ The structure of the yaml file should be as follows:
 
 ```yaml
 filters:
-  - match: "this is a match"
+  - match: this is a match
     tags: Tag 1
-  - match: "addressed:test@example.com"
+  - match: addressed:test@example.com
     tags: Tag 2
-  - match: "from:from@example.com"
+  - match: from:from@example.com
     tags: Tag 1, Tag 2
 ```
 
