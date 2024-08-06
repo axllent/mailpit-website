@@ -2,6 +2,7 @@
 title: Web UI & API server
 description: Configuration options for the web UI & API, including HTTPS
 section: configuration
+keywords: [authentication, password, login, ssl, security, https]
 aliases:
 - /docs/configuration/https/
 - /docs/configuration/http-authentication/
