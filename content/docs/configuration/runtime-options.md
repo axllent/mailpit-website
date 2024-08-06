@@ -12,7 +12,7 @@ Mailpit's runtime options are listed below. Please note that these are always cu
 
 {{< option flag="database" env="MP_DATABASE" added="v1.16.0" >}}
 Specify the local database filename to store persistent data. The default is a local temporary file which is auto-deleted when Mailpit exists.
-You can optionally use a remote rqlite database by specifying a "http address". ([See docs](../email-storage/)).
+You can optionally use a remote rqlite database by specifying a "http address" ([see docs](../email-storage/)).
 {{< /option >}}
 
 {{< option flag="label" env="MP_LABEL" added=" v1.18.7" >}}
@@ -25,7 +25,12 @@ Set a tenant ID (table prefix). This is used to isolate the data from other Mail
 
 {{< option flag="max" env="MP_MAX_MESSAGES" default="500" >}}
 Maximum number of messages to store. Mailpit will periodically delete the oldest messages if greater than this.
-Set to `0` to disable auto-deletion.
+Set to `0` to disable auto-deletion ([see docs](../email-storage/#automated-message-pruning)).
+{{< /option >}}
+
+{{< option flag="max-age" env="MP_MAX_AGE" >}}
+Maximum age of messages to store in either (h)ours or (d)ays. Mailpit will periodically delete the oldest messages if greater than this.
+The value must be either in hours (eg: `--max-age 36h`) or days (eg: `--max-age 14d`) ([see docs](../email-storage/#automated-message-pruning)).
 {{< /option >}}
 
 {{< option flag="use-message-dates" env="MP_USE_MESSAGE_DATES" default="false" >}}

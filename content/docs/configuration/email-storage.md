@@ -37,7 +37,13 @@ In Mailpit versions older than to v.16.0, the database flag & environment variab
 
 ### Automated message pruning
 
-Although mailpit can easily handling tens of thousands of emails, it will automatically prune old messages by default keeping the most recent 500 emails. This value can be adjusted by using the `--max <value>` flag (@env: `MP_MAX_MESSAGES=<value>`), or set to `0` to disable entirely. Mailpit will also automatically VACUUM your database when required, and action this after 5 minutes of database inactivity.
+Although mailpit can easily handling tens of thousands of emails, it will by default automatically prune old messages, keeping the most recent 500 emails. 
+This value can be adjusted by using the `--max <value>` flag (@env: `MP_MAX_MESSAGES=<value>`), or set to `0` to disable this entirely.
+
+Another option is to automatically delete messages after a certain time using the `--max-age <value>` (@env `MP_MAX_AGE=<value>`) where `<value>` is either a value in hours (eg: `36h`) or days (eg: `14d`). The `h` or `d` is required in the value.
+This option can be used together with, or instead of, the `--max` option.
+
+Mailpit will also automatically VACUUM your database when required after 5 minutes of database inactivity.
 
 
 ## Remote storage (rqlite)
