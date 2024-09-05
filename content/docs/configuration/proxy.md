@@ -85,6 +85,6 @@ Please see this [Github comment](https://github.com/axllent/mailpit/issues/286) 
 
 ## Others
 {{< tip >}}
-If you use any other popular proxy not mentioned above, then please [open an issue](https://github.com/axllent/mailpit/issues) on Gitlab, providing instructions of how to set it up, and it shall be added to this documentation.
+If you use any other popular proxy not mentioned above, then please [open an issue](https://github.com/axllent/mailpit/issues) on GitHub, providing instructions of how to set it up, and it shall be added to this documentation.
 Please ensure websocket connections are also working correctly. Thank you.
 {{< /tip >}}
