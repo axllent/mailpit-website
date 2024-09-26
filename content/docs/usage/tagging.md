@@ -47,7 +47,7 @@ Auto-tagging using the X-Tags header and plus-addressing is enabled by default. 
 Mailpit will automatically apply tags from a comma-separated `X-Tags` message header (unless disabled via the [--tags-disable](#disable-auto-tagging) option), for example:
 
 ```text
-X-keywords: Tag 1, Tag 2, hostname
+X-Tags: Tag 1, Tag 2, hostname
 ```
 
 New tags will be automatically [TitleCased](#enforcing-titlecase) if the option is set.
