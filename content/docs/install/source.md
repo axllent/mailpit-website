@@ -7,7 +7,7 @@ keywords: [npm, node, compile, install]
 
 Mailpit's source code can be downloaded from https://github.com/axllent/mailpit.
 
-Go (>= version 1.20) and npm are required to compile Mailpit.
+Go (>= version 1.23) and npm are required to compile Mailpit.
 
 ```shell
 git clone git@github.com:axllent/mailpit.git
