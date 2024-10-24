@@ -8,6 +8,6 @@ Mailpit providers a modern web UI to inspect captured messages, and can be acces
 
 Within the web UI, multiple messages can be selected while holding down the `Ctrl` or `Shift` button and clicking on messages. The selected messages can then all be marked as red/unread or deleted.
 
-Tag filtering (assuming you have tagged messages) can also be toggled to filter by more than one tag by holding down the `Ctrl` button and clicking on the tags listed on the left.
+Tag filtering (assuming you have tagged messages) can also be toggled to filter by more than one tag by holding down the `Ctrl`/`Cmd` button and clicking on the tags listed on the left.
 
 {{% toc usage %}}

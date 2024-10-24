@@ -9,7 +9,7 @@ weight: 2
 Mailpit allows you to add tags (labels) to messages. Message tags can be added, edited and deleted via the web UI when viewing a message, as well as automatically applied when receiving new messages.
 
 Tags can then be seen in the web UI and filtered by in [the search](../search-filters/) using `tag:"Tag name"`, or you can can simply click on a tag name.
-To filter by more than one tag at once, hold the `Ctrl` button down and click the tag names on the left hand side which will either append or remove the tag from the current search.
+To filter by more than one tag at once, hold the `Ctrl`/`Cmd` button down and click the tag names on the left hand side which will either append or remove the tag from the current search.
 
 Individual message tags can be edited inline when viewing a message in the web UI.
 
