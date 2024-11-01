@@ -37,8 +37,12 @@ Search filters can be combined:
 - `is:unread` - with unread status (same as `!is:read`)
 - `has:attachment` - contains an attachment
 - `!has:attachment` - does not contain an attachment
+- `has:inline` - contains an inline image
+- `!has:inline` - does not contain an inline image
 - `is:tagged` - messages having at least one tag
 - `!is:tagged` - messages having no tags
+- `larger:2M` - messages larger than 2MB (valid units are `K`, `KB`, `M` & `MB`)
+- `smaller:1.5MB` - messages smaller than 1.5MB (valid units are `K`, `KB`, `M` & `MB`)
 - `before:2024/04/01` - messages before 1 April 2024 ([see notes](#searching-by-date))
 - `after:2024/04/01` - messages after 1 April 2024 ([see notes](#searching-by-date))
 

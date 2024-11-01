@@ -4,7 +4,7 @@
 {{ $options := dict "enableSourceMap" false "outputStyle" "compressed" }}
 {{ end }}
 {{ $styles := resources.Get "css/main.scss" }}
-{{ $styles = $styles | resources.ToCSS $options }}
+{{ $styles = $styles | css.Sass $options }}
 {{- if hugo.IsProduction }}
 {{ $styles = $styles | resources.Minify | fingerprint }}
 {{ end -}}

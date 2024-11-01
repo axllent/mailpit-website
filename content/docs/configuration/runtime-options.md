@@ -11,7 +11,7 @@ Mailpit's runtime options are listed below. Please note that these are always cu
 ## General
 
 {{< option flag="database" env="MP_DATABASE" added="v1.16.0" >}}
-Specify the local database filename to store persistent data. The default is a local temporary file which is auto-deleted when Mailpit exists.
+Specify the local database filename to store persistent data. The default is a local temporary file which is auto-deleted when Mailpit exits.
 You can optionally use a remote rqlite database by specifying a "http address" ([see docs](../email-storage/)).
 {{< /option >}}
 
