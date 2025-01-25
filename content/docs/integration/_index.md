@@ -4,10 +4,11 @@ description: Mailpit contains a REST API for integration testing
 weight: 5
 ---
 
-Depending on your requirements, frontend integration testing can be achieved via two different approaches:
+Depending on your requirements, integration testing can be achieved via different methods:
 
-1. Pull data via the API (see [API documentation](../api-v1/)).
-2. Return a rendered HTML or text version of an API via the web UI (see below).
+1. Integrate your application with the Mailpit API (see [API documentation](../api-v1/)).
+2. Return a rendered HTML or text version of a message (see below).
+3. Test your application's handling of (some) unexpected SMTP responses by invoking Mailpit's [Chaos](chaos/) feature.
 
 
 ## Return a rendered text or HTML message part
