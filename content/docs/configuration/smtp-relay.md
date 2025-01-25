@@ -5,15 +5,18 @@ section: configuration
 weight: 10
 ---
 
-Configuring an SMTP relay enables the message "release" feature, which allows you to "forward" the message onto a pre-configured SMTP server.
+Configuring an SMTP relay enables the message "release" feature, which allows you to relay the message via another a pre-configured SMTP server.
 
-To enable this feature, the configuration file (yaml syntax) must be provided to Mailpit either via `--smtp-relay-config <config-file>` or the environment variable `MP_SMTP_RELAY_CONFIG=<config-file>`.
+**Note**: This differs significantly from [SMTP forwarding](../smtp-forward/) which sends a copy to a predefined email address (or addresses).
+
+To enable SMTP relaying, the configuration file (yaml syntax) must be provided to Mailpit either via `--smtp-relay-config <config-file>` or the environment variable `MP_SMTP_RELAY_CONFIG=<config-file>`.
+
 
 ## SMTP relay configuration
 
 ```yaml
-host:                <hostname-or-ip>            # required
-port:                <port>                      # optional - default 25
+host:                <hostname-or-ip>            # required - SMTP host or IP to send via
+port:                <port>                      # optional - SMTP port, default 25
 starttls:            <true|false>                # optional - default false
 allow-insecure:      <true|false>                # optional - default false
 auth:                <none|plain|login|cram-md5> # optional - default none
@@ -26,12 +29,15 @@ allowed-recipients:  '@example\.com$'            # optional - limit allowed rela
 blocked-recipients:  '@example2\.com$'           # optional - prevent relating to addresses or domains
 ```
 
+
 ### Notes
+
 Messages relayed via the web UI / API get assigned a new unique `Message-Id`. This is to enable testing via services such as Gmail which will silently drop / hide incoming emails containing the same message ID. 
 
 The `return-path` configuration option will add / overwrite the `Return-Path` for all messages relayed via the web UI and API.
 This is useful to provide a valid email address to catch any accidental bounces and prevent SPF errors for email domain names.
-Servers such as Gmail have become very strict about the mail they accept, and unresolvable Return-Path addresses, or unauthorised Return-Path addresses (SPF / DMARC) get rejected very easily. Also see [Override From](#override-from) to change the `From` email address on all relayed messages.
+Servers such as Gmail have become very strict about the mail they accept, and unresolvable Return-Path addresses, or unauthorised Return-Path addresses (SPF / DMARC) get rejected very easily. 
+Also see [Override From](#override-from) to change the `From` email address on all relayed messages.
 
 
 #### Override From
