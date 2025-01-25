@@ -21,6 +21,7 @@ username:            <username>                  # required for plain, login and
 password:            <password>                  # required for plain & login auth
 secret:              <cram-secret>               # required for cram-md5 auth
 return-path:         <bounce-address>            # optional - overrides Return-Path for all released emails
+override-from:       <email-address>             # optional - overrides the From email address
 allowed-recipients:  '@example\.com$'            # optional - limit allowed relay addresses or domains
 blocked-recipients:  '@example2\.com$'           # optional - prevent relating to addresses or domains
 ```
@@ -30,7 +31,24 @@ Messages relayed via the web UI / API get assigned a new unique `Message-Id`. Th
 
 The `return-path` configuration option will add / overwrite the `Return-Path` for all messages relayed via the web UI and API.
 This is useful to provide a valid email address to catch any accidental bounces and prevent SPF errors for email domain names.
-Servers such as Gmail have become very strict about the mail they accept, and unresolvable Return-Path addresses, or unauthorised Return-Path addresses (SPF / DMARC) get rejected very easily.
+Servers such as Gmail have become very strict about the mail they accept, and unresolvable Return-Path addresses, or unauthorised Return-Path addresses (SPF / DMARC) get rejected very easily. Also see [Override From](#override-from) to change the `From` email address on all relayed messages.
+
+
+#### Override From
+
+Some SMTP servers require any messages to come from a specific address.
+If you set the `override-from` value, Mailpit will overwrite the original `From` **email address** (leaving the name intact where possible) and add a new `X-Original-From` header containing the original value.
+
+For example, if set to `me@mydomain.com`, then this will change
+
+```shell
+From: "Original Recipient" <original@example.com>
+```
+to
+```shell
+X-Original-From: original@example.com
+From: "Original Recipient" <me@mydomain.com>
+```
 
 
 #### Allowed recipients
@@ -61,6 +79,7 @@ MP_SMTP_RELAY_USERNAME=<username>                  # required for plain, login a
 MP_SMTP_RELAY_PASSWORD=<password>                  # required for plain & login auth
 MP_SMTP_RELAY_SECRET=<cram-secret>                 # required for cram-md5 auth
 MP_SMTP_RELAY_RETURN_PATH=<bounce-address>         # optional - overrides Return-Path for all released emails
+MP_SMTP_RELAY_OVERRIDE_FROM=<email-address>        # optional - overrides the From email address
 MP_SMTP_RELAY_ALLOWED_RECIPIENTS="@example\.com$"  # optional - regex to limit allowed relay addresses or domains via web UI & API
 MP_SMTP_RELAY_BLOCKED_RECIPIENTS="@example2\.com$" # optional - regex to prevent relaying to addresses or domains via web UI & API
 ```
