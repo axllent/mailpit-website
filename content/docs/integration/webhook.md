@@ -17,6 +17,7 @@ To set a webhook URL use the `--webhook-url <URL>` option.
 - The JSON data contains the message summary only and cannot be modified.
 - Webhook calls are by default limited to 1 request per second. When the limit is reached, any subsequent messages are ignored (not queued) until the time period is reached.
 - Failed webhook calls are not retried.
+- If a Mailpit label has been specified, a `Mailpit-Label` header is automatically added to the webhook request.
 
 
 ## Rate limiting

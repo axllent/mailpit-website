@@ -74,14 +74,3 @@ For testing purposes, Mailpit also allows you to accept any username & password 
 
 If you do not wish to use a password file then you can optionally export the `MP_SMTP_AUTH` environment variable with a space-separated list of your credentials, eg: `MP_SMTP_AUTH="user1:password1 user2:password"`.
 For security reasons this option is not available as a cli flag.
-
-
-## SMTP with STARTTLS
-
-To configure Mailpit to serve SMTP with STARTTLS, a TLS certificate and private key must be provided via either the command flags or environment when starting Mailpit, for example:
-
-```shell
-mailpit --smtp-tls-cert /path/to/cert.pem --smtp-tls-key /path/to/key.pem 
-```
-
-Certificates can be both [self-signed/generated](../certificates/) or official certificates (if you have a valid domain name) obtained via sources like [Let's Encrypt](https://letsencrypt.org/).

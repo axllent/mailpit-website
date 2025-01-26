@@ -4,16 +4,20 @@ Description: Mailpit stores messages in either a permanent or temporary SQLite d
 section: configuration
 ---
 
-By default Mailpit stores all email data in a local SQLite database. This provides an embedded, low-memory fast storage mechanism for writing (SMTP) and reading (API). 
+By default Mailpit stores all email data in a **local** SQLite database. This provides an embedded, low-memory, fast storage mechanism for writing (SMTP) and reading (API). 
 
-Mailpit also provides the ability to use rqlite instead (see below) if you require a distributed database.
-
+Mailpit can optionally use [rqlite](#remote-storage-rqlite) if you require a distributed database.
 
 ## Local storage (SQLite)
 
+{{< tip "warning" >}}
+Please note that SQLite [does not work reliably](https://sqlite.org/useovernet.html) with network file systems such as NFS or Samba - the database needs to be local.
+{{< /tip >}}
+
 ### Performance
 
-Testing has revealed that SMTP can store between 100-200 emails per second over SMTP depending on CPU, network speed & email size. The database has been tested with over 125,000 emails which still performs well.
+Testing has revealed that SMTP can store between 100-200 emails per second over SMTP depending on CPU, disk speed, network speed & email size. The database has been tested with over 135,000 emails which still performs well.
+
 
 ### Temporary vs: persistent storage
 
@@ -49,10 +53,8 @@ Mailpit will also automatically VACUUM your database when required after 5 minut
 ## Remote storage (rqlite)
 
 {{< tip >}}
-**rqlite** is a distributed relational database that combines the simplicity of SQLite with the robustness of a fault-tolerant, highly available cluster.
+[**rqlite**](https://rqlite.io/) is a distributed relational database that combines the simplicity of SQLite with the robustness of a fault-tolerant, highly available cluster.
 {{< /tip >}}
-
-Mailpit can optionally use [rqlite](https://rqlite.io/) instead of a local database. 
 
 To use rqlite for database storage you must have a connectable rqlite database already running, and connect to it by specifying the http address and port of the server (eg: `--database http://localhost:4001`). If you use authentication then this can be set using the `http://<user>:<password>@<host>:<port>` syntax.
 

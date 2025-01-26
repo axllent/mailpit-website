@@ -70,9 +70,9 @@ createApp({
 
 			pictures.forEach((picture) => {
 				const sources = document.querySelectorAll(`
-        source[media*="prefers-color-scheme"],
-        source[data-media*="prefers-color-scheme"]
-      `)
+					source[media*="prefers-color-scheme"],
+					source[data-media*="prefers-color-scheme"]
+				`)
 
 				sources.forEach((source) => {
 					// Preserve the source `media` as a data-attribute

@@ -19,6 +19,9 @@ when new mail is received
 addressing"
 - [SMTP relaying](/docs/configuration/smtp-relay/) (message release) - relay messages via a different SMTP server
 including an optional allowlist of accepted recipients
+- [SMTP forwarding](/docs/configuration/smtp-forward/) - automatically forward messages via a different SMTP server to
+predefined email addresses
+- [Chaos](/docs/integration/chaos/) feature to enable configurable SMTP errors to test application resilience
 - Fast message [storing & processing](/docs/configuration/email-storage/) - ingesting 100-200 emails per second over
 SMTP depending on CPU, network speed & email size,
 easily handling tens of thousands of emails, with automatic email pruning (by default keeping the most recent 500

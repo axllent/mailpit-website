@@ -104,7 +104,6 @@ SMTP bind interface and port.
 Specify a password file for SMTP authentication ([see docs](../smtp/)).
 {{< /option >}}
 
-
 {{< option flag="smtp-auth-accept-any" env="MP_SMTP_AUTH_ACCEPT_ANY" default="false" >}}
 Accept any SMTP username and password, including none. Use this to basically allow anything.
 {{< /option >}}
@@ -169,6 +168,24 @@ Use with extreme caution!
 
 This will only relay to recipients matching a regular expression, and cannot be used in conjunction with `--smtp-relay-all`.
 An example would be `--smtp-relay-matching '(user1@host1\.com|user2@host2\.com|@host3\.com)$'`.
+{{< /option >}}
+
+
+## SMTP forward
+
+{{< option flag="smtp-forward-config" env="MP_SMTP_FORWARD_CONFIG" >}}
+SMTP configuration file to enable message forwarding ([see docs](../smtp-forward/)). Alternatively the entire configuration can be passed via [environment variables](../smtp-forward/#setting-via-environment).
+{{< /option >}}
+
+
+## Chaos
+
+{{< option flag="enable-chaos" env="MP_ENABLE_CHAOS" default="false" added="v1.22.0" >}}
+Enable Chaos functionality (API / web UI) ([see docs](../../integration/chaos/)).
+{{< /option >}}
+
+{{< option flag="chaos-triggers" env="MP_CHAOS_TRIGGERS" added="v1.22.0" >}}
+Set the runtime Chaos triggers ([see docs](../../integration/chaos/)).
 {{< /option >}}
 
 
