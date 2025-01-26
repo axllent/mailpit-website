@@ -95,6 +95,12 @@ params:
     - title: Message relaying
       link: /docs/configuration/smtp-relay/
       description: Manually or automatically relay received messages via an external SMTP server
+    - title: Message forwarding
+      link: /docs/configuration/smtp-forward/
+      description: Automatically forward received messages to predefined email addresses via an external SMTP server
+    - title: Chaos (engineering)
+      link: /docs/integration/chaos/
+      description: Trigger configurable SMTP errors to test application resilience
     - title: Webhook
       link: /docs/integration/webhook/
       description: Optionally trigger external processes when messages are received via a webhook
