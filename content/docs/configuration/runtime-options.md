@@ -171,9 +171,9 @@ An example would be `--smtp-relay-matching '(user1@host1\.com|user2@host2\.com|@
 {{< /option >}}
 
 
-## SMTP forward
+## SMTP forwarding
 
-{{< option flag="smtp-forward-config" env="MP_SMTP_FORWARD_CONFIG" >}}
+{{< option flag="smtp-forward-config" env="MP_SMTP_FORWARD_CONFIG" added="v1.22.0" >}}
 SMTP configuration file to enable message forwarding ([see docs](../smtp-forward/)). Alternatively the entire configuration can be passed via [environment variables](../smtp-forward/#setting-via-environment).
 {{< /option >}}
 
