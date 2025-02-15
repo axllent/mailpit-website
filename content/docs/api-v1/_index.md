@@ -12,9 +12,8 @@ Mailpit provides a simple REST API to access, search and delete stored messages.
 If the Mailpit server is set to use Basic Authentication, then all API requests must use Basic Authentication too.
 {{< /tip >}}
 
-
 {{< tip >}}
-You can also view the API documentation directly within Mailpit by going to `http://0.0.0.0:8025/api/v1/`
+You can also view the **interactive** API documentation directly within Mailpit by going to `http://localhost:8025/api/v1/` (you may need to adjust to the IP address of your Mailpit instance).
 {{< /tip >}}
 
 {{< tip >}}

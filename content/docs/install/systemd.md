@@ -44,7 +44,6 @@ Created symlink /etc/systemd/system/multi-user.target.wants/mailpit.service → 
 systemctl start mailpit.service
 ```
 
-
 ## Verify Mailpit is running
 
 ```shell
@@ -63,4 +62,10 @@ Dec 08 16:46:29 mailpit systemd[1]: Started Mailpit server.
 Dec 08 16:46:29 mailpit mailpit[41913]: INFO[2023/12/08 16:46:29] [smtpd] starting on [::]:1025
 Dec 08 16:46:29 mailpit mailpit[41913]: INFO[2023/12/08 16:46:29] [http] starting on [::]:8025
 Dec 08 16:46:29 mailpit mailpit[41913]: INFO[2023/12/08 16:46:29] [http] accessible via http://localhost:8025/
+```
+
+## Stop the service
+
+```shell
+systemctl stop mailpit.service
 ```

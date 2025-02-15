@@ -14,6 +14,11 @@
 		function gtag() { dataLayer.push(arguments) }
 		gtag("js", new Date), gtag("config", "G-VTWJTQ3RBG")
 	</script>
+	<style>
+		rapi-doc::part(btn-try) {
+			display: none !important;
+		}
+	</style>
 </head>
 
 <body>
@@ -22,9 +27,10 @@
 		layout="column" render-style="read" load-fonts="false" allow-authentication="false" sort-tags="true"
 		regular-font="system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', 'Noto Sans', 'Liberation Sans', Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji'"
 		mono-font="Courier New, Courier, System, fixed-width" font-size="large" allow-spec-url-load="false"
-		allow-spec-file-load="false" allow-server-selection="false" allow-search="false" allow-advanced-search="false"
-		allow-try="false" show-curl-before-try="true" bg-color="#ffffff" nav-bg-color="#e3e8ec" nav-text-color="#212529"
-		nav-hover-bg-color="#fff" header-color="#2c3e50" primary-color="#2c3e50" text-color="#212529">
+		server-url="http://localhost:8025" allow-spec-file-load="false" allow-server-selection="false" allow-search="false"
+		allow-advanced-search="false" allow-try="true" show-curl-before-try="true" bg-color="#ffffff" nav-bg-color="#e3e8ec"
+		nav-text-color="#212529" nav-hover-bg-color="#fff" header-color="#2c3e50" primary-color="#2c3e50"
+		text-color="#212529">
 		<div slot="header">Mailpit API v1 documentation</div>
 		<a href="./" slot="logo">
 			<img src="/images/mailpit.svg" width="40" alt="Mailpit" />

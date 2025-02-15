@@ -7,7 +7,8 @@ weight: 5
 
 ![Mailpit](/images/spamassassin.png)
 
-Mailpit can optionally integrate with SpamAssassin to provide you with some insight into the "spamminess" of your messages. Each time Mailpit checks the scores for a message, it sends (posts) your complete message (including attachments) to a running SpamAssassin server and then displays the results returned by SpamAssassin. 
+Mailpit can optionally integrate with SpamAssassin (both versions 3 & 4) to provide you with some insight into the "spamminess" of your messages. 
+Each time Mailpit checks the scores for a message, it sends (posts) your complete message (including attachments) to a running SpamAssassin server and then displays the results returned by SpamAssassin. 
 
 Please refer to the [configuration documentation](../../configuration/spamassassin/) to see how to enable SpamAssassin integration.
 

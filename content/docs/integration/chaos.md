@@ -16,7 +16,7 @@ The configurable Chaos triggers in an SMTP transaction are:
 - `Recipient` - triggers when the recipients are sent
 - `Authentication` - triggers on authentication (authentication must be configured in Mailpit, else this is ignored)
 
-When an error is triggered, Mailpit's SMTP server will return a `<code> Chaos <trigger> error` error, where `code` is the configured error code, and `stage` is the stage which triggered the error, for example `451 Chaos recipient error`.
+When an error is triggered, Mailpit's SMTP server will return a `<code> Chaos <trigger> error` error, where `code` is the configured error code, and `trigger` is the stage which triggered the error, for example `451 Chaos recipient error`.
 
 
 ## Enabling Chaos
