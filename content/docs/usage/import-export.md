@@ -6,7 +6,7 @@ weight: 15
 ---
 
 Normally Mailpit will receive messages sent via various applications over SMTP, however there may be a need to bulk import (ingest) or export (dump) messages.
-There has two separate command-line utilities to facilitate this.
+There are two separate command-line utilities to facilitate this.
 
 
 ## Ingesting (importing) messages
@@ -68,5 +68,5 @@ mailpit dump --database <database-file> <output-folder>
 If your database is using a tenant ID, then this can be set by adding the `--tenant-id <id>` to the command.
 
 {{< tip "warning" >}}
-If your local Mailpit server is potentially very active at the time of the dump, then it is recommended to use the API method (see below).
+If your local Mailpit server is potentially very active at the time of the dump, then it is recommended to use the API method (see above).
 {{< /tip >}}

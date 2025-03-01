@@ -1,6 +1,7 @@
 ---
 title: Unix domain sockets
 description: Configuring Mailpit to listen on Unix domain sockets instead of network interfaces
+section: configuration
 ---
 {{< tip "warning" >}}
 This feature was added in Mailpit v.1.21.0.

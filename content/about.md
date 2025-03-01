@@ -33,8 +33,10 @@ did not perform well under load, or could not handle a significant number of ema
 solution that would handle large bursts of mail and handle attachments (well), but nothing seemed to fit.
 
 The project was originally **inspired** by MailHog, which makes it a somewhat compatible (SMTP & HTTPS ports) as a drop-in replacement, however that is about where the similarities end.
-Mailpit now contains an [extensive set](../docs/) of unique web UI & API features to assist email testing, packed into [a single binary](../docs/install/) with no system dependencies.
+Mailpit now contains an [extensive set](../docs/) of web UI & API features to assist email testing, packed into [a single binary](../docs/install/) with no system dependencies.
+There are also compact multi-architecture Docker images available.
 
-Mailpit was first released on July 30 2022, and despite being one of the newest players on the block, it did not take long for it to gain traction. 
-Mailpit has become the go-to solution for SMTP capture & email testing for several popular web development frameworks such as [Laravel](https://laravel.com/docs/11.x/sail#previewing-emails) 
-and [DDEV](https://ddev.com/), and is playing a large role in CI/CD pipelines and gaining native package support for various [*nix platforms](https://repology.org/project/mailpit/versions).
+Mailpit was first released on July 30 2022, and despite being one of the newest players on the block, it did not take long for it to gain popularity. 
+Mailpit has become the go-to development solution for SMTP capture & email testing for many popular projects such as [Laravel](https://laravel.com/docs/11.x/sail#previewing-emails),
+[DDEV](https://ddev.com/), [Quarkus](https://quarkus.io/) & [Saleor](https://saleor.io/) (just to name a few). It is playing a large role in CI/CD pipelines, and
+gaining native package support for various [*nix platforms](https://repology.org/project/mailpit/versions).
