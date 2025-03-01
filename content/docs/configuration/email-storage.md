@@ -6,17 +6,27 @@ section: configuration
 
 By default Mailpit stores all email data in a **local** SQLite database. This provides an embedded, low-memory, fast storage mechanism for writing (SMTP) and reading (API). 
 
-Mailpit can optionally use [rqlite](#remote-storage-rqlite) if you require a distributed database.
+Mailpit can alternatively use [rqlite](#remote-storage-rqlite) if you require a distributed network database.
+
 
 ## Local storage (SQLite)
 
 {{< tip "warning" >}}
-Please note that SQLite [does not work reliably](https://sqlite.org/useovernet.html) with network file systems such as NFS or Samba - the database needs to be local.
+Please be aware that Mailpit, by default, activates [Write-Ahead Logging](https://sqlite.org/wal.html) (WAL) in SQLite.
+This feature may not function reliably with network file systems like NFS or Samba.
+If you plan to use NFS, you should include the `--disable-wal` flag (@env `MP_DISABLE_WAL=true`).
+Additionally, it's important to consider the [caveats and considerations](https://sqlite.org/useovernet.html)
+associated with using network file systems with SQLite.
 {{< /tip >}}
+
 
 ### Performance
 
-Testing has revealed that SMTP can store between 100-200 emails per second over SMTP depending on CPU, disk speed, network speed & email size. The database has been tested with over 135,000 emails which still performs well.
+Testing has revealed that SMTP can store between 100-200 emails per second over SMTP depending on CPU, disk speed, network speed & email size.
+The database has been tested with over 135,000 emails which still performs well.
+
+By default raw messages are by default stored compressed (zstd) in the database to conserve space, but as a trade-off consumes additional RAM and CPU to process the data.
+The level of compression can be adjusted however, including disabling message compression altogether ([see docs](../compression/)).
 
 
 ### Temporary vs: persistent storage

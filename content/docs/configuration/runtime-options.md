@@ -15,6 +15,12 @@ Specify the local database filename to store persistent data. The default is a l
 You can optionally use a remote rqlite database by specifying a "http address" ([see docs](../email-storage/)).
 {{< /option >}}
 
+{{< option flag="disable-wal" env="MP_DISABLE_WAL" added="v1.23.0" default="false" >}}
+Disable [Write-Ahead Logging](https://sqlite.org/wal.html) (WAL) support for local database. 
+WAL (enabled by default) provides better performance, however is not compatible with network file systems such as NFS or Samba.
+Set this option if you intend on using persistent storage on a network volume.
+{{< /option >}}
+
 {{< option flag="compression" env="MP_COMPRESSION" added="v1.23.0" default="1" >}}
 Compression level to store raw messages in the database (0-3) ([see docs](../compression/).)
 {{< /option >}}
@@ -89,12 +95,16 @@ Block all browser access to remote CSS and fonts imported via message stylesheet
 Mailpit uses the HTTP Content Security Policy (CSP) method to block these. This does not block remote images or clicking on external link.
 {{< /option >}}
 
-{{< option flag="enable-spamassassin" env="MP_ENABLE_SPAMASSASSIN" added="v1.13.0" >}}
+{{< option flag="enable-spamassassin" env="MP_ENABLE_SPAMASSASSIN" added="v1.13.0" default="false" >}}
 Enable SpamAssassin integration for message spamminess score ([see docs](../spamassassin/)).
 {{< /option >}}
 
 {{< option flag="allow-untrusted-tls" env="MP_ALLOW_UNTRUSTED_TLS" default="false" >}}
 Do not verify HTTPS certificates for either link checker & screenshot generation.
+{{< /option >}}
+
+{{< option flag="disable-http-compression" env="MP_DISABLE_HTTP_COMPRESSION" default="false" >}}
+Disable HTTP compression support in the web UI and API ([see docs](../compression/)).
 {{< /option >}}
 
 
