@@ -15,6 +15,10 @@ Specify the local database filename to store persistent data. The default is a l
 You can optionally use a remote rqlite database by specifying a "http address" ([see docs](../email-storage/)).
 {{< /option >}}
 
+{{< option flag="compression" env="MP_COMPRESSION" added="v1.23.0" default="1" >}}
+Compression level to store raw messages in the database (0-3) ([see docs](../compression/).)
+{{< /option >}}
+
 {{< option flag="label" env="MP_LABEL" added=" v1.18.7" >}}
 Set an optional label to identify this Mailpit instance. This adds the label to the web UI, SMTP and POP3 servers.
 {{< /option >}}
