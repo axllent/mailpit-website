@@ -36,6 +36,10 @@ body {
   max-width: 1620px;
 }
 
+table {
+  @extend .table;
+}
+
 @include media-breakpoint-up(md) {
   .side-nav {
     position: sticky;
@@ -170,6 +174,7 @@ h5 {
   &.badge-default,
   &.badge-added {
     position: relative;
+    min-width: 50px;
 
     &:before {
       display: inline-block;
