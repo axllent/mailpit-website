@@ -3,11 +3,13 @@ title: Webhook
 description: Mailpit can optionally call a webhook URL of your choosing when receiving new messages
 ---
 
-You can optionally set a webhook URL which will be called when a message is received, allowing Mailpit to trigger events in other web services. Mailpit has been tested with [n8n](https://n8n.io/), but should work equally well with any service allowing webhook configuration.
+You can optionally set a webhook URL which will be called when a message is received, allowing Mailpit to trigger events in other web services.
+Mailpit has been tested with [n8n](https://n8n.io/), but should work equally well with any service allowing webhook configuration.
 
-Mailpit will do a JSON POST to this URL with a [message summary](https://github.com/axllent/mailpit/blob/develop/docs/apiv1/Message.md) of the received message.
+Mailpit will do a JSON POST to this URL with a [message summary](https://mailpit.axllent.org/docs/api-v1/view.html#get-/api/v1/message/-ID-)
+(see Response -> Schema) of the received message.
 
-To set a webhook URL use the `--webhook-url <URL>` option.
+To set a webhook URL use the `--webhook-url <URL>` (@env `MP_WEBHOOK_URL=<url>`) option.
 
 
 ## Notes:
@@ -22,4 +24,6 @@ To set a webhook URL use the `--webhook-url <URL>` option.
 
 ## Rate limiting
 
-By default Mailpit will rate-limit webhook calls to one request second to prevent unintended DOS attacks when a burst of messages is received. You can increase the rate limit using `--webhook-limit 5` option to allow one call every 5 seconds, or if you do not wish to rate limit at all set `--webhook-limit 0`.
+By default Mailpit will rate-limit webhook calls to one request second to prevent unintended DOS attacks when a burst of messages is received.
+You can increase the rate limit using `--webhook-limit 5` (@env `MP_WEBHOOK_LIMIT=5`) option to allow one call every 5 seconds, 
+or if you do not wish to rate limit at all set `--webhook-limit 0`.
