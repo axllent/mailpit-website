@@ -4,9 +4,15 @@ weight: 6
 description: Mailpit API documentation and Swagger/OpenAPI 2.0 file
 ---
 
-Mailpit provides a simple REST API to access, search and delete stored messages. It also allows you to send messages via HTTP, modify message tags, and release messages via a preconfigured SMTP relay server.
+Mailpit provides a simple REST API to access, search and delete stored messages. 
+It also allows you to send messages via HTTP, modify message tags, and release messages via a preconfigured SMTP relay server.
 
+
+<p>
 {{< button "view.html" "Open the online API documentation" "btn-primary btn-lg" >}}
+</p>
+
+There is also some documentation about receiving message notifications via the [websocket endpoint](./websocket/), however this is not part of the official API.
 
 {{< tip "warning" >}}
 If the Mailpit server is set to use Basic Authentication, then all API requests must use Basic Authentication too.
