@@ -6,8 +6,8 @@ description: Documentation about the websocket server
 
 The Mailpit user interface refreshes in real time as messages and tags are received, deleted, or marked as read.
 This feature enables multiple browser clients to connect to the same mailbox and view the same updates simultaneously.
-Mailpit provides WebSocket endpoint (`/api/events`, typically `ws://localhost/api/events`) which delivers this information to the UI, and as new features are added or existing ones are modified,
-the data sent through the WebSocket can also change.
+Mailpit provides a websocket endpoint (`/api/events`, typically `ws://localhost/api/events`) which delivers this information to the UI, and as new features are added or existing ones are modified,
+the data sent through the websocket can also change.
 
 {{< tip "warning" >}}
 Given the fluid nature of the data, the websocket endpoint is not part of the official API.
