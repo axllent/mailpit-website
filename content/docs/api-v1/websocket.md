@@ -13,7 +13,7 @@ the data sent through the websocket can also change.
 Given the fluid nature of the data, the websocket endpoint is not part of the official API.
 {{< /tip >}}
 
-The websocket will broadcast a firehose of different JSON object, all in the form of:
+The websocket will broadcast a firehose of different JSON objects, all in the form of:
 
 ```json
 {
