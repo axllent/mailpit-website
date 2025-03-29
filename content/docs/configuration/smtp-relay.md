@@ -17,8 +17,9 @@ To enable SMTP relaying, the configuration file (yaml syntax) must be provided t
 ```yaml
 host:                <hostname-or-ip>            # required - SMTP host or IP to send via
 port:                <port>                      # optional - SMTP port, default 25
-starttls:            <true|false>                # optional - default false
-allow-insecure:      <true|false>                # optional - default false
+starttls:            <true|false>                # optional - connect using STARTTLS, default false
+tls:                 <true|false>                # optional - connect using TLS, default false
+allow-insecure:      <true|false>                # optional - do not validate TLS certificate, default false
 auth:                <none|plain|login|cram-md5> # optional - default none
 username:            <username>                  # required for plain, login and cram-md5 auth
 password:            <password>                  # required for plain & login auth
@@ -78,8 +79,9 @@ For convenience the entire relay configuration can be set via environment variab
 ```shell
 MP_SMTP_RELAY_HOST=<hostname-or-ip>                # required
 MP_SMTP_RELAY_PORT=<port>                          # optional - default 25
-MP_SMTP_RELAY_STARTTLS=<true|false>                # optional - default false
-MP_SMTP_RELAY_ALLOW_INSECURE=<true|false>          # optional - default false
+MP_SMTP_RELAY_STARTTLS=<true|false>                # optional - connect using STARTTLS, default false
+MP_SMTP_RELAY_TLS=<true|false>                     # optional - connect using TLS, default false
+MP_SMTP_RELAY_ALLOW_INSECURE=<true|false>          # optional - do not validate TLS certificate, default false
 MP_SMTP_RELAY_AUTH=<none|plain|login|cram-md5>     # optional - default none
 MP_SMTP_RELAY_USERNAME=<username>                  # required for plain, login and cram-md5 auth
 MP_SMTP_RELAY_PASSWORD=<password>                  # required for plain & login auth
