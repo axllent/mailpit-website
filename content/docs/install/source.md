@@ -34,7 +34,7 @@ npm run build
 ```
 
 You can also run `npm run watch` which will watch for changes and rebuild the HTML/CSS/JS automatically when changes are detected.
-Please note that you must restart Mailpit (`go run .`) and refresh your browser to load with the changes.
+Please note that you must restart Mailpit (`go run .`) and refresh your browser to load the changes.
 
 
 ## Build the Mailpit binary
