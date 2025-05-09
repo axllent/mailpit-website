@@ -35,7 +35,6 @@ You need to ensure you map the correct ports (default Web UI on 8025 and SMTP on
 
 View all [runtime options](/docs/configuration/runtime-options/) (flags & environment variables). Environment variables can be set using the `-e` flag when starting your docker container, for instance:
 
-
 ```shell
 docker run -d \
 --name=mailpit \
@@ -52,9 +51,9 @@ axllent/mailpit
 
 ## Docker compose example
 
-```yaml
-version: '2.4'
+The following example exposes both the web UI port (8085) and SMTP port (1025) to the entire host network. If your Docker compose is running multi-container applications and does not require (for instance) 1025 to be open to the host, then you can omit `- 1025:1025` which will then only expose it to the other containers within the specified services.
 
+```yaml
 services:
   mailpit:
     image: axllent/mailpit
@@ -70,5 +69,4 @@ services:
       MP_DATABASE: /data/mailpit.db
       MP_SMTP_AUTH_ACCEPT_ANY: 1
       MP_SMTP_AUTH_ALLOW_INSECURE: 1
-
 ```
