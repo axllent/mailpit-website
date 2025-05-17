@@ -13,20 +13,23 @@ Mailpit can alternatively use [rqlite](#remote-storage-rqlite) if you require a 
 
 {{< tip "warning" >}}
 Please be aware that Mailpit, by default, activates [Write-Ahead Logging](https://sqlite.org/wal.html) (WAL) in SQLite.
-This feature may not function reliably with network file systems like NFS or Samba.
-If you plan to use NFS, you should include the `--disable-wal` flag (@env `MP_DISABLE_WAL=true`).
+This feature may not function reliably with some filesystems like **mergerfs**, or network file systems like **NFS** or **Samba**.
+If you plan to use these you should include the `--disable-wal` flag (@env `MP_DISABLE_WAL=true`).
 Additionally, it's important to consider the [caveats and considerations](https://sqlite.org/useovernet.html)
 associated with using network file systems with SQLite.
+
+Samba/CIFS clients should include the `nobrl` mount option to prevent the client from sending byte range lock requests to the server, 
+which can lead to SQLite locking errors.
 {{< /tip >}}
 
 
 ### Performance
 
-Testing has revealed that SMTP can store between 100-200 emails per second over SMTP depending on CPU, disk speed, network speed & email size.
+Testing has revealed that Mailpit can store between 100-200 emails per second over SMTP depending on CPU, disk speed, network speed & email size.
 The database has been tested with over 135,000 emails which still performs well.
 
 By default raw messages are by default stored compressed (zstd) in the database to conserve space, but as a trade-off consumes additional RAM and CPU to process the data.
-The level of compression can be adjusted however, including disabling message compression altogether ([see docs](../compression/)).
+The level of compression can be adjusted however, including an option to disable message compression altogether ([see docs](../compression/)).
 
 
 ### Temporary vs: persistent storage
