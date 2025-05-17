@@ -30,5 +30,7 @@ There are various ways to manually delete messages:
 
 1. Individual messages can be deleted by clicking the `Delete` button while previewing a message.
 2. Select one or more messages by holding down `Ctrl`/`Cmd` or `Shift` and clicking on a the messages in the list. These can then be deleted via the `Delete selected` button, or alternatively marked as read/unread.
-3. In the Inbox (main) view, the `Delete all` button will delete all messages (everything).
-4. While filtering messages, either by a search or viewing a tag, clicking the `Delete all` button will delete all matching results.
+3. In the Inbox (main) view, the `Delete all` button will delete all messages (everything). **\***
+4. While filtering messages, either by a search or viewing a tag, clicking the `Delete all` button will delete all matching results. **\***
+
+**\*** Please note that if Mailpit has been started with the `--disable-delete-all-button` option then the `Delete all` button will not be visible.

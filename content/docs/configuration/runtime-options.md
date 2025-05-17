@@ -107,6 +107,11 @@ Do not verify HTTPS certificates for either link checker & screenshot generation
 Disable HTTP compression support in the web UI and API ([see docs](../compression/)).
 {{< /option >}}
 
+{{< option flag="hide-delete-all-button" env="MP_HIDE_DELETE_ALL_BUTTON" default="false" added="v1.25.0"  >}}
+Hides the "Delete all" button in the web UI. This can be useful if you explicitly do not want your users to use this feature
+([see docs](../../usage/deleting-messages/#manually-deleting-messages)).
+{{< /option >}}
+
 
 ## SMTP server
 
