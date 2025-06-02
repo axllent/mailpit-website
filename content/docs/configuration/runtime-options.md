@@ -112,6 +112,14 @@ Hides the "Delete all" button in the web UI. This can be useful if you explicitl
 ([see docs](../../usage/deleting-messages/#manually-deleting-messages)).
 {{< /option >}}
 
+{{< option flag="send-api-auth-file" env="MP_SEND_API_AUTH_FILE" added="v1.26.0" >}}
+Specify a password file for Send API authentication ([see docs](../http/#send-api-endpoint-dedicated-authentication)). This provides separate authentication credentials specifically for the `/api/v1/send` endpoint.
+{{< /option >}}
+
+{{< option flag="send-api-auth-accept-any" env="MP_SEND_API_AUTH_ACCEPT_ANY" default="false" added="v1.26.0" >}}
+Accept any username and password for the Send API endpoint, including none ([see docs](../http/#send-api-endpoint-dedicated-authentication)). This option cannot be used together with `--send-api-auth-file`.
+{{< /option >}}
+
 
 ## SMTP server
 
