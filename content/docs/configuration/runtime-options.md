@@ -250,13 +250,9 @@ Disable specific auto-tagging. This option takes a comma-separated list of optio
 
 ## Prometheus metrics
 
-{{< option flag="enable-prometheus" env="MP_ENABLE_PROMETHEUS" default="false" added="vXXX" >}}
-Enable Prometheus metrics server. When enabled, metrics are exposed on a separate HTTP endpoint for scraping.
-{{< /option >}}
-
-{{< option flag="prometheus-listen" env="MP_PROMETHEUS_LISTEN" default="[::]:9090" added="vXXX" >}}
-Set the bind interface and port for the Prometheus metrics server.
-The metrics endpoint will be available at `http://[host]:[port]/metrics`.
+{{< option flag="enable-prometheus" env="MP_ENABLE_PROMETHEUS" default="false" added="v1.26.0" >}}
+Enable Prometheus metrics. Set to `true` to serve metrics on the main web UI port at `/metrics`, 
+or specify a bind address (e.g., `0.0.0.0:9090`) to run a separate metrics server.
 {{< /option >}}
 
 

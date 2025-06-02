@@ -6,37 +6,37 @@ section: configuration
 keywords: [prometheus, metrics, monitoring, statistics]
 ---
 
-Mailpit includes optional Prometheus metrics support to monitor mail server performance and usage statistics. When enabled, Mailpit exposes metrics on a separate HTTP endpoint that can be scraped by Prometheus.
+Mailpit includes optional Prometheus metrics support to monitor mail server performance and usage statistics.
 
 ## Enabling Prometheus metrics
 
 Prometheus metrics are disabled by default. To enable them, use either the command line flag or environment variable:
 
+### Integrated mode
+
+Serve metrics on the main web UI port inheriting all configuration such as TLS and authentication at `/metrics`:
+
 ```bash
 # Using command line flag
-mailpit --enable-prometheus
+mailpit --enable-prometheus true
 
-# Using environment variable
+# Using environment variable  
 export MP_ENABLE_PROMETHEUS=true
 mailpit
 ```
 
-By default, the metrics server will listen on `[::]:9090`. You can customize this using:
+
+### Separate server mode
+
+Run a dedicated metrics server on a custom port without TLS or authentication:
 
 ```bash
-# Custom listen address
-mailpit --enable-prometheus --prometheus-listen 0.0.0.0:9091
+# Custom listen address for separate server
+mailpit --enable-prometheus 0.0.0.0:9091
 
 # Using environment variable
-export MP_PROMETHEUS_LISTEN="0.0.0.0:9091"
-```
-
-## Accessing metrics
-
-Once enabled, Prometheus metrics are available at the `/metrics` endpoint:
-
-```
-http://localhost:9090/metrics
+export MP_ENABLE_PROMETHEUS="0.0.0.0:9091"
+mailpit
 ```
 
 ## Available metrics
@@ -66,11 +66,22 @@ Mailpit exposes the following metrics:
 
 To configure Prometheus to scrape Mailpit metrics, add the following to your `prometheus.yml`:
 
+### For integrated mode
 ```yaml
 scrape_configs:
   - job_name: 'mailpit'
     static_configs:
-      - targets: ['localhost:9090']
+      - targets: ['localhost:8025']
+    scrape_interval: 30s
+    metrics_path: '/metrics'
+```
+
+### For separate server mode
+```yaml
+scrape_configs:
+  - job_name: 'mailpit'
+    static_configs:
+      - targets: ['localhost:9091']  # Use your custom port
     scrape_interval: 30s
     metrics_path: '/metrics'
 ```
