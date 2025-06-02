@@ -78,14 +78,6 @@ Set the webroot for web UI & API, for example `mail` would result in `http://0.0
 Specify a password file for web UI & API basic authentication ([see docs](../http/)).
 {{< /option >}}
 
-{{< option flag="send-api-auth-file" env="MP_SEND_API_AUTH_FILE" added="vXXX" >}}
-Specify a password file for Send API authentication ([see docs](../http/#send-api-separate-authentication)). This provides separate authentication credentials specifically for the `/api/v1/send` endpoint.
-{{< /option >}}
-
-{{< option flag="send-api-auth-accept-any" env="MP_SEND_API_AUTH_ACCEPT_ANY" default="false" added="vXXX" >}}
-Accept any username and password for the Send API endpoint, including none ([see docs](../http/#send-api-separate-authentication)). This option cannot be used together with `--send-api-auth-file`.
-{{< /option >}}
-
 {{< option flag="ui-tls-cert" env="MP_UI_TLS_CERT" >}}
 TLS certificate for web UI & API (ie: [HTTPS](../http/)). This option requires the `--ui-tls-key` argument or `MP_UI_TLS_KEY` environment variable to be set.
 {{< /option >}}
@@ -118,6 +110,14 @@ Disable HTTP compression support in the web UI and API ([see docs](../compressio
 {{< option flag="hide-delete-all-button" env="MP_HIDE_DELETE_ALL_BUTTON" default="false" added="v1.25.0"  >}}
 Hides the "Delete all" button in the web UI. This can be useful if you explicitly do not want your users to use this feature
 ([see docs](../../usage/deleting-messages/#manually-deleting-messages)).
+{{< /option >}}
+
+{{< option flag="send-api-auth-file" env="MP_SEND_API_AUTH_FILE" added="v1.26.0" >}}
+Specify a password file for Send API authentication ([see docs](../http/#send-api-endpoint-dedicated-authentication)). This provides separate authentication credentials specifically for the `/api/v1/send` endpoint.
+{{< /option >}}
+
+{{< option flag="send-api-auth-accept-any" env="MP_SEND_API_AUTH_ACCEPT_ANY" default="false" added="v1.26.0" >}}
+Accept any username and password for the Send API endpoint, including none ([see docs](../http/#send-api-endpoint-dedicated-authentication)). This option cannot be used together with `--send-api-auth-file`.
 {{< /option >}}
 
 

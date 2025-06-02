@@ -18,7 +18,7 @@ Messages can alternatively be sent to Mailpit via the HTTP API in JSON format, u
 
 ### Send API endpoint dedicated authentication
 
-Starting in **vXXX**, the send message endpoint (`/api/v1/send`) supports [dedicated authentication](../../configuration/http/#send-api-endpoint-dedicated-authentication) that is independent of other API endpoints and the web UI. This allows you to configure different authentication requirements specifically for sending messages.
+Starting in **v1.26.0**, the send message endpoint (`/api/v1/send`) supports [dedicated authentication](../../configuration/http/#send-api-endpoint-dedicated-authentication) that is independent of other API endpoints and the web UI. This allows you to configure different authentication requirements specifically for sending messages.
 
 You can configure the send API endpoint to:
 - Use **dedicated credentials** different from the web UI authentication

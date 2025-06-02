@@ -17,7 +17,7 @@ There is also some documentation about receiving message notifications via the [
 {{< tip "warning" >}}
 If the Mailpit server is set to use Basic Authentication, then all API requests must use Basic Authentication too.
 
-**Send API Authentication (vXXX+):** The Send API endpoint (`/api/v1/send`) can have [separate authentication](../configuration/http/#send-api-separate-authentication) configured, independent of other API endpoints. When separate Send API authentication is configured, the Send API will use its own credentials, while all other API endpoints continue to use UI authentication.
+**Send API Authentication (v1.26.0):** The Send API endpoint (`/api/v1/send`) can have [separate authentication](../configuration/http/#send-api-separate-authentication) configured, independent of other API endpoints. When separate Send API authentication is configured, the Send API will use its own credentials, while all other API endpoints continue to use UI authentication.
 {{< /tip >}}
 
 {{< tip >}}
