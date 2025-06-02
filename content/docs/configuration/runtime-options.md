@@ -78,6 +78,14 @@ Set the webroot for web UI & API, for example `mail` would result in `http://0.0
 Specify a password file for web UI & API basic authentication ([see docs](../http/)).
 {{< /option >}}
 
+{{< option flag="send-api-auth-file" env="MP_SEND_API_AUTH_FILE" added="vXXX" >}}
+Specify a password file for Send API authentication ([see docs](../http/#send-api-separate-authentication)). This provides separate authentication credentials specifically for the `/api/v1/send` endpoint.
+{{< /option >}}
+
+{{< option flag="send-api-auth-accept-any" env="MP_SEND_API_AUTH_ACCEPT_ANY" default="false" added="vXXX" >}}
+Accept any username and password for the Send API endpoint, including none ([see docs](../http/#send-api-separate-authentication)). This option cannot be used together with `--send-api-auth-file`.
+{{< /option >}}
+
 {{< option flag="ui-tls-cert" env="MP_UI_TLS_CERT" >}}
 TLS certificate for web UI & API (ie: [HTTPS](../http/)). This option requires the `--ui-tls-key` argument or `MP_UI_TLS_KEY` environment variable to be set.
 {{< /option >}}
