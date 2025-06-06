@@ -92,7 +92,7 @@ MP_SMTP_RELAY_ALLOWED_RECIPIENTS="@example\.com$"  # optional - regex to limit a
 MP_SMTP_RELAY_BLOCKED_RECIPIENTS="@example2\.com$" # optional - regex to prevent relaying to addresses or domains via web UI & API
 ```
 
-For security reasons there options are not available as a cli flags.
+For security reasons these options are not available as a CLI flags.
 
 
 ## Automatically relay all messages
