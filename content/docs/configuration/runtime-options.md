@@ -260,7 +260,7 @@ Disable specific auto-tagging. This option takes a comma-separated list of optio
 
 {{< option flag="enable-prometheus" env="MP_ENABLE_PROMETHEUS" default="false" added="v1.26.0" >}}
 Enable Prometheus metrics. Set to `true` to serve metrics on the main web UI port at `/metrics`, 
-or specify a bind address (e.g., `0.0.0.0:9090`) to run a separate metrics server.
+or specify a bind address (e.g., `0.0.0.0:9090`) to run a separate metrics server ([see docs](../prometheus/)).
 {{< /option >}}
 
 
