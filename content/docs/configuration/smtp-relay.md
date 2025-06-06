@@ -15,25 +15,28 @@ To enable SMTP relaying, the configuration file (yaml syntax) must be provided t
 ## SMTP relay configuration
 
 ```yaml
-host:                <hostname-or-ip>            # required - SMTP host or IP to send via
-port:                <port>                      # optional - SMTP port, default 25
-starttls:            <true|false>                # optional - connect using STARTTLS, default false
-tls:                 <true|false>                # optional - connect using TLS, default false
-allow-insecure:      <true|false>                # optional - do not validate TLS certificate, default false
-auth:                <none|plain|login|cram-md5> # optional - default none
-username:            <username>                  # required for plain, login and cram-md5 auth
-password:            <password>                  # required for plain & login auth
-secret:              <cram-secret>               # required for cram-md5 auth
-return-path:         <bounce-address>            # optional - overrides Return-Path for all released emails
-override-from:       <email-address>             # optional - overrides the From email address
-allowed-recipients:  '@example\.com$'            # optional - limit allowed relay addresses or domains
-blocked-recipients:  '@example2\.com$'           # optional - prevent relating to addresses or domains
+host:                 <hostname-or-ip>            # required - SMTP host or IP to send via
+port:                 <port>                      # optional - SMTP port, default 25
+starttls:             <true|false>                # optional - connect using STARTTLS, default false
+tls:                  <true|false>                # optional - connect using TLS, default false
+allow-insecure:       <true|false>                # optional - do not validate TLS certificate, default false
+auth:                 <none|plain|login|cram-md5> # optional - default none
+username:             <username>                  # required for plain, login and cram-md5 auth
+password:             <password>                  # required for plain & login auth
+secret:               <cram-secret>               # required for cram-md5 auth
+return-path:          <bounce-address>            # optional - overrides Return-Path for all released emails
+override-from:        <email-address>             # optional - overrides the From email address
+allowed-recipients:   '@example\.com$'            # optional - limit allowed relay addresses or domains
+blocked-recipients:   '@example2\.com$'           # optional - prevent relating to addresses or domains
+preserve-message-ids: <true|false>                # optional - preserve the original Message-IDs when relaying, default false
 ```
 
 
 ### Notes
 
-Messages relayed via the web UI / API get assigned a new unique `Message-Id`. This is to enable testing via services such as Gmail which will silently drop / hide incoming emails containing the same message ID. 
+By default, messages relayed via the web UI / API are assigned a new, unique `Message-ID`. 
+This helps when testing with services like Gmail, which may silently drop or hide emails with duplicate Message-IDs.
+To preserve (keep) the original Message-IDs when relaying, set `preserve-message-ids: true` in your configuration.
 
 The `return-path` configuration option will add / overwrite the `Return-Path` for all messages relayed via the web UI and API.
 This is useful to provide a valid email address to catch any accidental bounces and prevent SPF errors for email domain names.
@@ -90,6 +93,7 @@ MP_SMTP_RELAY_RETURN_PATH=<bounce-address>         # optional - overrides Return
 MP_SMTP_RELAY_OVERRIDE_FROM=<email-address>        # optional - overrides the From email address
 MP_SMTP_RELAY_ALLOWED_RECIPIENTS="@example\.com$"  # optional - regex to limit allowed relay addresses or domains via web UI & API
 MP_SMTP_RELAY_BLOCKED_RECIPIENTS="@example2\.com$" # optional - regex to prevent relaying to addresses or domains via web UI & API
+MP_SMTP_RELAY_PRESERVE_MESSAGE_IDS=<true|false>    # optional - preserve the original Message-IDs when relaying, default false
 ```
 
 For security reasons these options are not available as a CLI flags.
