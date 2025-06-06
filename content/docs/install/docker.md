@@ -51,7 +51,7 @@ axllent/mailpit
 
 ## Docker compose example
 
-The following example exposes both the web UI port (8085) and SMTP port (1025) to the entire host network. If your Docker compose is running multi-container applications and does not require (for instance) 1025 to be open to the host, then you can omit `- 1025:1025` which will then only expose it to the other containers within the specified services.
+The following example exposes both the web UI port (8025) and SMTP port (1025) to the entire host network. If your Docker compose is running multi-container applications and does not require (for instance) 1025 to be open to the host, then you can omit `- 1025:1025` which will then only expose it to the other containers within the specified services.
 
 ```yaml
 services:

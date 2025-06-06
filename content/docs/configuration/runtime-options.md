@@ -112,6 +112,14 @@ Hides the "Delete all" button in the web UI. This can be useful if you explicitl
 ([see docs](../../usage/deleting-messages/#manually-deleting-messages)).
 {{< /option >}}
 
+{{< option flag="send-api-auth-file" env="MP_SEND_API_AUTH_FILE" added="v1.26.0" >}}
+Specify a password file for Send API authentication ([see docs](../http/#send-api-endpoint-dedicated-authentication)). This provides separate authentication credentials specifically for the `/api/v1/send` endpoint.
+{{< /option >}}
+
+{{< option flag="send-api-auth-accept-any" env="MP_SEND_API_AUTH_ACCEPT_ANY" default="false" added="v1.26.0" >}}
+Accept any username and password for the Send API endpoint, including none ([see docs](../http/#send-api-endpoint-dedicated-authentication)). This option cannot be used together with `--send-api-auth-file`.
+{{< /option >}}
+
 
 ## SMTP server
 
@@ -245,6 +253,14 @@ Enforces TitleCasing for all newly-created tags ([see docs](../../usage/tagging/
 
 {{< option flag="tags-disable" env="MP_TAGS_DISABLE" >}}
 Disable specific auto-tagging. This option takes a comma-separated list of options ([see docs](../../usage/tagging/#disable-auto-tagging)).
+{{< /option >}}
+
+
+## Prometheus metrics
+
+{{< option flag="enable-prometheus" env="MP_ENABLE_PROMETHEUS" default="false" added="v1.26.0" >}}
+Enable Prometheus metrics. Set to `true` to serve metrics on the main web UI port at `/metrics`, 
+or specify a bind address (e.g., `0.0.0.0:9090`) to run a separate metrics server ([see docs](../prometheus/)).
 {{< /option >}}
 
 
