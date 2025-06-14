@@ -73,4 +73,4 @@ For testing purposes, Mailpit also allows you to accept any username & password 
 ### Passwords via environment
 
 If you do not wish to use a password file then you can optionally export the `MP_SMTP_AUTH` environment variable with a space-separated list of your credentials, eg: `MP_SMTP_AUTH="user1:password1 user2:password"`.
-For security reasons this option is not available as a cli flag.
+For security reasons this option is not available as a CLI flag.

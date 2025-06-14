@@ -75,4 +75,4 @@ MP_SMTP_FORWARD_RETURN_PATH=<bounce-address>         # optional - overrides Retu
 MP_SMTP_FORWARD_OVERRIDE_FROM=<email-address>        # optional - overrides the From email address
 ```
 
-For security reasons there options are not available as a cli flags.
+For security reasons these options are not available as a CLI flags.
