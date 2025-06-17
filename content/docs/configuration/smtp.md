@@ -34,7 +34,7 @@ If you **require** the client to use STARTTLS then you can add the `--smtp-requi
 ## SMTP with SSL/TLS
 
 TLS (often referred to as SSL/TLS) is a different protocol that requires **all** protocol communication to be done over TLS.
-This is slightly more secure than STARTTLS, but requires a SMTP client with fill SSL/TLS support. 
+This is slightly more secure than STARTTLS, but requires a SMTP client with full SSL/TLS support. 
 To start the SMTP with TLS an additional flag `--smtp-require-tls` (env: `MP_SMTP_REQUIRE_TLS=true`) must be added:
 
 ```shell
