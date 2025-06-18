@@ -255,6 +255,10 @@ Enforces TitleCasing for all newly-created tags ([see docs](../../usage/tagging/
 Disable specific auto-tagging. This option takes a comma-separated list of options ([see docs](../../usage/tagging/#disable-auto-tagging)).
 {{< /option >}}
 
+{{< option flag="tags-username" env="MP_TAGS_USERNAME" default="false" added="vNEXT" >}}
+Automatically tag messages with the authenticated username (SMTP or HTTP). Useful for multi-user environments to easily filter and identify messages by user. When enabled, a tag matching the username will be added to each message sent by an authenticated user.
+{{< /option >}}
+
 
 ## Prometheus metrics
 
