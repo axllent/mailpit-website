@@ -21,6 +21,10 @@ WAL (enabled by default) provides better performance, however is not compatible 
 Set this option if you intend on using persistent storage on a network volume.
 {{< /option >}}
 
+{{< option flag="disable-version-check" env="MP_DISABLE_VERSION_CHECK" added="vNEXT" default="false" >}}
+Disable Mailpit's automatic version checking. When enabled, Mailpit will not contact GitHub to check for new releases.
+{{< /option >}}
+
 {{< option flag="compression" env="MP_COMPRESSION" added="v1.23.0" default="1" >}}
 Compression level to store raw messages in the database (0-3) ([see docs](../compression/).)
 {{< /option >}}
