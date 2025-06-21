@@ -6,7 +6,7 @@ section: configuration
 keywords: [flags, options]
 ---
 
-Mailpit's runtime options are listed below. Please note that these are always current with the latest release and may differ from older releases. 
+Mailpit's runtime options are listed below. Please note that these are always current with the latest release and may differ from older releases.
 
 ## General
 
@@ -16,9 +16,9 @@ You can optionally use a remote rqlite database by specifying a "http address" (
 {{< /option >}}
 
 {{< option flag="disable-wal" env="MP_DISABLE_WAL" added="v1.23.0" default="false" >}}
-Disable [Write-Ahead Logging](https://sqlite.org/wal.html) (WAL) support for local database. 
+Disable [Write-Ahead Logging](https://sqlite.org/wal.html) (WAL) support for local database.
 WAL (enabled by default) provides better performance, however is not compatible with network file systems such as NFS or Samba.
-Set this option if you intend on using persistent storage on a network volume.
+Set this option if you intend to use persistent storage on a network volume.
 {{< /option >}}
 
 {{< option flag="compression" env="MP_COMPRESSION" added="v1.23.0" default="1" >}}
@@ -63,7 +63,6 @@ Quiet logging (errors only)
 Verbose logging (debug)
 {{< /option >}}
 
-
 ## Web UI & API
 
 {{< option flag="listen" env="MP_UI_BIND_ADDR" default="0.0.0.0:8025" >}}
@@ -91,8 +90,8 @@ Set API CORS Access-Control-Allow-Origin header if you require cross-domain brow
 {{< /option >}}
 
 {{< option flag="block-remote-css-and-fonts" env="MP_BLOCK_REMOTE_CSS_AND_FONTS" default="false" >}}
-Block all browser access to remote CSS and fonts imported via message stylesheets. 
-Mailpit uses the HTTP Content Security Policy (CSP) method to block these. This does not block remote images or clicking on external link.
+Block all browser access to remote CSS and fonts imported via message stylesheets.
+Mailpit uses the HTTP Content Security Policy (CSP) method to block these. This does not block remote images or clicking on external links.
 {{< /option >}}
 
 {{< option flag="enable-spamassassin" env="MP_ENABLE_SPAMASSASSIN" default="false" >}}
@@ -120,7 +119,6 @@ Specify a password file for Send API authentication ([see docs](../http/#send-ap
 Accept any username and password for the Send API endpoint, including none ([see docs](../http/#send-api-endpoint-dedicated-authentication)). This option cannot be used together with `--send-api-auth-file`.
 {{< /option >}}
 
-
 ## SMTP server
 
 {{< option flag="smtp" env="MP_SMTP_BIND_ADDR" default="0.0.0.0:1025" >}}
@@ -144,18 +142,18 @@ TLS key for SMTP STARTTLS. This option requires the `--smtp-tls-cert` argument o
 {{< /option >}}
 
 {{< option flag="smtp-require-starttls" env="MP_SMTP_REQUIRE_STARTTLS" default="false" >}}
-Require all SMTP clients to use STARTTLS encryption. If set to true, the only allowed commands are 
+Require all SMTP clients to use STARTTLS encryption. If set to true, the only allowed commands are
 NOOP, EHLO, STARTTLS and QUIT (as specified in RFC 4954) until the connection is upgraded to STARTTLS.
 {{< /option >}}
 
 {{< option flag="smtp-require-tls" env="MP_SMTP_REQUIRE_TLS" default="false" >}}
 Require all SMTP clients to use SSL/TLS encryption. If set to true, all connections to the SMTP server must be
-handled over TLS. This is different to STARTTLS which requires the initial connection to be unencrypted. 
+handled over TLS. This is different to STARTTLS which requires the initial connection to be unencrypted.
 Note that this option disables STARTTLS and may reduce client compatibility.
 {{< /option >}}
 
 {{< option flag="smtp-auth-allow-insecure" env="MP_SMTP_AUTH_ALLOW_INSECURE" default="false" >}}
-Typically either STARTTLS or TLS is enforced for all SMTP authentication. This option allows insecure PLAIN & LOGIN SMTP authentication when using STARTTLS. 
+Typically either STARTTLS or TLS is enforced for all SMTP authentication. This option allows insecure PLAIN & LOGIN SMTP authentication when using STARTTLS.
 {{< /option >}}
 
 {{< option flag="smtp-strict-rfc-headers" env="MP_SMTP_STRICT_RFC_HEADERS" default="false" >}}
@@ -178,7 +176,6 @@ SMTP will by default try resolve the hostname of the IP address of the connectin
 causing delays for every message delivered.
 {{< /option >}}
 
-
 ## SMTP relay
 
 {{< option flag="smtp-relay-config" env="MP_SMTP_RELAY_CONFIG" >}}
@@ -197,13 +194,11 @@ This will only relay to recipients matching a regular expression, and cannot be 
 An example would be `--smtp-relay-matching '(user1@host1\.com|user2@host2\.com|@host3\.com)$'`.
 {{< /option >}}
 
-
 ## SMTP forwarding
 
 {{< option flag="smtp-forward-config" env="MP_SMTP_FORWARD_CONFIG" added="v1.22.0" >}}
 SMTP configuration file to enable message forwarding ([see docs](../smtp-forward/)). Alternatively the entire configuration can be passed via [environment variables](../smtp-forward/#setting-via-environment).
 {{< /option >}}
-
 
 ## Chaos
 
@@ -215,7 +210,6 @@ Enable Chaos functionality (API / web UI) ([see docs](../../integration/chaos/))
 Set the runtime Chaos triggers ([see docs](../../integration/chaos/)).
 {{< /option >}}
 
-
 ## POP3 server
 
 {{< option flag="pop3" env="MP_POP3_BIND_ADDR" default="0.0.0.0:1110" >}}
@@ -223,7 +217,7 @@ POP3 server bind interface and port.
 {{< /option >}}
 
 {{< option flag="pop3-auth-file" env="MP_POP3_AUTH_FILE" >}}
-Specify a password file for POP3 authentication ([see docs](../pop3/)). 
+Specify a password file for POP3 authentication ([see docs](../pop3/)).
 
 **Note**: this option is required to enable the POP3 server, or alternatively credentials can be specified via an [environment variable](../pop3/).
 {{< /option >}}
@@ -235,7 +229,6 @@ TLS certificate for POP3 SSL/TLS. This option requires the `--pop3-tls-key` argu
 {{< option flag="pop3-tls-key" env="MP_POP3_TLS_KEY" >}}
 TLS key for POP3 SSL/TLS. This option requires the `--pop3-tls-cert` argument or `MP_POP3_TLS_CERT` environment variable to be set.
 {{< /option >}}
-
 
 ## Tagging
 
@@ -255,14 +248,12 @@ Enforces TitleCasing for all newly-created tags ([see docs](../../usage/tagging/
 Disable specific auto-tagging. This option takes a comma-separated list of options ([see docs](../../usage/tagging/#disable-auto-tagging)).
 {{< /option >}}
 
-
 ## Prometheus metrics
 
 {{< option flag="enable-prometheus" env="MP_ENABLE_PROMETHEUS" default="false" added="v1.26.0" >}}
-Enable Prometheus metrics. Set to `true` to serve metrics on the main web UI port at `/metrics`, 
+Enable Prometheus metrics. Set to `true` to serve metrics on the main web UI port at `/metrics`,
 or specify a bind address (e.g., `0.0.0.0:9090`) to run a separate metrics server ([see docs](../prometheus/)).
 {{< /option >}}
-
 
 ## Webhook
 

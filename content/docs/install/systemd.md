@@ -2,17 +2,17 @@
 title: Systemd integration
 description: Configure your Mailpit service to start automatically using systemd
 aliases:
-- /docs/install/systemd-integration/
+    - /docs/install/systemd-integration/
 weight: 15
 ---
 
-Mailpit can be easily configured via systemd to automatically start when your computer starts. 
-There are few points worth noting before you do:
-1. It is advisable not to run the service as "root" for security purposes. For this example we will use a user and group called "mailpit", but this could be any existing user on your machine.
-2. The database store must be read/writable by this user otherwise Mailpit will fail to start. For this example we use `/var/lib/mailpit/mailpit.db`
+Mailpit can be easily configured via systemd to automatically start when your computer starts.
+There are a few points worth noting before you do:
 
+1. It is advisable not to run the service as "root" for security purposes. For this example, we will use a user and group called "mailpit", but this could be any existing user on your machine.
+2. The database store must be readable and writable by this user; otherwise, Mailpit will fail to start. For this example, we use `/var/lib/mailpit/mailpit.db`.
 
-Create a systemd service configuration file in `/etc/systemd/system/mailpit.service`
+Create a systemd service configuration file in `/etc/systemd/system/mailpit.service`:
 
 ```shell
 [Unit]
@@ -21,7 +21,7 @@ Description=Mailpit server
 [Service]
 ExecStart=/usr/local/bin/mailpit -d /var/lib/mailpit/mailpit.db
 Restart=always
-# Restart service after 10 seconds service crashes
+# Restart service after 10 seconds if service crashes
 RestartSec=10
 SyslogIdentifier=mailpit
 User=mailpit

@@ -7,7 +7,7 @@ weight: 3
 
 Mailpit is primarily developed in Go for the backend (main application) and utilizes Vue and Sass (Bootstrap) for the frontend web UI.
 
-To maintain consistency and minimize common errors in the code, it is essential that all Go and Vue/JavaScript code adheres to specific linting standards. At a minimum, the code must pass the following linting tests:
+To maintain consistency and minimize common errors in the code, it is essential that all Go and Vue/JavaScript code adhere to specific linting standards. At a minimum, the code must pass the following linting tests:
 
 -   [gofmt](https://pkg.go.dev/cmd/gofmt) for Go
 -   [ESLint](https://eslint.org/) for Vue/JavaScript
@@ -17,11 +17,11 @@ To maintain consistency and minimize common errors in the code, it is essential 
 When reviewing pull requests on GitHub, please ensure that your code changes comply with the linting requirements outlined below.
 {{< /tip >}}
 
-### Linting in VSCode
+### Linting in VS Code
 
 Enabling automatic linting in your editor can be extremely beneficial, as it typically identifies and highlights errors in real-time and applies formatting upon saving your work.
 
-If you are using [VSCode](https://code.visualstudio.com/), it is highly recommended to install the following extensions for seamless integration:
+If you are using [VS Code](https://code.visualstudio.com/), it is highly recommended to install the following extensions for seamless integration:
 
 -   [Go extension](https://marketplace.visualstudio.com/items?itemName=golang.Go)
 -   [ESLint](https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint)

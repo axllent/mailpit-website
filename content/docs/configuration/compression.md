@@ -5,8 +5,7 @@ section: configuration
 ---
 
 By default, Mailpit compresses messages stored in the database to save space, and compresses network traffic for supported HTTP clients to minimize data transfer.
-This compression however can lead to increased CPU and memory (RAM) usage within Mailpit, specifically when handling large emails / attachments, which may not be ideal for systems with limited memory or lower hardware specifications.
-
+However, this compression can lead to increased CPU and memory (RAM) usage within Mailpit, especially when handling large emails or attachments, which may not be ideal for systems with limited memory or lower hardware specifications.
 
 ## Message compression
 
@@ -21,63 +20,56 @@ However, it's important to note that compression introduces additional CPU and R
 Depending on your specific needs, you may want to adjust certain settings in Mailpit to better align with your requirements.
 
 {{< tip >}}
-Message compression, along with RAM and CPU usage, can differ greatly based on the types of messages you store, and the size and file types of the attachments in those emails.
+Message compression, along with RAM and CPU usage, can vary greatly based on the types of messages you store and the size and file types of the attachments in those emails.
 {{< /tip >}}
 
-Mailpit's message compression can be set using the `--compression <level>` flag (@env `MP_COMPRESSION=<level>`) to a value between `0` and `3`, with its default being `1`.
+Mailpit's message compression can be set using the `--compression <level>` flag (or environment variable `MP_COMPRESSION=<level>`) to a value between `0` and `3`, with the default being `1`.
 
-**Note:** Changing the message compression will not modify the compression of any existing messages in the database, only new messages.
-
+**Note:** Changing the message compression level will not modify the compression of any existing messages in the database, only new messages.
 
 ### Level `0`
 
 Setting the compression level to `0` turns off message compression altogether, meaning messages are stored in plain text in the database.
-Disabling compression can result in a significantly larger database size, however it has almost no RAM or CPU overheads (compared to when using compression).
+Disabling compression can result in a significantly larger database size, but it has almost no RAM or CPU overhead (compared to when using compression).
 
-Please note that this does not actually speed up reading & writing data from the database, in fact it can actually slow it down slightly due to the larger data going in and out of the database. 
-If RAM usage is a concern to you, then this is possibly the best option for you.
-
+Please note that this does not actually speed up reading and writing data from the database; in fact, it can slow it down slightly due to the larger data being read from and written to the database.
+If RAM usage is a concern, then this is possibly the best option for you.
 
 ### Level `1` (default)
 
-Mailpit's default message compression level is `1`, which uses the fastest zstd compression, and so the lowest level of compression. This still provides a reasonable level of compression without adding too much CPU and RAM overhead.
-
+Mailpit's default message compression level is `1`, which uses the fastest zstd compression and thus the lowest level of compression. This still provides a reasonable level of compression without adding too much CPU and RAM overhead.
 
 ### Level `2`
 
-Level `2` uses the standard zstd compression level. Compared to level `1`, this can slightly increase compression, however does use approximately double the RAM of level 1.
-
+Level `2` uses the standard zstd compression level. Compared to level `1`, this can slightly increase compression, but uses approximately double the RAM of level 1.
 
 ### Level `3`
 
-Level `3` uses the maximum zstd compression. This can significantly improve compression (smaller database size), but requires far more CPU & RAM to process resulting in slower processing.
-
+Level `3` uses the maximum zstd compression. This can significantly improve compression (resulting in a smaller database size), but requires much more CPU and RAM, resulting in slower processing.
 
 ### Compression benchmarks
 
 {{< tip >}}
-The following benchmarks are relative to the message content, size and the frequency these messages are received. These benchmarks are provided just to provide some indication of requirements.
+The following benchmarks are relative to the message content, size, and the frequency at which these messages are received. These benchmarks are provided to give some indication of requirements.
 {{< /tip >}}
 
-In this benchmark 2,500 regular/normal emails were ingested via SMTP in quick succession to compare the differences.
+In this benchmark, 2,500 regular emails were ingested via SMTP in quick succession to compare the differences.
 These messages are a complete mix of regular emails, about half containing small attachments.
 
-Whilst Mailpit will free unused memory after a while, this benchmark illustrates the immediate requirements for this test.
+While Mailpit will free unused memory after a while, this benchmark illustrates the immediate requirements for this test.
 RAM usage would be lower if the messages were received less frequently, and would be higher if those emails contained very large attachments.
 
 | Compression level | Time to ingest | DB size | RAM usage after ingest |
-|-------------------|----------------|---------|------------------------|
+| ----------------- | -------------- | ------- | ---------------------- |
 | 0                 | 16.1s          | 147.5MB | 50MB                   |
 | 1                 | 14.3s          | 99.5 MB | 290MB                  |
 | 2                 | 14.6s          | 97.1MB  | 485MB                  |
 | 3                 | 22.4s          | 88.6MB  | 1.2GB                  |
-
-
 
 ## HTTP compression
 
 Both the web UI and API provide HTTP compression (gzip) for clients that support it, including web browsers.
 This leads to quicker remote HTTP requests since less data is transmitted over the network.
 
-Gzip compression operates in real-time, meaning each HTTP request is compressed, which can increase CPU usage.
-In Mailpit, HTTP compression can be explicitly turned off by using the `--disable-http-compression` flag (@env `MP_DISABLE_HTTP_COMPRESSION=true`).
+Gzip compression operates in real time, meaning each HTTP request is compressed, which can increase CPU usage.
+In Mailpit, HTTP compression can be explicitly turned off by using the `--disable-http-compression` flag (or environment variable `MP_DISABLE_HTTP_COMPRESSION=true`).

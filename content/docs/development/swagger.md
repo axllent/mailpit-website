@@ -6,11 +6,11 @@ weight: 6
 ---
 
 Mailpit uses [go-swagger](https://github.com/go-swagger/go-swagger) to automatically generate the Swagger (v2) JSON file.
-This file is then used to display the API documentation within Mailpit typically visible on `http://localhost:8025/api/v1/`.
-You can view this from within the Mailpit web UI by clicking on the "About" (bottom left) and then "OpenAPI / Swagger API documentation".
+This file is then used to display the API documentation within Mailpit, typically visible at `http://localhost:8025/api/v1/`.
+You can view this from within the Mailpit web UI by clicking on "About" (bottom left) and then "OpenAPI / Swagger API documentation".
 
 Go-swagger uses specific inline comments within Mailpit's Go code to generate this spec file.
-For ease of use, I use a self-created Docker image (which ensures consistency) using the following command:
+For ease of use, a self-created Docker image is used (which ensures consistency) with the following command:
 
 ```shell
 docker run --rm -it \
