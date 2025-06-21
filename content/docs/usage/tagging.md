@@ -29,10 +29,10 @@ To enable TitleCasing for new tags, you can set the `--tags-title-case` flag or 
 
 Messages can be automatically tagged using any combination of the following methods:
 
-- Setting an `X-Tags` email header
-- Using "plus addressing"
-- Using word/phrase matches (filtering)
-- Username auto-tagging
+-   Setting an `X-Tags` email header
+-   Using "plus addressing"
+-   Using word/phrase matches (filtering)
+-   Username auto-tagging
 
 ### Disable auto-tagging
 
@@ -67,6 +67,10 @@ New messages can be automatically tagged using filters. Tag matches can also inc
 
 Unlike regular searching though, tag filters also try match a 1:1 on any part of the message, including all headers (for instance if you wanted to match by a particular hostname), whereas search only searches in certain header fields and body content. Messages can have multiple tags, and duplicate tags are ignored.
 
+{{< tip "warning" >}}
+When providing multiple words to a rule, Mailpit will try match all words in any order. If you want an exact phrase match, you must quote the search as you would in the web UI. See below for examples.
+{{< /tip >}}
+
 Tag filters can be set in Mailpit via two different methods:
 
 #### Set filters using a config
@@ -77,12 +81,18 @@ The structure of the yaml file should be as follows:
 
 ```yaml
 filters:
-    - match: this is a match
+    # match all words (in any order)
+    - match: search all words
       tags: Tag 1
+    # match to test@example.com
     - match: addressed:test@example.com
       tags: Tag 2
+    # match from@example.com and apply two tags
     - match: from:from@example.com
       tags: Tag 1, Tag 2
+    # match exact phrase - note double quoting!
+    - match: '"match this phrase"'
+      tags: Exact phrase
 ```
 
 Tags are comma-separated, so multiple tags can optionally be assigned per match.
@@ -92,7 +102,7 @@ Tags are comma-separated, so multiple tags can optionally be assigned per match.
 The `--tag "<syntax>"` (@env `MP_TAG="<syntax>"`) accepts a space-separated string format: `<tag>=<match> <tag>=<match>`, where `<tag>` is the name of the tag you wish to apply matching messages, and `<match>` is what to match on.
 
 ```shell
---tag 'user=user@example.com user2=from:user2@example.com "Scanned with antivirus"="X-Antivirus: "'
+--tag 'user=user@example.com user2=from:user2@example.com "Scanned with antivirus"="X-Antivirus: " "Exact phrase"='"the quoted phrase'"'
 ```
 
 In the above example all messages containing `user@example.com` are tagged with `user`, all messages **from** `user2@example.com` are tagged with `user2`, and all messages containing `X-Antivirus: ` are tagged with `Scanned with antivirus`.
@@ -103,6 +113,6 @@ Tags are split by a comma, so multiple tags can be assigned for a match using th
 
 Mailpit can automatically tag messages with the authenticated username (SMTP or HTTP) when the `--tags-username` flag or `MP_TAGS_USERNAME` environment variable is enabled. This is especially useful in multi-user environments, allowing you to easily filter and identify messages by user.
 
-- When enabled, a tag matching the username will be added to each message sent by an authenticated user.
-- Username tags appear alongside other tags in the web UI and can be used in search filters (e.g., `tag:"alice"`).
-- This feature works for both SMTP and HTTP authenticated users.
+-   When enabled, a tag matching the username will be added to each message sent by an authenticated user.
+-   Username tags appear alongside other tags in the web UI and can be used in search filters (e.g., `tag:"alice"`).
+-   This feature works for both SMTP and HTTP authenticated users.
