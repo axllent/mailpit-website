@@ -21,6 +21,10 @@ WAL (enabled by default) provides better performance, however is not compatible 
 Set this option if you intend to use persistent storage on a network volume.
 {{< /option >}}
 
+{{< option flag="disable-version-check" env="MP_DISABLE_VERSION_CHECK" added="v1.26.2" default="false" >}}
+Disable Mailpit's automatic version checking. When enabled, Mailpit will not contact GitHub to check for new releases.
+{{< /option >}}
+
 {{< option flag="compression" env="MP_COMPRESSION" added="v1.23.0" default="1" >}}
 Compression level to store raw messages in the database (0-3) ([see docs](../compression/).)
 {{< /option >}}
@@ -246,6 +250,10 @@ Enforces TitleCasing for all newly-created tags ([see docs](../../usage/tagging/
 
 {{< option flag="tags-disable" env="MP_TAGS_DISABLE" >}}
 Disable specific auto-tagging. This option takes a comma-separated list of options ([see docs](../../usage/tagging/#disable-auto-tagging)).
+{{< /option >}}
+
+{{< option flag="tags-username" env="MP_TAGS_USERNAME" default="false" added="v1.26.2" >}}
+Automatically tag messages with the authenticated username (SMTP or HTTP). Useful for multi-user environments to easily filter and identify messages by user. When enabled, a tag matching the username will be added to each message sent by an authenticated user.
 {{< /option >}}
 
 ## Prometheus metrics

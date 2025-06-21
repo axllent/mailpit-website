@@ -27,7 +27,12 @@ To enable TitleCasing for new tags, you can set the `--tags-title-case` flag or 
 
 ## Automatically tag messages
 
-Messages can be automatically tagged using any combination of three methods: setting an `X-Tags` email header, using "plus addressing", and via word/phrase matches (filtering) when receiving emails.
+Messages can be automatically tagged using any combination of the following methods:
+
+- Setting an `X-Tags` email header
+- Using "plus addressing"
+- Using word/phrase matches (filtering)
+- Username auto-tagging
 
 ### Disable auto-tagging
 
@@ -93,3 +98,11 @@ The `--tag "<syntax>"` (@env `MP_TAG="<syntax>"`) accepts a space-separated stri
 In the above example all messages containing `user@example.com` are tagged with `user`, all messages **from** `user2@example.com` are tagged with `user2`, and all messages containing `X-Antivirus: ` are tagged with `Scanned with antivirus`.
 
 Tags are split by a comma, so multiple tags can be assigned for a match using the following format: `"Tag 1, Tag2"="this is the match"`.
+
+### Username auto-tagging
+
+Mailpit can automatically tag messages with the authenticated username (SMTP or HTTP) when the `--tags-username` flag or `MP_TAGS_USERNAME` environment variable is enabled. This is especially useful in multi-user environments, allowing you to easily filter and identify messages by user.
+
+- When enabled, a tag matching the username will be added to each message sent by an authenticated user.
+- Username tags appear alongside other tags in the web UI and can be used in search filters (e.g., `tag:"alice"`).
+- This feature works for both SMTP and HTTP authenticated users.
