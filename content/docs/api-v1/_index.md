@@ -1,12 +1,11 @@
 ---
 title: API (v1)
-weight: 6
+weight: 8
 description: Mailpit API documentation and Swagger/OpenAPI 2.0 file
 ---
 
-Mailpit provides a simple REST API to access, search and delete stored messages. 
+Mailpit provides a simple REST API to access, search and delete stored messages.
 It also allows you to send messages via HTTP, modify message tags, and release messages via a preconfigured SMTP relay server.
-
 
 <p>
 {{< button "view.html" "Open the online API documentation" "btn-primary btn-lg" >}}
