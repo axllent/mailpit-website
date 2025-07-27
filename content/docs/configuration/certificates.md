@@ -28,3 +28,15 @@ openssl req -x509 -newkey rsa:4096 \
 -sha256 -days 3650 \
 -addext "subjectAltName = DNS:localhost"
 ```
+
+## Auto-generate self-signed certificates
+
+Mailpit allows you to automatically generate self-signed certificates by using the following comma-separated syntax when setting the TLS certificates for SMTP, HTTP and POP3: `sans:<hostname>[,<another-hostname>....]`
+
+You must use the same sans configuration for both the public and private keys, for example:
+
+```shell
+mailpit --smtp-tls-cert sans:localhost --smtp-tls-key sans:localhost
+```
+
+It is important to note that these auto-generated certificates will update every time Mailpit is restarted.
