@@ -4,38 +4,36 @@ description: Configuration options for the web UI & API, including HTTPS
 section: configuration
 keywords: [authentication, password, login, ssl, security, https]
 aliases:
-- /docs/configuration/https/
-- /docs/configuration/http-authentication/
+    - /docs/configuration/https/
+    - /docs/configuration/http-authentication/
 weight: 2
 ---
 
-The web UI & [API](../../api-v1/) share the same options as they are in fact both part of the HTTP server, ie: adding basic authentication or HTTPS includes both. 
+The web UI and [API](../../api-v1/) share the same configuration options, as both are part of the HTTP server. For example, enabling basic authentication or HTTPS applies to both.
 
-By default Mailpit web UI & API listens on port `8025` (eg: `http://localhost:8025`, depending on your environment).
+By default, the Mailpit web UI and API listen on port `8025` (e.g., `http://localhost:8025`, depending on your environment).
 
-When Mailpit is running, you should be able to open `http://localhost:8025` in your browser to view the web UI.
+When Mailpit is running, you should be able to open `http://localhost:8025` in your browser to access the web UI.
 
 ## Adding HTTPS
 
-HTTPS can be enabled for the web UI & API simply by providing Mailpit with an SSL key & certificate, depending on your requirements. Alternatively you could use a [HTTP proxy](../proxy/) if you are technically inclined.
+HTTPS can be enabled for the web UI and API by providing Mailpit with an SSL certificate and private key, depending on your requirements. Alternatively, you can use an [HTTP proxy](../proxy/) if you are technically inclined.
 
-For this you require **both** the SSL certificate and private key set in the Mailpit flags or environment variables, for example:
+You must provide **both** the SSL certificate and private key using Mailpit flags or environment variables. For example:
 
 ```shell
-mailpit --ui-tls-cert /path/to/cert.pem --ui-tls-key /path/to/key.pem 
+mailpit --ui-tls-cert /path/to/cert.pem --ui-tls-key /path/to/key.pem
 ```
 
-Certificates can be both [self-signed/generated](../certificates/) or signed certificates (if you have a valid domain name) obtained via sources like [Let's Encrypt](https://letsencrypt.org/).
+Certificates can be [self-signed/generated](../certificates/) or signed by a certificate authority (if you have a valid domain name), such as those obtained from [Let's Encrypt](https://letsencrypt.org/).
 
 {{< tip >}}
-You can also use a webserver to proxy requests through to Mailpit, [see here](../proxy/) for more details.
+You can also use a web server to proxy requests to Mailpit. [See here](../proxy/) for more details.
 {{< /tip >}}
-
 
 ## Adding basic authentication
 
-To add basic authentication login you must provide Mailpit with a valid [password file](../passwords/) using the `--ui-auth-file <password-file>` flag (@env: `MP_UI_AUTH_FILE=<password-file`), for example:
-
+To add basic authentication, provide Mailpit with a valid [password file](../passwords/) using the `--ui-auth-file <password-file>` flag (or environment variable `MP_UI_AUTH_FILE=<password-file>`). For example:
 
 ```shell
 mailpit --ui-auth-file /path/to/password-file
@@ -43,15 +41,13 @@ mailpit --ui-auth-file /path/to/password-file
 
 ### Passwords via environment
 
-You can optionally export the `MP_UI_AUTH` environment variable with a space-separated list of your credentials, eg: `MP_UI_AUTH="user1:password1 user2:password2"`. For security reasons this option is not available as a cli flag.
-
+You can optionally export the `MP_UI_AUTH` environment variable with a space-separated list of credentials, e.g., `MP_UI_AUTH="user1:password1 user2:password2"`. For security reasons, this option is not available as a CLI flag.
 
 ## Send API endpoint dedicated authentication
 
 Starting in **v1.26.0**, Mailpit supports dedicated authentication for the send message endpoint (`/api/v1/send`), allowing you to configure different authentication requirements for sending messages versus accessing other API endpoints or the web UI.
 
 This feature provides three configuration options:
-
 
 ### Dedicated send API endpoint credentials
 
@@ -62,10 +58,10 @@ mailpit --send-api-auth-file /path/to/send-api-password-file
 ```
 
 When configured this way:
-- The send API endpoint (`/api/v1/send`) requires the credentials from the send API endpoint password file
-- All other API endpoints and the web UI follow the standard UI authentication rules
-- send API endpoint credentials cannot be used to access other API endpoints or the web UI
 
+-   The send API endpoint (`/api/v1/send`) requires the credentials from the send API endpoint password file.
+-   All other API endpoints and the web UI follow the standard UI authentication rules.
+-   Send API endpoint credentials cannot be used to access other API endpoints or the web UI.
 
 ### Accept any credentials for send API
 
@@ -75,13 +71,11 @@ For testing environments, you can configure the send API endpoint to accept any 
 mailpit --send-api-auth-accept-any
 ```
 
-This option bypasses all authentication requirements for the send API endpoint endpoint only, while other API endpoints and the web UI continue to require proper authentication if configured.
-
+This option bypasses all authentication requirements for the send API endpoint only, while other API endpoints and the web UI continue to require proper authentication if configured.
 
 ### Fallback to UI authentication
 
 If no send endpoint authentication is specifically configured, the endpoint will fall back to using the same authentication requirements as the web UI and other API endpoints.
-
 
 ### Environment variables
 
@@ -90,7 +84,7 @@ You can also configure the send API endpoint authentication via environment vari
 ```shell
 # Set dedicated send API endpoint credentials
 MP_SEND_API_AUTH_FILE=/path/to/send-api-password-file
- 
+
 # Or provide credentials directly (space-separated list)
 MP_SEND_API_AUTH="senduser1:password1 senduser2:password2"
 
