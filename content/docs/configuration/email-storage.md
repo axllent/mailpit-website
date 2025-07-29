@@ -68,7 +68,6 @@ If you plan to run a **rqlite cluster behind a load balancer, or on Kubernetes i
 
 When sharing the same rqlite database between different Mailpit instances, you may wish to set a unique [tenant ID](#tenant-id) to isolate data.
 
-
 ### rqlite performance
 
 Performance of rqlite is generally very good, although database writes (storing messages received via SMTP) are slower compared to local SQLite storage (see above). This is in part due to the [raft](https://raft.github.io/) protocol used by rqlite to ensure consistency between rqlite nodes (even if you are just using a single node).
