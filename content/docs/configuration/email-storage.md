@@ -64,7 +64,10 @@ Mailpit will also automatically VACUUM your database when required, after 5 minu
 
 To use rqlite for database storage, you must have a connectable rqlite database already running, and connect to it by specifying the HTTP address and port of the server (e.g., `--database http://localhost:4001`). If you use authentication, this can be set using the `http://<user>:<password>@<host>:<port>` syntax.
 
+If you plan to run a **rqlite cluster behind a load balancer, or on Kubernetes in particular**, you should also disable cluster discovery using the `http://localhost:4001?disableClusterDiscovery=true` syntax.
+
 When sharing the same rqlite database between different Mailpit instances, you may wish to set a unique [tenant ID](#tenant-id) to isolate data.
+
 
 ### rqlite performance
 
