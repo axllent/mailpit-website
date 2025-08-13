@@ -174,6 +174,11 @@ Only allow SMTP recipients matching a regular expression. Use this to restrict i
 An example would be `--smtp-allowed-recipients '@example.com$'` to only allow emails sent to recipients ending in `@example.com`.
 {{< /option >}}
 
+{{< option flag="smtp-ignore-rejected-recipients" env="MP_SMTP_IGNORE_REJECTED_RECIPIENTS" added="v1.27.4" >}}
+Silently ignore messages sent to rejected recipients (see `smtp-allowed-recipients`).
+Messages to rejected recipients still receive a `250 OK` response, however the messages are ignored internally.
+{{< /option >}}
+
 {{< option flag="smtp-disable-rdns" env="MP_SMTP_DISABLE_RDNS" default="false" >}}
 Disable SMTP reverse DNS lookups.
 SMTP will by default try resolve the hostname of the IP address of the connecting client, however in test networks this can sometimes be problematic
