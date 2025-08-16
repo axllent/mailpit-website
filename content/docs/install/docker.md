@@ -11,7 +11,7 @@ For convenience, a [mirror copy](https://github.com/axllent/mailpit/pkgs/contain
 ## Supported tags
 
 -   The latest release can always be found using `axllent/mailpit` or `axllent/mailpit:latest`.
--   Stable releases are tagged with both the release tag (e.g., `axllent/mailpit:v.1.2.3`) as well as the minor release (e.g., `axllent/mailpit:v1.2`).
+-   Stable releases are tagged with both the release tag (e.g., `axllent/mailpit:v1.27.4`) as well as the minor release (e.g., `axllent/mailpit:v1.27`).
 -   Development builds include unreleased features and are tagged using the `axllent/mailpit:edge` tag. These should not be used in production.
 
 ## Usage
