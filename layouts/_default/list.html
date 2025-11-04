@@ -10,7 +10,7 @@
 			<i class="bi bi-list me-2"></i>
 			Documentation navigation
 		</button>
-		<h1>{{ .Title }}</h1>
+		<h1>{{ with .Params.heading }}{{ . }}{{ else }}{{ .Title }}{{ end }}</h1>
 		{{ .Content }}
 
 		{{ if .IsSection }}
