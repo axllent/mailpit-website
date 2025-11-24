@@ -28,6 +28,7 @@ override-from: <email-address> # optional - overrides the From email address
 allowed-recipients: '@example\.com$' # optional - limit allowed relay addresses or domains
 blocked-recipients: '@example2\.com$' # optional - prevent relating to addresses or domains
 preserve-message-ids: <true|false> # optional - preserve the original Message-IDs when relaying, default false
+forward-smtp-errors: <true|false> # optional - whether to log smtp-errors or forward them to upstream-client
 ```
 
 ### Notes
@@ -90,6 +91,8 @@ MP_SMTP_RELAY_OVERRIDE_FROM=<email-address>        # optional - overrides the Fr
 MP_SMTP_RELAY_ALLOWED_RECIPIENTS="@example\.com$"  # optional - regex to limit allowed relay addresses or domains via web UI & API
 MP_SMTP_RELAY_BLOCKED_RECIPIENTS="@example2\.com$" # optional - regex to prevent relaying to addresses or domains via web UI & API
 MP_SMTP_RELAY_PRESERVE_MESSAGE_IDS=<true|false>    # optional - preserve the original Message-IDs when relaying, default false
+MP_SMTP_RELAY_FWD_SMTP_ERRORS=<true|false>         # optional - whether to log smtp-errors or forward them to upstream-client
+
 ```
 
 For security reasons, these options are not available as CLI flags.
