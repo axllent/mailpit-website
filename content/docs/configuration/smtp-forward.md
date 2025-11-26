@@ -27,6 +27,7 @@ password: <password> # required for plain & login auth
 secret: <cram-secret> # required for cram-md5 auth
 return-path: <bounce-address> # optional - overrides Return-Path for all forwarded emails
 override-from: <email-address> # optional - overrides the From email address
+forward-smtp-errors: <true|false> # optional - whether to log smtp-errors or forward them to upstream-client
 ```
 
 ### Notes
@@ -72,6 +73,7 @@ MP_SMTP_FORWARD_PASSWORD=<password>                  # required for plain & logi
 MP_SMTP_FORWARD_SECRET=<cram-secret>                 # required for cram-md5 auth
 MP_SMTP_FORWARD_RETURN_PATH=<bounce-address>         # optional - overrides Return-Path for all released emails
 MP_SMTP_FORWARD_OVERRIDE_FROM=<email-address>        # optional - overrides the From email address
+MP_SMTP_FORWARD_FWD_SMTP_ERRORS=<true|false>         # optional - whether to log smtp-errors or forward them to upstream-client
 ```
 
 For security reasons, these options are not available as CLI flags.
