@@ -90,7 +90,7 @@ TLS key for web UI & API (ie: [HTTPS](../http/)). This option requires the `--ui
 {{< /option >}}
 
 {{< option flag="api-cors" env="MP_API_CORS" >}}
-Set API CORS Access-Control-Allow-Origin header if you require cross-domain browser requests.
+Specify one or more hosts for CORS Access-Control-Allow-Origin to permit cross-domain browser requests to the API ([see docs](../http/#cors-configuration)).
 {{< /option >}}
 
 {{< option flag="block-remote-css-and-fonts" env="MP_BLOCK_REMOTE_CSS_AND_FONTS" default="false" >}}
