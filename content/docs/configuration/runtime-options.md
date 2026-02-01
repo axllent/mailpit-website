@@ -90,7 +90,7 @@ TLS key for web UI & API (ie: [HTTPS](../http/)). This option requires the `--ui
 {{< /option >}}
 
 {{< option flag="api-cors" env="MP_API_CORS" >}}
-Set API CORS Access-Control-Allow-Origin header if you require cross-domain browser requests.
+Specify one or more hosts for CORS Access-Control-Allow-Origin to permit cross-domain browser requests to the API ([see docs](../http/#cors-configuration)).
 {{< /option >}}
 
 {{< option flag="block-remote-css-and-fonts" env="MP_BLOCK_REMOTE_CSS_AND_FONTS" default="false" >}}
@@ -277,4 +277,8 @@ Call a webhook when new messages are received ([see docs](../../integration/webh
 {{< option flag="webhook-limit" env="MP_WEBHOOK_LIMIT" default="1" >}}
 Rate limited webhook requests per second.
 To prevent potentially overloading the webhook server, this is rate limited by default to a maximum of 1 request per second ([see docs](../../integration/webhook/)).
+{{< /option >}}
+
+{{< option flag="webhook-delay" env="MP_WEBHOOK_DELAY" default="0" added="v1.29.0" >}}
+Delay in seconds before sending webhook requests.
 {{< /option >}}

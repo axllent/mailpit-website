@@ -115,3 +115,7 @@ The `--smtp-relay-matching` flag (or `MP_SMTP_RELAY_MATCHING` environment variab
 This option cannot be used in conjunction with `--smtp-relay-all`, and ignores the `allowed-recipients` option in your SMTP relay configuration.
 
 Any addresses matching `blocked-recipients` (if set) are silently ignored, however other remaining addresses will still be sent the message provided they match the `--smtp-relay-matching`.
+
+## Set default relay addresses
+
+Default relay addresses can be set in the Mailpit UI settings screen. These addresses are set per web browser (using local storage) and are only applied when manually releasing messages via the web UI.

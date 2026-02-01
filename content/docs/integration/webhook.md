@@ -23,3 +23,7 @@ To set a webhook URL, use the `--webhook-url <URL>` (@env `MP_WEBHOOK_URL=<url>`
 
 By default, Mailpit will rate-limit webhook calls to one request per second to prevent unintended DoS attacks when a burst of messages is received.
 You can increase the rate limit using the `--webhook-limit 5` (@env `MP_WEBHOOK_LIMIT=5`) option to allow one call every 5 seconds, or if you do not wish to rate limit at all, set `--webhook-limit 0`.
+
+## Delay
+
+You can also add a delay (in seconds) before each webhook call using the `--webhook-delay <seconds>` (@env `MP_WEBHOOK_DELAY=<seconds>`) option.

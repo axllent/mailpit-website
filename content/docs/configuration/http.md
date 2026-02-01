@@ -2,7 +2,7 @@
 title: Web UI & API server
 description: Configuration options for the web UI & API, including HTTPS
 section: configuration
-keywords: [authentication, password, login, ssl, security, https]
+keywords: [authentication, password, login, ssl, security, https, cors]
 aliases:
     - /docs/configuration/https/
     - /docs/configuration/http-authentication/
@@ -95,3 +95,16 @@ MP_SEND_API_AUTH_ACCEPT_ANY=true
 {{< tip "warning" >}}
 The `--send-api-auth-file` and `--send-api-auth-accept-any` options cannot be used together. Mailpit will refuse to start if both are configured.
 {{< /tip >}}
+
+## CORS configuration
+
+Cross-Origin Resource Sharing (CORS) for the Mailpit API and websocket can be configured using the `--api-cors "<hostname>"` flag (or environment variable `MP_API_CORS="<hostname>"`).
+Mailpit will always allow requests from the same origin (domain) as the web UI, so this option is only necessary if you are accessing the API or websocket from a different origin.
+
+Allowed hostnames must be provided as a comma-separated list. For example, to allow requests from `http://example.com` and `http://anotherdomain.com`, you would start Mailpit with:
+
+```shell
+mailpit --api-cors "example.com,anotherdomain.com"
+```
+
+If you set this to a `*` then Mailpit will allow requests from **any** origin. Use this option with caution, as it may expose your Mailpit instance to potential security risks. You cannot use origins containing wildcards for subdomains (e.g., `*.example.com`).

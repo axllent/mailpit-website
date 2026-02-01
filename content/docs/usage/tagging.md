@@ -17,7 +17,7 @@ Existing tags can also be renamed or deleted globally in the web UI (by clicking
 
 ## Allowed tag names
 
-Tags are limited to the following characters: `a-z`, `A-Z`, `0-9`, `-`, `.`, spaces, and `_`, and must be a minimum of 1 character.
+Tags are limited to the following characters: `a-z`, `A-Z`, `0-9`, `-`, `.`, spaces, `_` and `@`, and must be between 1 and 100 characters long.
 
 ## Enforcing TitleCase
 

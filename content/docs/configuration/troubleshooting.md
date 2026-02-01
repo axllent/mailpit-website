@@ -26,8 +26,4 @@ Mailpit has a default limit of 100 recipients per email. Many mail servers, incl
 
 If you are trying to access your Mailpit API via browser JavaScript from another domain, you will need to specifically allow CORS (cross-origin resource sharing) from that domain.
 
-By default, Mailpit does not set a CORS policy. The `Access-Control-Allow-Origin` header can be manually set (for API calls only), for example, via the `--api-cors "*"` flag or the `MP_API_CORS="*"` environment variable.
-
-## Errors returned when using busybox's sendmail implementation (e.g., Alpine Linux)
-
-This is an issue with that implementation of sendmail (see [issue #87](https://github.com/axllent/mailpit/issues/87#issuecomment-1502720004)).
+Please refer to the [CORS configuration documentation](../http/#cors-configuration) for more information.
