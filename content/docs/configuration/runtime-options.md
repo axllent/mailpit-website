@@ -278,3 +278,7 @@ Call a webhook when new messages are received ([see docs](../../integration/webh
 Rate limited webhook requests per second.
 To prevent potentially overloading the webhook server, this is rate limited by default to a maximum of 1 request per second ([see docs](../../integration/webhook/)).
 {{< /option >}}
+
+{{< option flag="webhook-delay" env="MP_WEBHOOK_DELAY" default="0" added="v1.29.0" >}}
+Delay in seconds before sending webhook requests.
+{{< /option >}}
