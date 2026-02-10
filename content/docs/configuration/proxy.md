@@ -33,10 +33,14 @@ If you are using a different location (such as `/mail/`), be sure to start Mailp
 
 For Apache, ensure you have the following modules enabled: `rewrite`, `proxy`, `proxy_http`, and `proxy_wstunnel`.
 
+**Please note** that you must include the `ProxyPreserveHost On` in your Apache configuration else Mailpit will block requests as a security precaution due to the `Origin` header not matching the hostname you are connecting to your Apache server with.
+
 ```apache
 <VirtualHost *:80>
     ServerName localhost
 
+    # preserve the original host header for security reasons
+    ProxyPreserveHost On
     ProxyPass "/" "http://172.17.0.1:8025/" # internal Mailpit address
     ProxyPassReverse "/" "http://172.17.0.1:8025/" # internal Mailpit address
 
