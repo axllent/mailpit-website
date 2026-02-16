@@ -9,6 +9,13 @@ While the Mailpit UI can be accessed directly when exposed to the network, you m
 In the following examples, the web server is configured to listen on "http://localhost" and the Mailpit server can be accessed from the running web server via
 `http://172.17.0.1:8025`. You will likely need to adjust this to suit your requirements.
 
+{{< tip "warning" >}}
+For security reasons, Mailpit (`>= v1.29.0`) will block requests if the `Origin` header does not match the hostname you are connecting to your proxy server with.
+Therefore, you must ensure that your proxy server is configured to **preserve** the original `Host` header when proxying requests to Mailpit.
+
+Alternatively you can run Mailpit using `--api-cors "<host-address>,<proxy-address>"` (e.g., `--api-cors "localhost,172.17.0.1"`), however this is not the recommended approach ([see docs](../http/#cors-configuration)).
+{{< /tip >}}
+
 ## Proxy via nginx
 
 ```nginx
@@ -17,6 +24,7 @@ server {
     server_name  localhost;
 
     location / {
+        proxy_set_header Host $http_host; # preserve original host header
         proxy_pass http://172.17.0.1:8025; # internal Mailpit address
 
         # configure the websocket
@@ -33,14 +41,11 @@ If you are using a different location (such as `/mail/`), be sure to start Mailp
 
 For Apache, ensure you have the following modules enabled: `rewrite`, `proxy`, `proxy_http`, and `proxy_wstunnel`.
 
-**Please note** that you must include the `ProxyPreserveHost On` in your Apache configuration else Mailpit will block requests as a security precaution due to the `Origin` header not matching the hostname you are connecting to your Apache server with.
-
 ```apache
 <VirtualHost *:80>
     ServerName localhost
 
-    # preserve the original host header for security reasons
-    ProxyPreserveHost On
+    ProxyPreserveHost On # preserve original host header
     ProxyPass "/" "http://172.17.0.1:8025/" # internal Mailpit address
     ProxyPassReverse "/" "http://172.17.0.1:8025/" # internal Mailpit address
 
@@ -58,7 +63,9 @@ Caddy is extremely easy to configure by simply setting `reverse_proxy 172.17.0.1
 
 ```text
 localhost:80 {
-    reverse_proxy 172.17.0.1:8025
+    reverse_proxy 172.17.0.1:8025 {
+        header_up Host {host}
+    }
 }
 ```
 
@@ -69,7 +76,9 @@ localhost:80 {
     redir /mailpit /mailpit/
     handle_path /mailpit/* {
         rewrite * /mailpit{path}
-        reverse_proxy 172.17.0.1:8025
+        reverse_proxy 172.17.0.1:8025 {
+            header_up Host {host}
+        }
     }
 }
 ```
