@@ -13,5 +13,9 @@ However, there are a few limitations to be aware of:
 3. Email clients such as Outlook insert custom "html" elements (e.g., `<o:p>`) into HTML messages. This breaks the screenshot utility. To work around this, all HTML elements matching `<o:...` are either rewritten as regular elements or removed, depending on whether they contain any data. This may result in slightly different line spacing than what you see in your preview.
 
 {{< tip "warning" >}}
+For security reasons, Mailpit will (by default) **block** all proxied requests to internal (non-public) networks, including loopback, private, unicast & multicast addresses. This is to prevent SSRF (Server-Side Request Forgery) attacks, which can be used to access internal services or resources that are not intended to be exposed. If you trust all traffic to your Mailpit instance, or use authentication to restrict access to your Mailpit instance, you can disable this using `--allow-internal-http-requests` (or the `MP_ALLOW_INTERNAL_HTTP_REQUESTS=true` environment setting).
+{{< /tip >}}
+
+{{< tip "warning" >}}
 Mailpit will, by default, require valid HTTPS certificates for all assets (images, etc.) contained within an HTML message. You can disable this using `--allow-untrusted-tls` (or the `MP_ALLOW_UNTRUSTED_TLS=true` environment setting).
 {{< /tip >}}
