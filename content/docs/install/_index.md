@@ -12,9 +12,9 @@ Mailpit runs as a single binary and can be installed in different ways:
 
 ## Install via package managers
 
--   **Mac**: `brew install mailpit` (to run automatically in the background: `brew services start mailpit`)
--   **Arch Linux**: available in the AUR as `mailpit`
--   **FreeBSD**: `pkg install mailpit`
+- **Mac**: `brew install mailpit` (to run automatically in the background: `brew services start mailpit`)
+- **Arch Linux**: available in the AUR as `mailpit`
+- **FreeBSD**: `pkg install mailpit`
 
 ## Install via script (Linux & Mac)
 
@@ -27,7 +27,7 @@ sudo sh < <(curl -sL https://raw.githubusercontent.com/axllent/mailpit/develop/i
 You can also change the install path to something else by setting the `INSTALL_PATH` environment variable, for example:
 
 ```shell
-INSTALL_PATH=/usr/bin sudo sh < <(curl -sL https://raw.githubusercontent.com/axllent/mailpit/develop/install.sh)
+sudo INSTALL_PATH=/usr/bin sh < <(curl -sL https://raw.githubusercontent.com/axllent/mailpit/develop/install.sh)
 ```
 
 ## Download static binary (Windows, Linux, and Mac)

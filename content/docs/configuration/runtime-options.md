@@ -98,6 +98,10 @@ Block all browser access to remote CSS and fonts imported via message stylesheet
 Mailpit uses the HTTP Content Security Policy (CSP) method to block these. This does not block remote images or clicking on external links.
 {{< /option >}}
 
+{{< option flag="allow-internal-http-requests" env="MP_ALLOW_INTERNAL_HTTP_REQUESTS" default="false" added="v1.29.2" >}}
+Allow Link Check and UI Screenshot to access internal (non-public) IPs when checking links or fetching remote assets (images, stylesheets, etc.). This is required for those features to work in test environments that use internal hostnames or IPs. Use caution in production - enabling this can allow SSRF (Server‑Side Request Forgery) if both your Mailpit UI and SMTP are reachable by untrusted users.
+{{< /option >}}
+
 {{< option flag="enable-spamassassin" env="MP_ENABLE_SPAMASSASSIN" default="false" >}}
 Enable SpamAssassin integration for message spamminess score ([see docs](../spamassassin/)).
 {{< /option >}}
@@ -110,7 +114,7 @@ Do not verify HTTPS certificates for either link checker & screenshot generation
 Disable HTTP compression support in the web UI and API ([see docs](../compression/)).
 {{< /option >}}
 
-{{< option flag="hide-delete-all-button" env="MP_HIDE_DELETE_ALL_BUTTON" default="false" added="v1.25.0"  >}}
+{{< option flag="hide-delete-all-button" env="MP_HIDE_DELETE_ALL_BUTTON" default="false" added="v1.25.0" >}}
 Hides the "Delete all" button in the web UI. This can be useful if you explicitly do not want your users to use this feature
 ([see docs](../../usage/deleting-messages/#manually-deleting-messages)).
 {{< /option >}}
