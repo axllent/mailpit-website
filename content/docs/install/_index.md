@@ -2,6 +2,7 @@
 title: Installation
 weight: 1
 description: Mailpit installation instructions via different methods including Brew and Docker
+keywords: [install, installation, brew]
 ---
 
 {{< tip >}}
@@ -24,10 +25,16 @@ Linux & Mac users can install it directly to `/usr/local/bin/mailpit` with:
 sudo sh < <(curl -sL https://raw.githubusercontent.com/axllent/mailpit/develop/install.sh)
 ```
 
-You can also change the install path to something else by setting the `INSTALL_PATH` environment variable, for example:
+If you wish to change the install path to something else, you can set the `INSTALL_PATH` environment variable, for example:
 
 ```shell
 sudo INSTALL_PATH=/usr/bin sh < <(curl -sL https://raw.githubusercontent.com/axllent/mailpit/develop/install.sh)
+```
+
+If you need to use a Github token you can set the `GITHUB_TOKEN` environment variable:
+
+```shell
+sudo GITHUB_TOKEN="your_token_here" sh < <(curl -sL https://raw.githubusercontent.com/axllent/mailpit/develop/install.sh)
 ```
 
 ## Download static binary (Windows, Linux, and Mac)
