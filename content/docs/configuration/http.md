@@ -59,9 +59,9 @@ mailpit --send-api-auth-file /path/to/send-api-password-file
 
 When configured this way:
 
--   The send API endpoint (`/api/v1/send`) requires the credentials from the send API endpoint password file.
--   All other API endpoints and the web UI follow the standard UI authentication rules.
--   Send API endpoint credentials cannot be used to access other API endpoints or the web UI.
+- The send API endpoint (`/api/v1/send`) requires the credentials from the send API endpoint password file.
+- All other API endpoints and the web UI follow the standard UI authentication rules.
+- Send API endpoint credentials cannot be used to access other API endpoints or the web UI.
 
 ### Accept any credentials for send API
 
@@ -107,4 +107,10 @@ Allowed hostnames must be provided as a comma-separated list. For example, to al
 mailpit --api-cors "example.com,anotherdomain.com"
 ```
 
-If you set this to a `*` then Mailpit will allow requests from **any** origin. Use this option with caution, as it may expose your Mailpit instance to potential security risks. You cannot use origins containing wildcards for subdomains (e.g., `*.example.com`).
+Please note that if your hostnames include port numbers, you should include the port number when configuring CORS. For example, to allow requests from `http://example.com:8080`, you would use:
+
+```shell
+mailpit --api-cors "example.com:8080"
+```
+
+If you set your CORS to a `*` then Mailpit will allow requests from **any** origin and port. Use this option with caution, as it may expose your Mailpit instance to potential security risks. You cannot use origins containing wildcards for subdomains (e.g., `*.example.com`).
