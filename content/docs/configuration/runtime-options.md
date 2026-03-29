@@ -25,11 +25,16 @@ Set this option if you intend to use persistent storage on a network volume.
 Disable Mailpit's automatic version checking. When enabled, Mailpit will not contact GitHub to check for new releases.
 {{< /option >}}
 
+{{< option flag="disable-auto-vacuum" env="MP_DISABLE_AUTO_VACUUM" added="v1.29.5" default="false" >}}
+Disable automatic VACUUMing of the local SQLite database. This is not recommended as it may lead to increased database file size and reduced performance over time
+([see docs](../email-storage/#automated-message-pruning)).
+{{< /option >}}
+
 {{< option flag="compression" env="MP_COMPRESSION" added="v1.23.0" default="1" >}}
 Compression level to store raw messages in the database (0-3) ([see docs](../compression/).)
 {{< /option >}}
 
-{{< option flag="label" env="MP_LABEL" added=" v1.18.7" >}}
+{{< option flag="label" env="MP_LABEL" >}}
 Set an optional label to identify this Mailpit instance. This adds the label to the web UI, SMTP and POP3 servers.
 {{< /option >}}
 

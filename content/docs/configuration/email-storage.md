@@ -54,7 +54,7 @@ This value can be adjusted using the `--max <value>` flag (or environment variab
 Another option is to automatically delete messages after a certain time using the `--max-age <value>` flag (or environment variable `MP_MAX_AGE=<value>`), where `<value>` is either a value in hours (e.g., `36h`) or days (e.g., `14d`). The `h` or `d` is required in the value.
 This option can be used together with, or instead of, the `--max` option.
 
-Mailpit will also automatically VACUUM your database when required, after 5 minutes of database inactivity.
+Mailpit will by default automatically VACUUM your database when required; after 5 minutes of database inactivity and when at least 1% of the total storage size has been deleted. A database VACUUM is a CPU-intensive operation, and rebuilds the entire database file. Auto VACUUMing can be disabled using the `--disable-auto-vacuum` flag (or environment variable `MP_DISABLE_AUTO_VACUUM=true`), however this is not recommended as it will lead to increased database file size over time (unless of course you have an external process to run a VACUUM).
 
 ## Remote storage (rqlite)
 
