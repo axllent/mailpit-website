@@ -23,7 +23,7 @@ which can lead to SQLite locking errors.
 
 ### Performance
 
-Testing has shown that Mailpit can store between 100–200 emails per second over SMTP, depending on CPU, disk speed, network speed, and email size.
+Testing has shown that Mailpit can store between 200-300 emails per second over SMTP, depending on CPU, disk speed, network speed, and email size.
 The database has been tested with over 135,000 emails and still performs well.
 
 By default, raw messages are stored compressed (zstd) in the database to conserve space, but this comes at the cost of additional RAM and CPU usage to process the data.
