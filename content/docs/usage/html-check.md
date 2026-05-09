@@ -11,13 +11,13 @@ Support for HTML/CSS messages varies greatly across email clients. HTML check at
 
 ## How does it work?
 
-Internally, the original HTML message is run against over 175 different HTML and CSS tests. All tests (except for `<script>`) correspond to a test on [caniemail.com](https://caniemail.com), and the final score is calculated using the available compatibility data.
+The HTML message is tested against over 175 HTML and CSS checks. All checks (except `<script>`) map to a test on [caniemail.com](https://caniemail.com), and the final score is derived from that compatibility data.
 
-CSS support is very difficult to programmatically test, especially if a message contains CSS style blocks or is linked to remote stylesheets. Remote stylesheets are, unless blocked via `--block-remote-css-and-fonts`, downloaded and injected into the message as style blocks. The email is then inlined to matching HTML elements. This gives Mailpit fairly accurate results.
+**Remote stylesheets** are automatically downloaded and injected as inline styles (unless blocked via `--block-remote-css-and-fonts`), which gives Mailpit reasonably accurate CSS results. Note that internal IP addresses are blocked by default - to test emails that reference stylesheets on internal servers, enable `--allow-internal-http-requests` (env: `MP_ALLOW_INTERNAL_HTTP_REQUESTS=true`).
 
-CSS properties such as `@font-face`, `:visited`, `:hover`, etc. cannot be inlined, so these are searched for within CSS blocks. This method is not accurate, as Mailpit does not know how many nodes it actually applies to, if any, so they are weighted lightly (5%) so as not to affect the score. An example of this would be any email linking to the full Bootstrap CSS, which contains dozens of unused attributes.
+**CSS that cannot be inlined** - properties like `@font-face`, `:visited`, and `:hover` - cannot be applied to specific elements, so Mailpit searches for them within CSS blocks instead. Since it cannot determine how many elements they actually affect, these checks are weighted lightly (5%) to limit their impact on the score. This is particularly relevant for emails that include large frameworks like Bootstrap, which typically contain many unused rules.
 
-All warnings are displayed with their respective support, including any specific notes, and it is up to you to decide what you do with that information and how badly it may impact your message.
+Warnings are shown with their compatibility details and any relevant notes. How much weight you give them is up to you.
 
 ## Is the final score accurate?
 
@@ -27,9 +27,9 @@ For each test, Mailpit calculates both the unsupported and partially-supported p
 
 To explain this logic in very simple terms: Assuming a `<script>` node (element) has 100% failure (not supported in any email client), and a `<p>` node has 100% pass (supported).
 
--   An email containing just a single `<script>`: the final score is 0% supported.
--   An email containing just a `<script>` and a `<p>`: the final score is 50% supported.
--   An email containing just a `<script>` and two `<p>`: the final score is 66.67% supported.
+- An email containing just a single `<script>`: the final score is 0% supported.
+- An email containing just a `<script>` and a `<p>`: the final score is 50% supported.
+- An email containing just a `<script>` and two `<p>`: the final score is 66.67% supported.
 
 Mailpit will sort the warnings according to their weighted unsupported scores.
 
