@@ -52,6 +52,10 @@ Maximum age of messages to store in either (h)ours or (d)ays. Mailpit will perio
 The value must be either in hours (eg: `--max-age 36h`) or days (eg: `--max-age 14d`) ([see docs](../email-storage/#automated-message-pruning)).
 {{< /option >}}
 
+{{< option flag="max-message-size" env="MP_MAX_MESSAGE_SIZE" added="v1.30.0" default="50" >}}
+Maximum size in MB of messages to accept via SMTP & API. Messages larger than this will be rejected.
+{{< /option >}}
+
 {{< option flag="use-message-dates" env="MP_USE_MESSAGE_DATES" default="false" >}}
 Use message header date as the Mailpit received date & time instead of the SMTP-received date & time.
 {{< /option >}}
