@@ -37,6 +37,9 @@ Each message is stored as a separate file (plain text), and existing messages in
 
 Existing dumps are only appended to, and no messages are ever deleted from either the Mailpit database or the local backup folder.
 
+Please note that there is a default limit of 50MB for the total size of messages to be dumped, which can be overridden by passing the `--max-message-size <MB>` flag.
+This is both a security measure, as well as an optional feature to allow you to exclude very large messages.
+
 ### Dump via network / API
 
 If you wish to dump messages from a running Mailpit instance (local or remote), you can export all messages over HTTP (via the API).

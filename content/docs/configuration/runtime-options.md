@@ -25,11 +25,16 @@ Set this option if you intend to use persistent storage on a network volume.
 Disable Mailpit's automatic version checking. When enabled, Mailpit will not contact GitHub to check for new releases.
 {{< /option >}}
 
+{{< option flag="disable-auto-vacuum" env="MP_DISABLE_AUTO_VACUUM" added="v1.29.5" default="false" >}}
+Disable automatic VACUUMing of the local SQLite database. This is not recommended as it may lead to increased database file size and reduced performance over time
+([see docs](../email-storage/#automated-message-pruning)).
+{{< /option >}}
+
 {{< option flag="compression" env="MP_COMPRESSION" added="v1.23.0" default="1" >}}
 Compression level to store raw messages in the database (0-3) ([see docs](../compression/).)
 {{< /option >}}
 
-{{< option flag="label" env="MP_LABEL" added=" v1.18.7" >}}
+{{< option flag="label" env="MP_LABEL" >}}
 Set an optional label to identify this Mailpit instance. This adds the label to the web UI, SMTP and POP3 servers.
 {{< /option >}}
 
@@ -45,6 +50,10 @@ Set to `0` to disable auto-deletion ([see docs](../email-storage/#automated-mess
 {{< option flag="max-age" env="MP_MAX_AGE" >}}
 Maximum age of messages to store in either (h)ours or (d)ays. Mailpit will periodically delete the oldest messages if greater than this.
 The value must be either in hours (eg: `--max-age 36h`) or days (eg: `--max-age 14d`) ([see docs](../email-storage/#automated-message-pruning)).
+{{< /option >}}
+
+{{< option flag="max-message-size" env="MP_MAX_MESSAGE_SIZE" added="v1.30.0" default="50" >}}
+Maximum size in MB of messages to accept via SMTP & API. Messages larger than this will be rejected.
 {{< /option >}}
 
 {{< option flag="use-message-dates" env="MP_USE_MESSAGE_DATES" default="false" >}}
@@ -99,7 +108,7 @@ Mailpit uses the HTTP Content Security Policy (CSP) method to block these. This 
 {{< /option >}}
 
 {{< option flag="allow-internal-http-requests" env="MP_ALLOW_INTERNAL_HTTP_REQUESTS" default="false" added="v1.29.2" >}}
-Allow Link Check and UI Screenshot to access internal (non-public) IPs when checking links or fetching remote assets (images, stylesheets, etc.). This is required for those features to work in test environments that use internal hostnames or IPs. Use caution in production - enabling this can allow SSRF (Server‑Side Request Forgery) if both your Mailpit UI and SMTP are reachable by untrusted users.
+Allow Link Check, HTML Check and UI Screenshot to access internal (non-public) IPs when checking links or fetching remote assets (images, stylesheets, etc.). This is required for those features to work in test environments that use internal hostnames or IPs. Use caution in production - enabling this could allow SSRF (Server‑Side Request Forgery) if your Mailpit UI or SMTP are reachable by untrusted users.
 {{< /option >}}
 
 {{< option flag="enable-spamassassin" env="MP_ENABLE_SPAMASSASSIN" default="false" >}}
