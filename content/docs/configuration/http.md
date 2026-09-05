@@ -2,7 +2,7 @@
 title: Web UI & API server
 description: Configuration options for the web UI & API, including HTTPS
 section: configuration
-keywords: [authentication, password, login, ssl, security, https, cors]
+keywords: [authentication, password, login, ssl, security, https, cors, dns rebinding, allowed hosts]
 aliases:
     - /docs/configuration/https/
     - /docs/configuration/http-authentication/
@@ -114,3 +114,29 @@ mailpit --api-cors "example.com:8080"
 ```
 
 If you set your CORS to a `*` then Mailpit will allow requests from **any** origin and port. Use this option with caution, as it may expose your Mailpit instance to potential security risks. You cannot use origins containing wildcards for subdomains (e.g., `*.example.com`).
+
+## DNS rebinding mitigation
+
+Because Mailpit is normally accessed under whichever hostname the operator chooses (CI service names, container hostnames, reverse proxies, intranet DNS), the built-in same-origin check accepts any request whose `Origin` header matches its `Host` header. Both of those headers are supplied by the browser, so a page under an attacker-controlled DNS name can be tricked (via DNS rebinding) into sending matching `Host` and `Origin` values pointing at a reachable Mailpit instance, which would otherwise satisfy the same-origin branch of the CORS check.
+
+Starting in **v1.31.1**, Mailpit supports an optional `Host` header allowlist that is evaluated **before** the CORS check. When configured, any request whose `Host` header falls outside the allowlist is rejected with `403 Forbidden`, regardless of the `Origin` header. This anchors the trust decision on a value the operator has independently declared trustworthy, which a rebinding attacker cannot forge.
+
+To enable it, pass `--allowed-hosts` (or set `MP_ALLOWED_HOSTS`) as a comma-separated list of the hostnames you expect to see in the `Host` header:
+
+```shell
+mailpit --allowed-hosts "mailpit.example.com,mailpit.internal:8025"
+```
+
+Matching rules:
+
+- Entries that include a port match `host:port` **exactly**. `mailpit.internal:8025` will not match a request to `mailpit.internal:9000`.
+- Entries **without** a port match any port. `mailpit.example.com` matches both `mailpit.example.com` and `mailpit.example.com:8025`.
+- Matching is case-insensitive.
+- Loopback names and addresses (`localhost`, `127.0.0.1`, `::1`) are **always** allowed regardless of what you configure, so local development flows continue to work. DNS rebinding cannot target these, as no attacker controls DNS for loopback.
+- Requests whose `Host` header is a raw IP address (e.g., `192.168.1.5:8025` or `[2001:db8::1]:8025`) are also **always** allowed. DNS rebinding produces a `Host` header containing the attacker's DNS name, never a raw IP, and a cross-origin fetch that targets an IP directly is already stopped by the CORS same-origin check on the `Origin` header. Direct-IP access to Mailpit from your LAN or Docker network therefore continues to work without listing the IP explicitly.
+
+When `--allowed-hosts` is unset (the default), the previous behaviour is preserved and any `Host` header is accepted, so existing CI, docker, proxy and intranet deployments continue to work without changes.
+
+{{< tip >}}
+Mailpit will log a warning at startup when it is bound to a non-loopback interface without either `--allowed-hosts` or `--ui-auth-file` set. For any deployment reachable from an untrusted network, we recommend enabling one of the two, or both.
+{{< /tip >}}
