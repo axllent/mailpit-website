@@ -82,6 +82,11 @@ Verbose logging (debug)
 HTTP bind interface and port for UI.
 {{< /option >}}
 
+{{< option flag="allowed-hosts" env="MP_ALLOWED_HOSTS" added="v1.31.1" >}}
+Comma-separated allowlist of `Host` header values to mitigate DNS-rebinding attacks against the API and websocket ([see docs](../http/#dns-rebinding-mitigation)).
+When unset (the default), any `Host` header is accepted.
+{{< /option >}}
+
 {{< option flag="webroot" env="MP_WEBROOT" default="/" >}}
 Set the webroot for web UI & API, for example `mail` would result in `http://0.0.0.0:8025/mail/`.
 {{< /option >}}
