@@ -1,5 +1,5 @@
 baseURL: 'https://mailpit.axllent.org/'
-languageCode: 'en'
+locale: 'en'
 title: 'Mailpit'
 outputs:
   home:

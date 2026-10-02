@@ -1,7 +1,7 @@
 {{/* Load Bootstrap SCSS. */}}
-{{ $options := dict "enableSourceMap" true }}
+{{ $options := dict "enableSourceMap" true "includePaths" (slice "node_modules") }}
 {{- if hugo.IsProduction}}
-{{ $options := dict "enableSourceMap" false "outputStyle" "compressed" }}
+{{ $options := dict "enableSourceMap" false "outputStyle" "compressed" "includePaths" (slice "node_modules") }}
 {{ end }}
 {{ $styles := resources.Get "css/main.scss" }}
 {{ $styles = $styles | css.Sass $options }}
