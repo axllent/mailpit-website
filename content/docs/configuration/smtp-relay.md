@@ -25,6 +25,7 @@ password: <password> # required for plain & login auth
 secret: <cram-secret> # required for cram-md5 auth
 return-path: <bounce-address> # optional - overrides Return-Path for all released emails
 override-from: <email-address> # optional - overrides the From email address
+subject-prefix: <text> # optional - text to prepend to the Subject of all relayed emails
 allowed-recipients: '@example\.com$' # optional - limit allowed relay addresses or domains
 blocked-recipients: '@example2\.com$' # optional - prevent relating to addresses or domains
 preserve-message-ids: <true|false> # optional - preserve the original Message-IDs when relaying, default false
@@ -40,7 +41,7 @@ To preserve (keep) the original Message-IDs when relaying, set `preserve-message
 The `return-path` configuration option will add or overwrite the `Return-Path` for all messages relayed via the web UI and API.
 This is useful for providing a valid email address to catch any accidental bounces and prevent SPF errors for email domain names.
 Servers such as Gmail have become very strict about the mail they accept, and unresolvable Return-Path addresses, or unauthorised Return-Path addresses (SPF / DMARC) get rejected very easily.
-Also see [Override From](#override-from) to change the `From` email address on all relayed messages.
+Also see [Override From](#override-from) to change the `From` email address on all relayed messages, and [Subject prefix](#subject-prefix) to prepend text to the `Subject`.
 
 #### Override From
 
@@ -72,6 +73,27 @@ The optional `blocked-recipients` allows you to set a regular expression (Go for
 
 Please note that the regular expression should be written in the Go format and quoted with single apostrophes (`'`) to avoid parsing errors. You can use https://regex101.com/r/mfbicW/1 as a playground to test your expression.
 
+#### Subject prefix
+
+To make it clear that a message was sent from a test system, set `subject-prefix` and Mailpit will prepend it to the `Subject` of all relayed messages.
+The prefix is trimmed of leading and trailing whitespace, and is always separated from the original subject by a single space.
+It cannot contain line breaks.
+
+For example, if set to `[TEST]`, then this will change
+
+```shell
+Subject: Purchase Order Request XYZ1234
+```
+
+to
+
+```shell
+Subject: [TEST] Purchase Order Request XYZ1234
+```
+
+Encoded subjects (RFC 2047) are decoded before the prefix is added, and the result is re-encoded if it contains non-ASCII characters.
+If a message has no `Subject`, it will be set to the prefix alone.
+
 #### Setting via environment
 
 For convenience, the entire relay configuration can be set via environment variables. The only required value is the `MP_SMTP_RELAY_HOST` field, otherwise all other values are ignored.
@@ -88,6 +110,7 @@ MP_SMTP_RELAY_PASSWORD=<password>                  # required for plain & login 
 MP_SMTP_RELAY_SECRET=<cram-secret>                 # required for cram-md5 auth
 MP_SMTP_RELAY_RETURN_PATH=<bounce-address>         # optional - overrides Return-Path for all released emails
 MP_SMTP_RELAY_OVERRIDE_FROM=<email-address>        # optional - overrides the From email address
+MP_SMTP_RELAY_SUBJECT_PREFIX=<text>                # optional - text to prepend to the Subject of all released emails
 MP_SMTP_RELAY_ALLOWED_RECIPIENTS="@example\.com$"  # optional - regex to limit allowed relay addresses or domains via web UI & API
 MP_SMTP_RELAY_BLOCKED_RECIPIENTS="@example2\.com$" # optional - regex to prevent relaying to addresses or domains via web UI & API
 MP_SMTP_RELAY_PRESERVE_MESSAGE_IDS=<true|false>    # optional - preserve the original Message-IDs when relaying, default false
