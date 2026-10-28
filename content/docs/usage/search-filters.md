@@ -38,10 +38,10 @@ Search filters can be combined:
 -   `!has:inline` - does not contain an inline image
 -   `is:tagged` - messages having at least one tag
 -   `!is:tagged` - messages having no tags
--   `larger:2M` - messages larger than 2MB (valid units are `K`, `KB`, `M` & `MB`)
+-   `larger:2M` - messages of at least 2MB (valid units are `K`, `KB`, `M` & `MB`)
 -   `smaller:1.5MB` - messages smaller than 1.5MB (valid units are `K`, `KB`, `M` & `MB`)
 -   `before:2024/04/01` - messages before 1 April 2024 ([see notes](#searching-by-date))
--   `after:2024/04/01` - messages after 1 April 2024 ([see notes](#searching-by-date))
+-   `after:2024/04/01` - messages on or after 1 April 2024 ([see notes](#searching-by-date))
 
 ## Searching by date
 
@@ -49,6 +49,8 @@ Mailpit can filter for messages older (`before:<date>`) or newer (`after:<date>`
 
 The web UI will also pass on your local [timezone identifier](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones) set by your PC as there is no guarantee that the Mailpit server is running in the same timezone as you (eg: Docker runs by default in UTC unless manually set).
 The timezone identifier can be changed in the Mailpit web UI settings.
+
+The `after:` date is inclusive and the `before:` date is exclusive, so a message dated exactly at the given date and time matches `after:` but not `before:`. A date without a time is treated as midnight at the start of that day, so `before:2024/04/01` matches messages up to the end of 31 March 2024, and `after:2024/04/01` matches messages from the start of 1 April 2024. The negated forms are the exact opposite: `!before:<date>` is equivalent to `after:<date>`, and `!after:<date>` is equivalent to `before:<date>`.
 
 Invalid date formats are ignored and logged in the Mailpit log.
 
