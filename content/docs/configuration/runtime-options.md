@@ -124,6 +124,10 @@ Disable the rate limit for link checking ([see docs](../../usage/link-check/#rat
 Enable SpamAssassin integration for message spamminess score ([see docs](../spamassassin/)).
 {{< /option >}}
 
+{{< option flag="enable-rspamd" env="MP_ENABLE_RSPAMD" default="false" added="v1.33.0" >}}
+Enable Rspamd integration for message spamminess score. Accepts `<host>:<port>` or a URL, optionally including the password as `https://<password>@<host>:<port>` ([see docs](../rspamd/)).
+{{< /option >}}
+
 {{< option flag="allow-untrusted-tls" env="MP_ALLOW_UNTRUSTED_TLS" default="false" >}}
 Do not verify HTTPS certificates for either link checker & screenshot generation.
 {{< /option >}}

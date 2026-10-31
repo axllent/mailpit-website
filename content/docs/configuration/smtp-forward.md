@@ -27,6 +27,7 @@ password: <password> # required for plain & login auth
 secret: <cram-secret> # required for cram-md5 auth
 return-path: <bounce-address> # optional - overrides Return-Path for all forwarded emails
 override-from: <email-address> # optional - overrides the From email address
+subject-prefix: <text> # optional - text to prepend to the Subject of all forwarded emails
 forward-smtp-errors: <true|false> # optional - whether to log smtp-errors or forward them to upstream-client
 ```
 
@@ -36,7 +37,7 @@ The `return-path` configuration option will add or overwrite the `Return-Path` f
 This is useful for providing a valid email address to catch any accidental bounces and prevent SPF errors for email domain names.
 Servers such as Gmail have become very strict about the mail they accept, and unresolvable Return-Path addresses, or unauthorised Return-Path addresses (SPF / DMARC) get rejected very easily.
 
-Also see [Override From](#override-from) to change the `From` email address on all forwarded messages.
+Also see [Override From](#override-from) to change the `From` email address on all forwarded messages, and [Subject prefix](#subject-prefix) to prepend text to the `Subject`.
 
 #### Override From
 
@@ -56,6 +57,27 @@ X-Original-From: original@example.com
 From: "Original Recipient" <me@mydomain.com>
 ```
 
+#### Subject prefix
+
+To make it clear that a message was sent from a test system, set `subject-prefix` and Mailpit will prepend it to the `Subject` of all forwarded messages.
+The prefix is trimmed of leading and trailing whitespace, and is always separated from the original subject by a single space.
+It cannot contain line breaks.
+
+For example, if set to `[TEST]`, then this will change
+
+```shell
+Subject: Purchase Order Request XYZ1234
+```
+
+to
+
+```shell
+Subject: [TEST] Purchase Order Request XYZ1234
+```
+
+Encoded subjects (RFC 2047) are decoded before the prefix is added, and the result is re-encoded if it contains non-ASCII characters.
+If a message has no `Subject`, it will be set to the prefix alone.
+
 #### Setting via environment
 
 For convenience, the entire forwarding configuration can be set via environment variables. The only required values are the `MP_FORWARD_TO` & `MP_SMTP_FORWARD_HOST` fields.
@@ -73,6 +95,7 @@ MP_SMTP_FORWARD_PASSWORD=<password>                  # required for plain & logi
 MP_SMTP_FORWARD_SECRET=<cram-secret>                 # required for cram-md5 auth
 MP_SMTP_FORWARD_RETURN_PATH=<bounce-address>         # optional - overrides Return-Path for all released emails
 MP_SMTP_FORWARD_OVERRIDE_FROM=<email-address>        # optional - overrides the From email address
+MP_SMTP_FORWARD_SUBJECT_PREFIX=<text>                # optional - text to prepend to the Subject of all forwarded emails
 MP_SMTP_FORWARD_FWD_SMTP_ERRORS=<true|false>         # optional - whether to log smtp-errors or forward them to upstream-client
 ```
 
