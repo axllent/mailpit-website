@@ -1,10 +1,11 @@
 ---
-title: Spam analysis
-description: Spam analysis will test a message for "spamminess" using a running SpamAssassin or Rspamd server
+title: Spam check
+description: Spam check will test a message for "spamminess" using a running SpamAssassin or Rspamd server
 section: usage
 weight: 5
 aliases:
     - /docs/usage/spamassassin/
+    - /docs/usage/spam-analysis/
 ---
 
 ![Mailpit](/images/spamassassin.png)
