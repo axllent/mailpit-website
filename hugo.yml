@@ -1,6 +1,6 @@
-baseURL: 'https://mailpit.axllent.org/'
-locale: 'en'
-title: 'Mailpit'
+baseURL: "https://mailpit.axllent.org/"
+locale: "en"
+title: "Mailpit"
 outputs:
   home:
     - HTML
@@ -60,7 +60,6 @@ params:
       link: https://github.com/sponsors/axllent
       logo: githubsponsors
 
-
   features:
     - title: Single binary, no dependencies
       link: /docs/install/
@@ -76,7 +75,7 @@ params:
       description: Link check to test message links (HTML & text) & linked images
     - title: Spam testing
       link: /docs/usage/spamassassin/
-      description: Test a message's "spamminess" using SpamAssassin
+      description: Test a message's "spamminess" using SpamAssassin and/or Rspamd
     - title: Screenshot generator
       link: /docs/usage/html-screenshots/
       description: Generate screenshots directly from within the web UI

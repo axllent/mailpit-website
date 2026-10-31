@@ -7,6 +7,7 @@ weight: 7
 
 Mailpit can optionally integrate with [SpamAssassin](https://spamassassin.apache.org/) (both version 3 and 4) to display the "spamminess" of messages.
 This is an opt-in feature that must be enabled when starting Mailpit, and requires either a running instance of SpamAssassin or, alternatively, the use of the free hosted [Postmark service](https://spamcheck.postmarkapp.com/) (see below).
+Mailpit can also integrate with [Rspamd](../rspamd/), either instead of or alongside SpamAssassin.
 
 ## Enabling SpamAssassin integration
 
