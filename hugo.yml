@@ -74,7 +74,7 @@ params:
       link: /docs/usage/link-check/
       description: Link check to test message links (HTML & text) & linked images
     - title: Spam testing
-      link: /docs/usage/spamassassin/
+      link: /docs/usage/spam-analysis/
       description: Test a message's "spamminess" using SpamAssassin and/or Rspamd
     - title: Screenshot generator
       link: /docs/usage/html-screenshots/
