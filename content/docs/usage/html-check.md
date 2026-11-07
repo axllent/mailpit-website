@@ -13,7 +13,7 @@ Support for HTML/CSS messages varies greatly across email clients. HTML check at
 
 The HTML message is tested against over 175 HTML and CSS checks. All checks (except `<script>`) map to a test on [caniemail.com](https://caniemail.com), and the final score is derived from that compatibility data.
 
-**Remote stylesheets** are automatically downloaded and injected as inline styles (unless blocked via `--block-remote-css-and-fonts`), which gives Mailpit reasonably accurate CSS results. Note that internal IP addresses are blocked by default - to test emails that reference stylesheets on internal servers, enable `--allow-internal-http-requests` (env: `MP_ALLOW_INTERNAL_HTTP_REQUESTS=true`).
+**Remote stylesheets** are automatically downloaded and injected as inline styles (unless blocked via `--block-remote-css-and-fonts`), which gives Mailpit reasonably accurate CSS results. A maximum of 10 unique stylesheets, and 5 MiB in total, are downloaded per check (whichever limit is reached first), and any remaining stylesheets are ignored. Note that internal IP addresses are blocked by default - to test emails that reference stylesheets on internal servers, enable `--allow-internal-http-requests` (env: `MP_ALLOW_INTERNAL_HTTP_REQUESTS=true`).
 
 **CSS that cannot be inlined** - properties like `@font-face`, `:visited`, and `:hover` - cannot be applied to specific elements, so Mailpit searches for them within CSS blocks instead. Since it cannot determine how many elements they actually affect, these checks are weighted lightly (5%) to limit their impact on the score. This is particularly relevant for emails that include large frameworks like Bootstrap, which typically contain many unused rules.
 
