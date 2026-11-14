@@ -56,4 +56,8 @@ Invalid date formats are ignored and logged in the Mailpit log.
 
 ## Search casing
 
-Searches are not case sensitive, however there is one limitation: SQLite only understands upper/lower case for ASCII characters. **This does not impact general searches** (ie: `"Diese Äpfel"` will find `"diese äpfel"`), however when searching specific headers (eg `subject:"Diese Äpfel"`) the unicode character searched must match the searched header for that character. This is a limitation of the embedded SQLite engine which does not contain full unicode support. This impacts only unicode characters for example `Ä` `ä` `Æ` `æ` `Ö` `ö` `Ü` `ü` etc.
+Searches are not case sensitive, including for non-ASCII characters such as `Ä`, `Ø` or `И`. This applies to general searches (`"Diese Äpfel"` will find `"diese äpfel"`) as well as header searches (`from:"ÄRGER"` will find `"Ärger Öl"`, and `subject:"diese äpfel"` will find `"Diese Äpfel"`).
+
+Characters with special case rules are matched too, for example `STRASSE` will find `"Straße"`, and `ΟΔΥΣΣΕΎΣ` will find `"Οδυσσεύς"` (Greek final sigma).
+
+Accents are not ignored, so `cafe` will not find `"café"`.
