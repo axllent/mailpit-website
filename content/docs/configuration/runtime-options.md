@@ -121,7 +121,7 @@ Disable the rate limit for link checking ([see docs](../../usage/link-check/#rat
 {{< /option >}}
 
 {{< option flag="enable-spamassassin" env="MP_ENABLE_SPAMASSASSIN" default="false" >}}
-Enable SpamAssassin integration for message spamminess score ([see docs](../spamassassin/)).
+Enable SpamAssassin integration for message spamminess score. Accepts `<host>:<port>`, `unix:<path>` to connect via a Unix socket, or `postmark` to use the hosted Postmark service ([see docs](../spamassassin/)).
 {{< /option >}}
 
 {{< option flag="enable-rspamd" env="MP_ENABLE_RSPAMD" default="false" added="v1.33.0" >}}

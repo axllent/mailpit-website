@@ -19,6 +19,21 @@ To enable this feature with a self-hosted SpamAssassin instance, you must:
 Alternatively, if you prefer not to run your own SpamAssassin instance, Mailpit can integrate with the free hosted [Postmark service](https://spamcheck.postmarkapp.com/).
 To enable this, use `postmark` without any port: `--enable-spamassassin postmark` or set the environment variable `MP_ENABLE_SPAMASSASSIN=postmark`.
 
+### Connecting to SpamAssassin via a Unix socket
+
+If SpamAssassin (`spamd`) is running on the same host and listening on a Unix domain socket (for example, started with `spamd --socketpath=/var/run/spamd.sock`), Mailpit can connect to the socket instead of a TCP port.
+Use `unix:` followed by the path to the socket, with no port:
+
+```shell
+mailpit --enable-spamassassin unix:/var/run/spamd.sock
+```
+
+or set the environment variable `MP_ENABLE_SPAMASSASSIN=unix:/var/run/spamd.sock`.
+
+Mailpit's user needs permission to write to the socket file, and the path should be absolute.
+Unlike the Unix sockets that Mailpit [listens on](../unix-domain-sockets/), there are no permissions to add after the path (`unix:<path>`, not `unix:<path>:<permissions>`).
+If Mailpit cannot connect to the socket when it starts, it logs a warning and carries on, and each message check then shows the connection error.
+
 ## Setting up SpamAssassin
 
 For your convenience, you can use a lightweight pre-configured [Docker image](https://hub.docker.com/r/axllent/spamassassin) of SpamAssassin (assuming you use Docker).
