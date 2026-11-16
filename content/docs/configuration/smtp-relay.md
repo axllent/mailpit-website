@@ -23,11 +23,11 @@ auth: <none|plain|login|cram-md5> # optional - default none
 username: <username> # required for plain, login and cram-md5 auth
 password: <password> # required for plain & login auth
 secret: <cram-secret> # required for cram-md5 auth
-return-path: <bounce-address> # optional - overrides Return-Path for all released emails
+return-path: <bounce-address> # optional - overrides Return-Path for all relayed emails
 override-from: <email-address> # optional - overrides the From email address
 subject-prefix: <text> # optional - text to prepend to the Subject of all relayed emails
 allowed-recipients: '@example\.com$' # optional - limit allowed relay addresses or domains
-blocked-recipients: '@example2\.com$' # optional - prevent relating to addresses or domains
+blocked-recipients: '@example2\.com$' # optional - prevent relaying to addresses or domains
 preserve-message-ids: <true|false> # optional - preserve the original Message-IDs when relaying, default false
 forward-smtp-errors: <true|false> # optional - whether to log smtp-errors or forward them to upstream-client
 ```
@@ -38,7 +38,8 @@ By default, messages relayed via the web UI / API are assigned a new, unique `Me
 This helps when testing with services like Gmail, which may silently drop or hide emails with duplicate Message-IDs.
 To preserve (keep) the original Message-IDs when relaying, set `preserve-message-ids: true` in your configuration.
 
-The `return-path` configuration option will add or overwrite the `Return-Path` for all messages relayed via the web UI and API.
+The `return-path` configuration option will add or overwrite the `Return-Path` for all relayed messages, both those released via the web UI and API, and those auto-relayed with `--smtp-relay-all` or `--smtp-relay-matching`.
+The address is also used as the envelope sender (`MAIL FROM`), and takes precedence over [Override From](#override-from) when both are set, as `override-from` only changes the `From` header.
 This is useful for providing a valid email address to catch any accidental bounces and prevent SPF errors for email domain names.
 Servers such as Gmail have become very strict about the mail they accept, and unresolvable Return-Path addresses, or unauthorised Return-Path addresses (SPF / DMARC) get rejected very easily.
 Also see [Override From](#override-from) to change the `From` email address on all relayed messages, and [Subject prefix](#subject-prefix) to prepend text to the `Subject`.
@@ -108,9 +109,9 @@ MP_SMTP_RELAY_AUTH=<none|plain|login|cram-md5>     # optional - default none
 MP_SMTP_RELAY_USERNAME=<username>                  # required for plain, login and cram-md5 auth
 MP_SMTP_RELAY_PASSWORD=<password>                  # required for plain & login auth
 MP_SMTP_RELAY_SECRET=<cram-secret>                 # required for cram-md5 auth
-MP_SMTP_RELAY_RETURN_PATH=<bounce-address>         # optional - overrides Return-Path for all released emails
+MP_SMTP_RELAY_RETURN_PATH=<bounce-address>         # optional - overrides Return-Path for all relayed emails
 MP_SMTP_RELAY_OVERRIDE_FROM=<email-address>        # optional - overrides the From email address
-MP_SMTP_RELAY_SUBJECT_PREFIX=<text>                # optional - text to prepend to the Subject of all released emails
+MP_SMTP_RELAY_SUBJECT_PREFIX=<text>                # optional - text to prepend to the Subject of all relayed emails
 MP_SMTP_RELAY_ALLOWED_RECIPIENTS="@example\.com$"  # optional - regex to limit allowed relay addresses or domains via web UI & API
 MP_SMTP_RELAY_BLOCKED_RECIPIENTS="@example2\.com$" # optional - regex to prevent relaying to addresses or domains via web UI & API
 MP_SMTP_RELAY_PRESERVE_MESSAGE_IDS=<true|false>    # optional - preserve the original Message-IDs when relaying, default false
