@@ -42,10 +42,6 @@ By default, Mailpit creates a temporary database to store its data. When the app
 Mailpit allows you to provide a path to a file for persistent database storage, for example `--database /path/to/database.db` (or environment variable `MP_DATABASE=/path/to/database.db`).
 This file will not be deleted when the application terminates, and restarting Mailpit with the same `--database` will reload previously stored messages.
 
-{{< tip "warning" >}}
-In Mailpit versions older than v0.16.0, the database flag and environment variable were `--db-file` and `MP_DATA_FILE`. These were renamed to be more consistent with their purpose.
-{{< /tip >}}
-
 ### Automated message pruning
 
 Although Mailpit can easily handle tens of thousands of emails, it will by default automatically prune old messages, keeping the most recent 500 emails.
