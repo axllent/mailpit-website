@@ -34,6 +34,7 @@ forward-smtp-errors: <true|false> # optional - whether to log smtp-errors or for
 ### Notes
 
 The `return-path` configuration option will add or overwrite the `Return-Path` for all forwarded messages.
+The address is also used as the envelope sender (`MAIL FROM`), and takes precedence over [Override From](#override-from) when both are set, as `override-from` only changes the `From` header.
 This is useful for providing a valid email address to catch any accidental bounces and prevent SPF errors for email domain names.
 Servers such as Gmail have become very strict about the mail they accept, and unresolvable Return-Path addresses, or unauthorised Return-Path addresses (SPF / DMARC) get rejected very easily.
 
@@ -93,7 +94,7 @@ MP_SMTP_FORWARD_AUTH=<none|plain|login|cram-md5>     # optional - default none
 MP_SMTP_FORWARD_USERNAME=<username>                  # required for plain, login and cram-md5 auth
 MP_SMTP_FORWARD_PASSWORD=<password>                  # required for plain & login auth
 MP_SMTP_FORWARD_SECRET=<cram-secret>                 # required for cram-md5 auth
-MP_SMTP_FORWARD_RETURN_PATH=<bounce-address>         # optional - overrides Return-Path for all released emails
+MP_SMTP_FORWARD_RETURN_PATH=<bounce-address>         # optional - overrides Return-Path for all forwarded emails
 MP_SMTP_FORWARD_OVERRIDE_FROM=<email-address>        # optional - overrides the From email address
 MP_SMTP_FORWARD_SUBJECT_PREFIX=<text>                # optional - text to prepend to the Subject of all forwarded emails
 MP_SMTP_FORWARD_FWD_SMTP_ERRORS=<true|false>         # optional - whether to log smtp-errors or forward them to upstream-client
